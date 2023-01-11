@@ -21,10 +21,10 @@ return new class extends Migration
             $table->string('country');
             $table->string('city');
             $table->string('address');
-            $table->foreignId('order_dates_id');
-            $table->foreignId('payment_mode_id');
-            $table->foreignId('delivery_mode_id');
-            $table->foreignId('users_id');
+            $table->foreignId('customer_id');
+            $table->foreignId('order_id');
+            $table->foreignId('payment_id');
+            $table->foreignId('delivery_id');
         });
     }
 
