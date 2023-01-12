@@ -13,11 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('payment_mode', function (Blueprint $table) 
+        Schema::create('customers', function (Blueprint $table) 
         {
-            $table->id("pid");
-            $table->string('payment_mode');
-        });
+            $table->id("cid");
+            $table->string('username');
+            $table->string('email');
+            $table->string('password');
+        });;
     }
 
     /**
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('payment_mode');
+        Schema::dropIfExists('customers');
     }
 };

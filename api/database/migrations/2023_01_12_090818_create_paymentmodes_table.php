@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('delivery_mode', function (Blueprint $table) 
+        Schema::create('payment_mode', function (Blueprint $table) 
         {
-            $table->id("did");
-            $table->string('delivery_mode');
+            $table->id("pid");
+            $table->string('payment_mode');
         });
     }
 
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('delivery_mode');
+        Schema::dropIfExists('paymentmodes');
     }
 };
