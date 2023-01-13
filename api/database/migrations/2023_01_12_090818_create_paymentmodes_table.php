@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('payment_mode', function (Blueprint $table) 
         {
             $table->id("pid");
-            $table->string('payment_mode');
+            $table->string('payment_mode')->unique();
         });
     }
 

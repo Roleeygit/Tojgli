@@ -19,7 +19,6 @@ class AuthController extends BaseController
             $success["name"] = $authUser->name;
             
             return $this->sendResponse($success, "Sikeres belépés");
-            // print_r("Sikeres belépés");
         }
 
         else
@@ -42,6 +41,7 @@ class AuthController extends BaseController
         if($validator->fails())
         {
             // return sendError("Error validation", $validator->errors());
+            print_r("Hibás reg adatok");
         }
 
         $input = $request->all();
@@ -50,7 +50,6 @@ class AuthController extends BaseController
         $success["name"] = $user->name;
 
         return $this->sendResponse($success, "Sikeres regisztráció");
-        // print_r("Sikeres regisztráció");
     }
 
     public function logOut(Request $request)

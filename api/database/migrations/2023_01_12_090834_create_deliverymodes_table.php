@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('delivery_mode', function (Blueprint $table) 
         {
             $table->id("did");
-            $table->string('delivery_mode');
+            $table->string('delivery_mode')->unique();
         });
     }
 
