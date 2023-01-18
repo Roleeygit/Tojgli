@@ -19,7 +19,7 @@ class Product extends Model
         "description"
     ];
 
-    public function Category()
+    public function category()
     {
         return $this->belongsTo(Category::class);
     }

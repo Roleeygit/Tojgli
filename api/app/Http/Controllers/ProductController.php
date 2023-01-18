@@ -10,13 +10,13 @@ class ProductController extends Controller
 {
     public function NewProduct()
     {
-        $categories = Category::first()->get();
+        $categories = Category::all();
 
         foreach ($categories as $category) 
         {
             return view("new_product", [
 
-                "categories" => $category
+                "categories" => $categories
              ]); 
 
         }
@@ -26,18 +26,18 @@ class ProductController extends Controller
     {
         
         $category = $request->category;
-        $category = Category::where("cid",$category)->get();
-        $category_cid = 0;
-        foreach($category as $category)
-            $category_cid = $category->cid;
+        $categories = Category::where("id", $category)->get();
+        $category_id = 0;
+        foreach($categories as $category)
+            $category_id = $category->id;
 
 
         $product = new Product;
-        $product->name=$request->name;
-        $product->price=$request->price;
-        $product->weight=$request->weight;
-        $product->description=$request->description;
-        $product->categories_id= $category_cid;
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->weight = $request->weight;
+        $product->description = $request->description;
+        $product->category_id = $category_id;
         $product->save();
 
         $request->session()->flash("success","Sikeres adat felvétel.");

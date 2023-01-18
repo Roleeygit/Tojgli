@@ -20,7 +20,8 @@ return new class extends Migration
             $table->integer('price');
             $table->integer('weight');
             $table->text('description');
-            $table->foreignId('categories_id');
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 

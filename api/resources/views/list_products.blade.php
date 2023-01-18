@@ -19,8 +19,7 @@
            <td>{{ $product->price }}</td>
            <td>{{ $product->weight }}</td>
            <td>{{ $product->description }}</td>
-           //TODO category javítása
-           {{-- <td>{{ $product->categories->name}}</td> --}}
+           <td>{{ $product->category->category}}</td>
          </tr>
       @endforeach
     </tbody>
