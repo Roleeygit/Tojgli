@@ -22,12 +22,13 @@
         <label for="">Leírás:</label>
         <input type="text" name="description" placeholder="description">
     </p>
-          <p>Kategória:</p>
+          <p>Kategória:
           <select name="category">
           @foreach($categories as $category)
             <option value="{{ $category->id }}">{{ $category->category }}</option>
           @endforeach
           </select>
+          </p>
 
     <p>
     <button type="submit">Küldés</button>

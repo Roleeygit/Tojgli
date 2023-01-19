@@ -4,22 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Product;
 use App\Http\Profile;
 
-class Category extends Model
+class Payment_mode extends Model
 {
     use HasFactory;
 
     protected $fillable =
     [
-        "category"
+        "payment_mode"
     ];
 
-    public function product()
+    public function profile()
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany('App\Models\Profile');
     }
-
-    public $timestamps = false;
 }

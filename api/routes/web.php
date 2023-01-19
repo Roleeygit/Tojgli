@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +22,7 @@ Route::get('/', function () {
 Route::get("/new-product",[ProductController::class,"NewProduct"]);
 Route::post("/submit-product", [ProductController::class,"StoreProduct"]);
 Route::get('/productdata', [ProductController::class, "ProductData"]);
+
+Route::get('/profiledata', [ProfileController::class, "ProfilesData"]);
+Route::post('/submit-profile', [ProfileController::class, "StoreProfiles"]);
+Route::get('/new-profile', [ProfileController::class, "CreateProfile"]);
