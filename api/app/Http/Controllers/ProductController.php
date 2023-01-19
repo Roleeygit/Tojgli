@@ -40,7 +40,7 @@ class ProductController extends Controller
         $product->category_id = $category_id;
         $product->save();
 
-        $request->session()->flash("success","Sikeres adat felvétel.");
+        $request->session()->flash("success","Adat feltöltése sikeres!");
         return redirect("/new-product");
     }
 

@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('delivery_mode', function (Blueprint $table) 
+        Schema::create('delivery_modes', function (Blueprint $table) 
         {
-            $table->id("did");
-            $table->string('delivery_mode')->unique();
+            $table->id("id");
+            $table->string('delivery_modes')->unique();
         });
     }
 

@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('payment_mode', function (Blueprint $table) 
+        Schema::create('payment_modes', function (Blueprint $table) 
         {
-            $table->id("pid");
-            $table->string('payment_mode')->unique();
+            $table->id("id");
+            $table->string('payment_modes')->unique();
         });
     }
 

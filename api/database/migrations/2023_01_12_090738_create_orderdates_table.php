@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('order_dates', function (Blueprint $table) 
         {
-            $table->id("oid");
+            $table->id("id");
             $table->date('order_date');
         });
     }
