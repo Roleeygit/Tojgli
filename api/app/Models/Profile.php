@@ -23,7 +23,7 @@ class Profile extends Model
         "city",
         "address",
         "customer_id",
-        "order_date_id",
+        "order_date",
         "payment_mode_id",
         "delivery_mode_id"
     ];

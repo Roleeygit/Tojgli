@@ -19,7 +19,7 @@ class ProfileController extends Controller
         return view("list_profiles", ["profiles" => $profiles]);
     }
 
-    public function CreateProfile() 
+    public function NewProfile() 
     {
         $customers = Customer::all();
         $order_dates = Order_date::all();
@@ -41,20 +41,20 @@ class ProfileController extends Controller
             'city' => 'required|max:255',
             'address' => 'required|max:255',
             'customer_id' => 'required',
-            'order_date_id' => 'required',
             'payment_mode_id' => 'required',
             'delivery_mode_id' => 'required'
         ]);
-
+        
+        $profile = new Profile();
         $profile->surname = $request->input('surname');
         $profile->lastname = $request->input('lastname');
         $profile->country = $request->input('country');
         $profile->city = $request->input('city');
         $profile->address = $request->input('address');
-        $profile->order_date_id = $request->input('order_date_id');
+        // $profile->order_date = date("Y-m-d H:i:s");
         $profile->customer_id = $request->input('customer_id');
-        $profile->payment_mode_id = $request->input('payment_mode_id');
-        $profile->delivery_mode_id = $request->input('delivery_mode_id');
+        $profile->payment_mode_id = $request->input('paymentmode_id');
+        $profile->delivery_mode_id = $request->input('deliverymode_id');
         $profile->save();
 
 

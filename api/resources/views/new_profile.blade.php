@@ -26,20 +26,14 @@
     <p>
         <label for="address">Address:</label>
         <input type="text" id="address" name="address">
-    </p>
+    {{-- </p>
     <p>
-        <label for="order_date_id">Vásárlási idő</label>
-    <select name="order_date_id" id="order_date_id" class="form-control" required>
-        <option value=""></option>
-        @foreach($order_dates as $order_date)
-            <option value="{{ $order_date->id }}">{{ $order_date->order_date }}</option>
-        @endforeach
-    </select>
+        <input type="hidden" name="order_date" value="{{ Carbon\Carbon::now()->toDateString() }}">
     </p>
     <p>
         <label for="customer_id">Customer ID:</label>
         <input type="number" name="customer_id" id="customer_id" required>
-    </p>
+    </p> --}}
 
 
 

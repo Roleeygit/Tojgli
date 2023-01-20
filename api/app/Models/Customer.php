@@ -13,6 +13,7 @@ class Customer extends Model
     [
         "username",
         "email",
-        "password"
+        "password",
+        "confirm_password"
     ];
 }
