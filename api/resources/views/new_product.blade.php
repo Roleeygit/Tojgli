@@ -1,3 +1,4 @@
+<a href="/"><button>Főoldal</button></a>
 <a href="/productdata"><button>Adatok</button></a>
 
 @if(session()->has("success"))

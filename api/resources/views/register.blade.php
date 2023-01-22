@@ -1,3 +1,7 @@
+@if(session()->has("success"))
+    <h3>{{ session("success") }}</h3>
+@endif
+
 <form method="post" action="submit-customer">
     @csrf
     <div>
@@ -13,14 +17,16 @@
         <input type="password" id="password" name="password">
     </div>
     <div>
-        <label for="password_confirmation">Password Confirmation:</label>
-        <input type="password" id="password_confirmation" name="password_confirmation">
+        <label for="confirm_password">Password Confirmation:</label>
+        <input type="password" id="confirm_password" name="confirm_password">
     </div>
     <div>
-        <input type="checkbox" id="terms" name="terms">
+        <input type="checkbox" id="terms" name="terms" value="1">
         <label for="terms">Elolvastam és elfogadtam az <a href=/terms_and_conditions target="_blank">Általános Szerződési feltételeket</a> és elfogadom az <a href=/privacy_policy target="_blank">Adatvédelni Szabályzatot</a>.</label>
     </div>
     <div>
+        
         <input type="submit" value="Submit">
     </div>
 </form>
+    <a href="/"><button>Vissza</button></a>

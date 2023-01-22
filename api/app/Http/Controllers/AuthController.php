@@ -10,23 +10,6 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends BaseController
 {
-    public function signIn(Request $request) 
-    {
-        if(Auth::attempt(["email" => $request->email, "password" => $request->password]))
-        {
-            $authUser = Auth::user();
-            $success["token"] = $authUser->createToken("MyAuthApp")->plainTextToken;
-            $success["name"] = $authUser->name;
-            
-            return $this->sendResponse($success, "Sikeres belépés");
-        }
-
-        else
-        {
-            // return $this->sendError("Unauthorized.".["error" => "Hibás adatok"]);
-            print_r("Hibás adatok");
-        }
-    }
 
     public function signUp(Request $request)
     {
@@ -40,8 +23,7 @@ class AuthController extends BaseController
 
         if($validator->fails())
         {
-            // return sendError("Error validation", $validator->errors());
-            print_r("Hibás reg adatok");
+            return $this->sendError("Hibás regisztrációs adatok. Figyelj a megadott kritériumokra!");
         }
 
         $input = $request->all();
@@ -52,9 +34,26 @@ class AuthController extends BaseController
         return $this->sendResponse($success, "Sikeres regisztráció");
     }
 
+    public function signIn(Request $request) 
+    {
+        if(Auth::attempt(["email" => $request->email, "password" => $request->password]))
+        {
+            $authUser = Auth::user();
+            $success["token"] = $authUser->createToken("MyAuthApp")->plainTextToken;
+            $success["name"] = $authUser->name;
+            
+            return $this->sendResponse($success, "Sikeres belépés");
+        }
+
+        else
+        {
+            return $this->sendError("Unauthorized.".["error" => "Hibás adatok"]);
+        }
+    }
+
     public function logOut(Request $request)
     {
-        auth("sanctum")->user()->currentAccessToken()->delete();
+        Auth::guard("sanctum")->user()->currentAccessToken()->delete();
 
         return response()->json("Sikeres kijelentkezés");
     }

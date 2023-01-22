@@ -5,66 +5,61 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
+use Validator;
+use Illuminate\Support\Facades\DB;
+use App\Http\Resources\Product as ProductResource;
 
-class ProductController extends Controller
+class ProductController extends BaseController
 {
-    public function NewProduct()
-    {
-        $categories = Category::all();
-
-        foreach ($categories as $category) 
-        {
-            return view("new_product", [
-
-                "categories" => $categories
-             ]); 
-
-        }
-    }
-
-    public function StoreProduct(REQUEST $request)
-    {
-        
-        $category = $request->category;
-        $categories = Category::where("id", $category)->get();
-        $category_id = 0;
-        foreach($categories as $category)
-            $category_id = $category->id;
-
-
-        $product = new Product;
-        $product->name = $request->name;
-        $product->price = $request->price;
-        $product->weight = $request->weight;
-        $product->description = $request->description;
-        $product->category_id = $category_id;
-        $product->save();
-
-        $request->session()->flash("success","Adat feltöltése sikeres!");
-        return redirect("/new-product");
-    }
-
-    public function ProductData()
-    {
-        $products = Product::with("category")->get();
-        foreach ($products as $product) 
-        {
-            return view("list_products", [
-
-                "products" => $products
-             ]); 
-
-        }
-    }
-
-
-    public function listProducts()
+    public function ProductList()
     {
         $products = Product::with("category")->get();
 
-        return view("list_products", 
+        return $this->sendResponse(ProductResource::collection($products), "Termékek kiirva!");
+    }
+
+    public function NewProduct(Request $request)
+    {
+        $input = $request->all();
+        $input["category_id"] = Category::where("id", $input["category_id"])->first()->id;
+
+        $validator = Validator::make($input,
         [
-            "products" => $products
+            "name" => "required",
+            "price" => "required",
+            "weight" => "required",
+            "description" => "required",
+            "category_id" => "required"
+        ],
+        [
+            "name.required" => "A termék nevének megadása kötelező!",
+            "price.required" => "A termék árának megadása kötelező!",
+            "weight.required" => "A termék súlyának megadása kötelező!",
+            "description.required" => "A termék leirásának megadása kötelező!",
+            "category_id.required" => "A termék kategóriájának megadása kötelező!",
         ]);
+
+        if ($validator->fails())
+        {
+            return $this->sendError($validator->errors());
+        }
+
+        $product = Product::create($input);
+
+        return $this->sendResponse(new ProductResource($product), "Termék létrehozva!");
+
+    }
+
+    public function ShowProductById ($id)
+    {
+        $product = Product::find($id);
+
+        if(is_null($product))
+        {
+            return $this->sendError("A termék nem létezik!");
+        }
+
+        return $this->sendResponse(new ProductResource($product), "Termék betöltve.");
+        
     }
 }

@@ -14,6 +14,13 @@ class Customer extends Model
         "username",
         "email",
         "password",
-        "confirm_password"
+        "confirm_password",
+        "terms"
     ];
+
+    protected $hidden = [
+        'password', 'confirm_password'
+    ];
+
+    public $timestamps = false;
 }
