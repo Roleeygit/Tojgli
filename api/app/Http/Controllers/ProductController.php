@@ -21,7 +21,7 @@ class ProductController extends BaseController
     public function NewProduct(Request $request)
     {
         $input = $request->all();
-        $input["category_id"] = Category::where("id", $input["category_id"])->first()->id;
+        $input["category_id"] = Category::where("category", $input["category_id"])->first()->id;
 
         $validator = Validator::make($input,
         [

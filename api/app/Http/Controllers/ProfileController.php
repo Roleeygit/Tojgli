@@ -9,14 +9,15 @@ use App\Models\Customer;
 use App\Models\Order_date;
 use App\Models\Payment_mode;
 use App\Models\Delivery_mode;
+use App\Http\Resources\Profile as ProfileResource;
 
 
-class ProfileController extends Controller
+class ProfileController extends BaseController
 {
-    public function ProfilesData()
+    public function ListProfiles( Request $request)
     {
-        $profiles = Profile::with(['customer' , 'orderdate', 'paymentmode', 'deliverymode'])->get();
-        return view("list_profiles", ["profiles" => $profiles]);
+        $profiles = Profile::with(['customer' , 'order_date', 'payment_mode', 'delivery_mode'])->get();
+        return $this->sendResponse(ProfileResource::collection($profiles), "Profil Adatok kiirva!");
     }
 
     public function NewProfile() 

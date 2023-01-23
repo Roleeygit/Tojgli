@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,7 @@ Route::post("/logout", [AuthController::class, "logOut"]);
 Route::post("/submit-customer", [CustomerController::class,"CustomerRegister"]);
 Route::get("/registeredcustomers", [CustomerController::class,"RegisteredCustomerList"]);
 Route::get("/updatecustomer/{id}", [CustomerController::class,"UpdateCustomers"]);
+Route::get("/CustomerById/{id}", [CustomerController::class,"ShowCustomerById"]);
 Route::delete("/deletecustomer/{id}", [CustomerController::class,"DeleteCustomer"]);
 
 
@@ -43,3 +45,9 @@ Route::get("/productlist", [ProductController::class,"ProductList"]);
 Route::get("/updateproduct/{id}", [ProductController::class,"UpdateProduct"]);
 Route::delete("/deleteproduct/{id}", [ProductController::class,"DeleteProduct"]);
 Route::get("ProductById/{id}", [ProductController::class, "ShowProductById"]);
+
+
+/* ----------------------------------------------------------------------
+|                             Product Router                            |
+------------------------------------------------------------------------ */
+Route::get("/profilelist", [ProfileController::class,"ListProfiles"]);

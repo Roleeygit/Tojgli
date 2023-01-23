@@ -32,17 +32,17 @@ class Profile extends Model
         return $this->belongsTo(Customer::class, 'customer_id');
     }
 
-    public function orderdate()
+    public function order_date()
     {
-        return $this->belongsTo(Order_date::class, 'order_date_id');
+        return $this->belongsTo(Order_date::class, 'order_date');
     }
 
-    public function paymentmode()
+    public function payment_mode()
     {
         return $this->belongsTo(Payment_mode::class, 'payment_mode_id');
     }
 
-    public function deliverymode()
+    public function delivery_mode()
     {
         return $this->belongsTo(Delivery_mode::class, 'delivery_mode_id');
     }

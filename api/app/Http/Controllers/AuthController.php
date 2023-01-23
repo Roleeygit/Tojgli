@@ -47,13 +47,13 @@ class AuthController extends BaseController
 
         else
         {
-            return $this->sendError("Unauthorized.".["error" => "Hibás adatok"]);
+            return $this->sendError("Hibás belépési adatok!");
         }
     }
 
     public function logOut(Request $request)
     {
-        Auth::guard("sanctum")->user()->currentAccessToken()->delete();
+        auth("sanctum")->user()->currentAccessToken()->delete();
 
         return response()->json("Sikeres kijelentkezés");
     }
