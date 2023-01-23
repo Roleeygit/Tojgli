@@ -4,6 +4,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCommonModule} from '@angular/material/core';
 import { MatMenuModule } from '@angular/material/menu';
+import { NgxUiLoaderModule } from "ngx-ui-loader";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +19,7 @@ import { NewproductComponent } from './newproduct/newproduct.component';
 import { ProductlistComponent } from './productlist/productlist.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
+import { NgxUiLoaderHttpModule } from 'ngx-ui-loader';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +41,9 @@ import { HomeComponent } from './home/home.component';
     MatToolbarModule,
     MatIconModule,
     MatCommonModule,
-    MatMenuModule
+    MatMenuModule,
+    NgxUiLoaderHttpModule,
+    NgxUiLoaderModule
   ],
   providers: [],
   bootstrap: [AppComponent]
