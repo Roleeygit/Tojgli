@@ -5,12 +5,12 @@
       <h1 class="h3 mb-4 fw-normal"><b>Bejelentkezés</b></h1>
   
       <div class="form-floating">
-        <input type="email" class="form-control" id="floatingInput" placeholder="nev@pelda.com">
-        <label for="floatingInput">Email cím</label>
+        <input type="email" class="form-control" id="email" placeholder="nev@pelda.com">
+        <label for="email">Email cím</label>
       </div>
       <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Jelszó">
-        <label for="floatingPassword">Jelszó</label>
+        <input type="password" class="form-control" id="password" placeholder="Jelszó">
+        <label for="password">Jelszó</label>
       </div>
   
       <div class="checkbox mb-4">
@@ -18,7 +18,7 @@
           <input type="checkbox" value="remember-me"> Jelszó megjegyzése!
         </label>
       </div>
-      <button class="w-100 btn btn-lg btn-primary" type="submit">Bejelentkezés</button>
+      <button class="w-100 btn btn-lg btn-primary" type="submit" (click)="login()">Bejelentkezés</button>
       <a id="copyright" href="http://github.com/Roleeygit/Tojgli" target="_blank">
           <p class="mt-5 mb-3 text-muted">&copy; 2022–2023 EggShop</p>
       </a>
