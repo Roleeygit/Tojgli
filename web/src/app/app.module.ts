@@ -5,6 +5,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatCommonModule} from '@angular/material/core';
 import { MatMenuModule } from '@angular/material/menu';
 import { NgxUiLoaderModule } from "ngx-ui-loader";
+import {AtomSpinnerModule} from 'angular-epic-spinners'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +21,7 @@ import { ProductlistComponent } from './productlist/productlist.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { NgxUiLoaderHttpModule } from 'ngx-ui-loader';
+import { LoaderComponent } from './loader/loader.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +34,8 @@ import { NgxUiLoaderHttpModule } from 'ngx-ui-loader';
     AdminmainComponent,
     NewproductComponent,
     ProductlistComponent,
-    HomeComponent
+    HomeComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,8 @@ import { NgxUiLoaderHttpModule } from 'ngx-ui-loader';
     MatCommonModule,
     MatMenuModule,
     NgxUiLoaderHttpModule,
-    NgxUiLoaderModule
+    NgxUiLoaderModule,
+    AtomSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
