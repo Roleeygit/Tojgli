@@ -22,10 +22,10 @@ return new class extends Migration
             $table->string('city')->nullable();
             $table->string('address')->nullable();
             $table->date('order_date')->nullable();
-            $table->foreignId('customer_id');
+            $table->foreignId('user_id');
             $table->foreignId('payment_mode_id')->nullable();
             $table->foreignId('delivery_mode_id')->nullable();
-            $table->foreign('customer_id')->references('id')->on('customers');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('payment_mode_id')->references('id')->on('payment_modes');
             $table->foreign('delivery_mode_id')->references('id')->on('delivery_modes');
         });

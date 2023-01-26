@@ -17,7 +17,7 @@ class Order_date extends Model
 
     public function profile()
     {
-        return $this->hasMany('App\Models\Profile');
+        return $this->hasMany("App\Models\Profile");
     }
 }
     

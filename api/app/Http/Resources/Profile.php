@@ -22,9 +22,9 @@ class Profile extends JsonResource
         "country" => $this->country ?? "Nincs még adat megadva!",
         "city" => $this->city ?? "Nincs még adat megadva!",
         "address" => $this->address ?? "Nincs még adat megadva!",
-        "customer_id" => $this->customer->id,
-        "customer_name" => $this->customer->username,
-        "customer_email" => $this->customer->email,
+        "user_id" => $this->user->id,
+        "user_name" => $this->user->username,
+        "user_email" => $this->user->email,
 
         //Ezek az adatok majd csak a vásárlásnál kellenek
         // "order_date" => $this->order_date ?? "Nincs még adat megadva!"

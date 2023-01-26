@@ -21,6 +21,9 @@ class ProductController extends BaseController
     public function NewProduct(Request $request)
     {
         $input = $request->all();
+
+        DB::statement("ALTER TABLE users AUTO_INCREMENT = 1;");
+        
         $input["category_id"] = Category::where("category", $input["category_id"])->first()->id;
 
         $validator = Validator::make($input,
@@ -38,7 +41,7 @@ class ProductController extends BaseController
             "description.required" => "A termék leirásának megadása kötelező!",
             "category_id.required" => "A termék kategóriájának megadása kötelező!",
         ]);
-
+ 
         if ($validator->fails())
         {
             return $this->sendError($validator->errors());
@@ -62,4 +65,19 @@ class ProductController extends BaseController
         return $this->sendResponse(new ProductResource($product), "Termék betöltve.");
         
     }
+
+    public function DeleteProduct($id)
+    {
+        Product::destroy($id);
+        
+        $product = Product::find($id);
+        $products = Product::where("id", ">", $id)->orderBy("id")->get();
+        foreach($products as $product)
+        {
+            $product->id = $product->id -1;
+            $product->save();
+        }
+        return $this->sendResponse([], "Product Deleted!");
+    }
+
 }

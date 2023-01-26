@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -18,28 +18,30 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::group(["middleware" => ["auth:sanctum"]], function() 
+{
 
-Route::post("/register", [AuthController::class, "signUp"]);
-Route::post("/login", [AuthController::class, "signIn"]);
-Route::post("/logout", [AuthController::class, "logOut"]);
-
+});    
 
 /* ----------------------------------------------------------------------
-|                             Customer Router                           |
+|                             User Router                               |
 ------------------------------------------------------------------------ */
-Route::post("/submit-customer", [CustomerController::class,"CustomerRegister"]);
-Route::get("/registeredcustomers", [CustomerController::class,"RegisteredCustomerList"]);
-Route::get("/updatecustomer/{id}", [CustomerController::class,"UpdateCustomers"]);
-Route::get("/CustomerById/{id}", [CustomerController::class,"ShowCustomerById"]);
-Route::delete("/deletecustomer/{id}", [CustomerController::class,"DeleteCustomer"]);
+
+
+Route::post("/register", [UserController::class, "UserRegister"]);
+Route::post("/login", [UserController::class, "UserLogin"]);
+Route::post("/logout", [UserController::class, "UserLogout"]);
+Route::get("/registeredusers", [UserController::class,"ListUsers"]);
+Route::put("/updateuser/{id}", [UserController::class,"UpdateUser"]);
+Route::get("/userbyid/{id}", [UserController::class,"ShowUserById"]);
+Route::delete("/deleteuser/{id}", [UserController::class,"DeleteUser"]);
 
 
 /* ----------------------------------------------------------------------
 |                             Product Router                            |
 ------------------------------------------------------------------------ */
+
+
 Route::post("/submit-product", [ProductController::class,"NewProduct"]);
 Route::get("/productlist", [ProductController::class,"ProductList"]);
 Route::get("/updateproduct/{id}", [ProductController::class,"UpdateProduct"]);
@@ -48,6 +50,7 @@ Route::get("ProductById/{id}", [ProductController::class, "ShowProductById"]);
 
 
 /* ----------------------------------------------------------------------
-|                             Product Router                            |
+|                             Profile Router                            |
 ------------------------------------------------------------------------ */
 Route::get("/profilelist", [ProfileController::class,"ListProfiles"]);
+Route::put("/updateprofile/{id}", [ProfileController::class,"UpdateProfile"]);

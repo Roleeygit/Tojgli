@@ -16,6 +16,6 @@ class Delivery_mode extends Model
     ];
     public function profile()
     {
-        return $this->hasMany('App\Models\Profile');
+        return $this->hasMany("App\Models\Profile");
     }
 }
