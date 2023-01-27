@@ -130,3 +130,14 @@ Verzió kiadva: 2023-01-26
 - Insomnia új verzió
 - Útvonalak a fentebb irt módositások alapján szintúgy javitásra került
 - DB alap adatokból kikerült a customers, mert már nem létezik ilyen tábla
+
+ <br></br>
+
+# <p align = "center">Verzió 0.031:</p>
+Verzió kiadva: 2023-01-27
+
+- Kategória működése kész
+- githubra mostmár a commitokat Új verzió helyett a jelenlegi verzó számnak megfelelően rakom fel
+<br></br>
+Következő verzió: 
+- categories, order_dates, payment_modes táblák teszt adattal feltöltése Controlleren keresztül

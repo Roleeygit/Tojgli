@@ -24,7 +24,7 @@ class ProductController extends BaseController
 
         DB::statement("ALTER TABLE users AUTO_INCREMENT = 1;");
         
-        $input["category_id"] = Category::where("category", $input["category_id"])->first()->id;
+        $input["category_id"] = Category::where("category", $input["category_id"])->value("id");
 
         $validator = Validator::make($input,
         [
