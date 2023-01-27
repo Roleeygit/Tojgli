@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Passport\HasApiTokens;
 
 class Customer extends Model
 {
-    use HasFactory;
+    use HasApiTokens, HasFactory;
 
     protected $fillable = 
     [
@@ -18,9 +19,18 @@ class Customer extends Model
         "terms"
     ];
 
-    protected $hidden = [
-        'password', 'confirm_password'
+    protected $hidden = 
+    [
+        "password", "confirm_password"
     ];
 
-    public $timestamps = false;
+    public function generateToken()
+    {
+        $token = new Token();
+        $token->token = Str::random(60);
+        $token->expiration = now()->addDays(1);
+        $token->customer_id = $this->id;
+        $token->save();
+        return $token->token;
+    }
 }
