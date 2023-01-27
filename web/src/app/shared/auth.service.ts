@@ -8,8 +8,9 @@ export class AuthService {
   host = "http://localhost:8000/api/";
   constructor(private http: HttpClient) { }
 
-  login(email: string, password: string) {
+  login(email: string, password: string, username: string) {
     let userData = {
+      username: username,
       email: email,
       password: password
     }

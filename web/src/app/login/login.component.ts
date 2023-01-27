@@ -8,6 +8,7 @@ import { AuthService } from '../shared/auth.service';
 })
 export class LoginComponent implements OnInit {
   email !: string;
+  username !: string;
   password !: string;
 
   constructor(private auth: AuthService) { }
@@ -18,13 +19,13 @@ export class LoginComponent implements OnInit {
   login() {
     console.log('login belül')
     let email = this.email;
+    let username = this.username;
     let password = this.password;
-    this.auth.login(email, password)
+    this.auth.login(email, password, username)
     .subscribe(res => {
-      console.log(res.token);
-      console.log(res.email);
       localStorage.setItem('token', res.token);
       localStorage.setItem('email', res.email);      
+      localStorage.setItem('username', res.username);      
     });
   }
 

@@ -8,6 +8,7 @@
   textarea:focus,
   input[type="password"]:focus,
   input[type="email"]:focus,
+  input[type="username"]:focus,
   .uneditable-input:focus {   
   border-color: rgb(255, 162, 0);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgb(255, 162, 0);
@@ -28,6 +29,14 @@
     margin-bottom: -1px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
+  }
+
+  .form-signin input[type="username"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
   }
   
   .form-signin input[type="password"] {
