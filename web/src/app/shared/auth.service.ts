@@ -39,7 +39,7 @@ export class AuthService {
     let httpOption = {
       headers: header
     };
-    let endpoint = 'submit-customer';
+    let endpoint = 'register';
     let url = this.host + endpoint;
     return this.http.post<any>(url, userDataJson, httpOption);
   }

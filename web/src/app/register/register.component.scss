@@ -8,7 +8,6 @@
 textarea:focus,
 input[type="name"]:focus,
 input[type="password"]:focus,
-input[type="password"]:focus,
 input[type="email"]:focus,
 .uneditable-input:focus {   
   border-color: rgb(255, 162, 0);
@@ -48,7 +47,7 @@ input[type="email"]:focus,
   border-bottom-right-radius: 0;
 }
 
-.form-signup input[type="repassword"] {
+#repassword {
   margin-top: -111px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;

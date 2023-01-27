@@ -27,9 +27,7 @@ export class RegisterComponent {
     .subscribe(res => {
       localStorage.setItem('token', res.token);
       localStorage.setItem('email', res.email);
-      localStorage.setItem('username', res.username);
-      localStorage.setItem('password', res.password);
-      localStorage.setItem('confirm_password', res.confirm_password);       
+      localStorage.setItem('username', res.username);       
     });
   }
 }
