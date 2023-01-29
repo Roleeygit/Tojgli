@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('country')->nullable();
             $table->string('city')->nullable();
             $table->string('address')->nullable();
-            $table->date('order_date')->nullable();
+            $table->dateTime('order_date')->nullable();
             $table->foreignId('user_id');
             $table->foreignId('payment_mode_id')->nullable();
             $table->foreignId('delivery_mode_id')->nullable();
