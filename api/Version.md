@@ -141,3 +141,13 @@ Verzió kiadva: 2023-01-27
 <br></br>
 Következő verzió: 
 - categories, order_dates, payment_modes táblák teszt adattal feltöltése Controlleren keresztül
+
+
+ <br></br>
+
+# <p align = "center">Verzió 0.032:</p>
+Verzió kiadva: 2023-01-29
+
+- A category_id helyett category átnevezve, ez azért kell mert frontenden egy dropdownbol lehet majd kiválasztani a kategoriát, és nem az id, hanem a neve alapján lehet majd, igy az elnevezés nem korrekt
+-  categories, order_dates, payment_modes táblák teszt adattal feltöltve, viszont migration alapján, nem Controlleren keresztül. Későbbiekben ha kell majd még adatot hozzá adni akkor majd lesz készitve Controller hozzá amiben hozzá lehet adni új adatokat (Ez azért szükséges, hogyha esetleg már ki lenne adva a projekt és úgy kerülne be egy új mondjuk kategória, akkor ne kelljen az összes táblát újra migrálni, ezzel ugye törlődik az összes adat belőlük, még a felhasználóké is)
+- Teszt nézetek törlése, már frontenddel össze van kötve a RESTAPI, és a frontend oldalon teszteljük a működést egy külön ágon

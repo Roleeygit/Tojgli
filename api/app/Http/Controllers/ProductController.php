@@ -24,7 +24,7 @@ class ProductController extends BaseController
 
         DB::statement("ALTER TABLE users AUTO_INCREMENT = 1;");
         
-        $input["category_id"] = Category::where("category", $input["category_id"])->value("id");
+        $input["category_id"] = Category::where("category", $input["category"])->value("id");
 
         $validator = Validator::make($input,
         [
@@ -32,14 +32,14 @@ class ProductController extends BaseController
             "price" => "required",
             "weight" => "required",
             "description" => "required",
-            "category_id" => "required"
+            "category" => "required"
         ],
         [
             "name.required" => "A termék nevének megadása kötelező!",
             "price.required" => "A termék árának megadása kötelező!",
             "weight.required" => "A termék súlyának megadása kötelező!",
             "description.required" => "A termék leirásának megadása kötelező!",
-            "category_id.required" => "A termék kategóriájának megadása kötelező!",
+            "category.required" => "A termék kategóriájának megadása kötelező!",
         ]);
  
         if ($validator->fails())
