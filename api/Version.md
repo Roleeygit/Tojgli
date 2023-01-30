@@ -130,3 +130,37 @@ Verzió kiadva: 2023-01-26
 - Insomnia új verzió
 - Útvonalak a fentebb irt módositások alapján szintúgy javitásra került
 - DB alap adatokból kikerült a customers, mert már nem létezik ilyen tábla
+
+ <br></br>
+
+# <p align = "center">Verzió 0.031:</p>
+Verzió kiadva: 2023-01-27
+
+- Kategória működése kész
+- githubra mostmár a commitokat Új verzió helyett a jelenlegi verzó számnak megfelelően rakom fel
+<br></br>
+Következő verzió: 
+- categories, order_dates, payment_modes táblák teszt adattal feltöltése Controlleren keresztül
+
+
+ <br></br>
+
+# <p align = "center">Verzió 0.032:</p>
+Verzió kiadva: 2023-01-29
+
+- A category_id helyett category átnevezve, ez azért kell mert frontenden egy dropdownbol lehet majd kiválasztani a kategoriát, és nem az id, hanem a neve alapján lehet majd, igy az elnevezés nem korrekt
+-  categories, order_dates, payment_modes táblák teszt adattal feltöltve, viszont migration alapján, nem Controlleren keresztül. Későbbiekben ha kell majd még adatot hozzá adni akkor majd lesz készitve Controller hozzá amiben hozzá lehet adni új adatokat (Ez azért szükséges, hogyha esetleg már ki lenne adva a projekt és úgy kerülne be egy új mondjuk kategória, akkor ne kelljen az összes táblát újra migrálni, ezzel ugye törlődik az összes adat belőlük, még a felhasználóké is)
+- Teszt nézetek törlése, már frontenddel össze van kötve a RESTAPI, és a frontend oldalon teszteljük a működést egy külön ágon
+
+ <br></br>
+
+# <p align = "center">Verzió 0.033:</p>
+Verzió kiadva: 2023-01-29
+
+- Purchase Kontroller megcsinálva (Ha a felhasználó vásárol egy terméket akkor a profilhoz kerül mivel fizetett, a kiszállitás módja, és mikor tette mindezt)
+- Order Kontroller helyett Purchase Kontroller, Order kontroller még a nézethez lett készitve, mostmár ez is felesleges, igy törölve lett
+- order_dates tábla nem kell, törlésre került
+- Profil modelnál felesleges már a usernek az információi, ugyanis automatikusan már generál hozzá egy profilt, igy ezeket az információkat nem kell megadni, és lekérni se
+- Route készitése a vásárlás kezeléséhez
+- Néhány helyen átnevezés
+- Insomnia új verziója feltöltve ezek alapján

@@ -13,11 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('delivery_modes', function (Blueprint $table) 
+        Schema::create("delivery_modes", function (Blueprint $table) 
         {
             $table->id("id");
-            $table->string('delivery_mode')->unique();
+            $table->string("delivery_mode")->unique();
         });
+
+        DB::table("delivery_modes")->insert
+        ([
+            ["delivery_mode" => "Házhozszállítás"],
+            ["delivery_mode" => "Postai átvétel"]
+        ]);
     }
 
     /**
@@ -27,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('deliverymodes');
+        Schema::dropIfExists("deliverymodes");
     }
 };

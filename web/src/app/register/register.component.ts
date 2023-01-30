@@ -19,6 +19,8 @@ export class RegisterComponent {
   }
   
   register() {
+
+    
     let username = this.username;
     let email = this.email;
     let password = this.password;

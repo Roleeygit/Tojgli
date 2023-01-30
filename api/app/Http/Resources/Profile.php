@@ -22,14 +22,9 @@ class Profile extends JsonResource
         "country" => $this->country ?? "Nincs még adat megadva!",
         "city" => $this->city ?? "Nincs még adat megadva!",
         "address" => $this->address ?? "Nincs még adat megadva!",
-        "user_id" => $this->user->id,
-        "user_name" => $this->user->username,
-        "user_email" => $this->user->email,
-
-        //Ezek az adatok majd csak a vásárlásnál kellenek
-        // "order_date" => $this->order_date ?? "Nincs még adat megadva!"
-        // "payment_mode" => $this->payment_mode->payment_mode ?? "Nincs még adat megadva!",
-        // "delivery_mode" => $this->delivery_mode->delivery_mode ?? "Nincs még adat megadva!"
+        "order_date" => $this->order_date ?? "Nincs még adat megadva!",
+        "payment_mode" => $this->payment_mode->payment_mode ?? "Nincs még adat megadva!",
+        "delivery_mode" => $this->delivery_mode->delivery_mode ?? "Nincs még adat megadva!"
     ];
     }
 }

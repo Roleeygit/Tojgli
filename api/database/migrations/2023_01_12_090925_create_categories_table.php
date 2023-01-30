@@ -13,10 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create("categories", function (Blueprint $table) {
             $table->id("id");
-            $table->string('category');
+            $table->string("category");
         });
+
+        DB::table("categories")->insert
+        ([
+            ["category" => "Csirke Tojás"],
+            ["category" => "Strucc Tojás"],
+            ["category" => "Kitalált Tojás"],
+            ["category" => "Lúd Tojás"],
+            ["category" => "Valamilyen Tojás"]
+        ]);
     }
 
     /**
@@ -26,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists("categories");
     }
 };

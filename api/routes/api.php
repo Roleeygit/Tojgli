@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PurchaseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +25,7 @@ Route::group(["middleware" => ["auth:sanctum"]], function()
 });    
 
 /* ----------------------------------------------------------------------
-|                             User Router                               |
+|                             User Route                                |
 ------------------------------------------------------------------------ */
 
 
@@ -38,19 +39,27 @@ Route::delete("/deleteuser/{id}", [UserController::class,"DeleteUser"]);
 
 
 /* ----------------------------------------------------------------------
-|                             Product Router                            |
+|                             Product Route                             |
 ------------------------------------------------------------------------ */
 
 
 Route::post("/submit-product", [ProductController::class,"NewProduct"]);
 Route::get("/productlist", [ProductController::class,"ProductList"]);
-Route::get("/updateproduct/{id}", [ProductController::class,"UpdateProduct"]);
+Route::put("/updateproduct/{id}", [ProductController::class,"UpdateProduct"]);
 Route::delete("/deleteproduct/{id}", [ProductController::class,"DeleteProduct"]);
 Route::get("ProductById/{id}", [ProductController::class, "ShowProductById"]);
 
 
 /* ----------------------------------------------------------------------
-|                             Profile Router                            |
+|                             Profile Route                             |
 ------------------------------------------------------------------------ */
 Route::get("/profilelist", [ProfileController::class,"ListProfiles"]);
 Route::put("/updateprofile/{id}", [ProfileController::class,"UpdateProfile"]);
+
+
+/* ----------------------------------------------------------------------
+|                             Purchase Route                            |
+------------------------------------------------------------------------ */
+
+
+Route::put("/purchase/{id}", [PurchaseController::class, "Purchase"]);
