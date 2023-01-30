@@ -13,11 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('payment_modes', function (Blueprint $table) 
+        Schema::create("payment_modes", function (Blueprint $table) 
         {
             $table->id("id");
-            $table->string('payment_mode')->unique();
+            $table->string("payment_mode")->unique();
         });
+
+        DB::table("payment_modes")->insert
+        ([
+            ["payment_mode" => "Kártya"],
+            ["payment_mode" => "Készpénz"]
+        ]);
+
     }
 
     /**
@@ -27,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('paymentmodes');
+        Schema::dropIfExists("paymentmodes");
     }
 };
