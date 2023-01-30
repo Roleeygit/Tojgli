@@ -1,9 +1,8 @@
 # Felhasználói dokumentáció
 
 ## Bevezetés
-
-A zoldhum egy dolgozó nyilvántartó rendszer, amit REST API felületet biztosít.
-A Laravel Framework 8.79.0 verzióval készült.
+Az Eggshop egy olyan webes alkalmazás ami egy Webshophoz készült és ennek a segítségével felvehetünk, szerkeszthetünk, illetve törölhetünk termékeket.
+Elsősorban olyan felhasználoknak készült akik szeretnének különleges tojásokhoz jutni, hiszen a webshopunkban nem mindennapi tojások vannak.  
 
 ## Követelmények
 
@@ -122,54 +121,3 @@ Visszakapunk egy ehhez hasonló választ:
 ## Azonosítás a végpontoknál
 
 Ha szükség van azonosításra egy végponthoz, akkor el kell küldenünk a bejelentkezéskor kapott tokent.
-
-
-### Pozíciók lekérdezése
-
-| Végpont | Metódus |
-|-|-|
-| /api/positons/ | GET |
-
-Jelenleg nem szükséges azonosítás.
-
-### Pozíció felvétele
-
-| Végpont | Metódus |
-|-|-|
-| /api/positons/ | POST |
-
-Jelenleg nem szükséges azonosítás.
-
-JSON adatként kell megadni:
-
-```json
-{
-  "name": "valami"
-}
-```
-
-### Pozíciók módosítása
-
-| Végpont | Metódus |
-|-|-|
-| /api/positons/{id} | PUT |
-
-Az új adatot JSON formátumban kell megadni:
-
-```json
-{
-  "name": "valami"
-}
-```
-
-Jelenleg nem szükséges azonosítás.
-
-### Pozíciók törlése
-
-| Végpont | Metódus |
-|-|-|
-| /api/positons/{id} | DELETE |
-
-Nem szükséges adat küldése, hogy mit törlünk a végpont végén adjuk meg.
-
-Jelenleg nem szükséges azonosítás.
