@@ -164,3 +164,14 @@ Verzió kiadva: 2023-01-29
 - Route készitése a vásárlás kezeléséhez
 - Néhány helyen átnevezés
 - Insomnia új verziója feltöltve ezek alapján
+
+ <br></br>
+
+# <p align = "center">Verzió 0.034:</p>
+Verzió kiadva: 2023-01-31
+
+- Termék módositásának metódusa megirva
+- Route-ba az autentikáció használata: ezek a funkciók csak adminnak elérhetőek majd 
+- Failed jobs tábla törölve a migrációk közül
+- Felhasználó tábla új admin mezővel feltöltve, mellé a megfelelő javitások megcsinálva
+- Adatbázis terv frissitve

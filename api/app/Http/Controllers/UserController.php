@@ -131,6 +131,28 @@ class UserController extends BaseController
         return $this->sendResponse(new UserResource($user), "Felhasználó adatai frissítve!");
     }
 
+    public function UpdateAdmin(Request $request, $id)
+    {
+        $input = $request->all();
+
+        $validator = Validator::make($input,
+        [
+            "is_admin" => "required"
+        ]
+    );
+
+    if ($validator->fails())
+    {
+        return $this->sendError($validator->errors());
+    }
+
+    $user = User::find($id);
+    $user->update($request->all());
+    $user->save();
+
+    return $this->sendResponse(new UserResource($user), "Frissítés sikeres!");
+    }
+
     public function ShowUserById ($id)
     {
         $user = User::find($id);
