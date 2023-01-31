@@ -175,3 +175,4 @@ Verzió kiadva: 2023-01-31
 - Failed jobs tábla törölve a migrációk közül
 - Felhasználó tábla új admin mezővel feltöltve, mellé a megfelelő javitások megcsinálva
 - Adatbázis terv frissitve
+- Insomnia új verzió
