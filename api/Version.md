@@ -176,3 +176,17 @@ Verzió kiadva: 2023-01-31
 - Felhasználó tábla új admin mezővel feltöltve, mellé a megfelelő javitások megcsinálva
 - Adatbázis terv frissitve
 - Insomnia új verzió
+
+ <br></br>
+
+# <p align = "center">Verzió 0.035:</p>
+Verzió kiadva: 2023-02-02
+
+- Profil törlésének metódusa megírva (Hogy törölni lehessen a Usert)
+- Rossz forrásból volt hívva a profil módosítás, ezért az is át lett írva
+- Image funkció működik a terméknél, el lehet tárolni a termékről a képet adatbázisba
+- Adatbázis terv képének módosítása a kép hozzáadása miatt
+- Profil listázásánál ki lett javítva egy hiba ami által nem jelent meg a rendelési idő ha annak értéke még nem volt deklarálva
+- DB könyvtár törölve, a teszt adatok már migráción keresztül vannak beépítve az adatbázisba
+- Product Resource-ban valamiért a request el volt választva amikor le lett generálva(Január 20), javítva lett
+- Insomnia új verzió
