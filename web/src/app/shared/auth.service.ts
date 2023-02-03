@@ -9,40 +9,43 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   login(email: string, password: string, username: string) {
+    let endpoint = "login";
+    let url = environment.apihost + endpoint;
+
     let userData = {
       username: username,
       email: email,
       password: password
-    }
-    let userDataJson = JSON.stringify(userData);
-    let header = new HttpHeaders({
-      'Content-Type': 'application/json'
+    };
+    let headers = new HttpHeaders({
+      "Content-Type": "application/json",
+      "Accept": "application/json"
     });
     let httpOption = {
-      headers: header
+      headers: headers
     };
-    let endpoint = 'login';
-    let url = environment.apihost + endpoint;
-    return this.http.post<any>(url, userDataJson, httpOption);
+    return this.http.post<any>(url, userData, httpOption);
   }
 
   register(username: string, email: string, password: string, confirm_password: string) {
+
+    let endpoint = "register";
+    let url = environment.apihost + endpoint;
+
     let userData = {
       username: username,
       email: email,
       password: password,
       confirm_password: confirm_password,
-    }
-    let userDataJson = JSON.stringify(userData);
-    let header = new HttpHeaders({
-      'Content-Type': 'application/json'
+    };
+    let headers = new HttpHeaders({
+      "Content-Type": "application/json",
+      "Accept": "application/json"
     });
     let httpOption = {
-      headers: header
+      headers: headers
     };
-    let endpoint = 'register';
-    let url = environment.apihost + endpoint;
-    return this.http.post<any>(url, userDataJson, httpOption);
+    return this.http.post<any>(url, userData, httpOption);
   }
 
 }
