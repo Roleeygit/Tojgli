@@ -1,11 +1,11 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  host = "http://localhost:8000/api/";
   constructor(private http: HttpClient) { }
 
   login(email: string, password: string, username: string) {
@@ -22,7 +22,7 @@ export class AuthService {
       headers: header
     };
     let endpoint = 'login';
-    let url = this.host + endpoint;
+    let url = environment.apihost + endpoint;
     return this.http.post<any>(url, userDataJson, httpOption);
   }
 
@@ -41,7 +41,7 @@ export class AuthService {
       headers: header
     };
     let endpoint = 'register';
-    let url = this.host + endpoint;
+    let url = environment.apihost + endpoint;
     return this.http.post<any>(url, userDataJson, httpOption);
   }
 

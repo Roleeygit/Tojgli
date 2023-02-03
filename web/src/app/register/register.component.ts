@@ -7,7 +7,7 @@ import { AuthService } from '../shared/auth.service';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
-
+  
   username !: string;
   password !: string;
   confirm_password !: string;
@@ -19,8 +19,6 @@ export class RegisterComponent {
   }
   
   register() {
-
-    
     let username = this.username;
     let email = this.email;
     let password = this.password;
