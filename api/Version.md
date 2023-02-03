@@ -190,3 +190,14 @@ Verzió kiadva: 2023-02-02
 - DB könyvtár törölve, a teszt adatok már migráción keresztül vannak beépítve az adatbázisba
 - Product Resource-ban valamiért a request el volt választva amikor le lett generálva(Január 20), javítva lett
 - Insomnia új verzió
+
+
+ <br></br>
+
+# <p align = "center">Verzió 0.036:</p>
+Verzió kiadva: 2023-02-03
+
+- Customer model törölve, már nincs rá szükség, ét lett alakitva: A user-hez lett téve
+- Regisztrációnál az email a validátorban nem volt, a formátumhoz ez szükséges!
+- Insomnia payment_mode, delivery_mode id helyett névvel kiválasztva (később frontenden ki lehessen választani dropdown menüből)
+- Insomnia új verzió

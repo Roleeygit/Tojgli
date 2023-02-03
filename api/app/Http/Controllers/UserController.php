@@ -23,7 +23,7 @@ class UserController extends BaseController
         $validator = Validator::make($input, 
         [
             "username" => "required|unique:users|min:5",
-            "email" => "required|unique:users",
+            "email" => "required|email|unique:users",
             "password" => "required|min:6|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/",
             "confirm_password" => "required|same:password",
         ],
