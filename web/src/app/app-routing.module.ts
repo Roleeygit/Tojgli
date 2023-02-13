@@ -6,8 +6,10 @@ import { LoginComponent } from './login/login.component';
 import { ProductlistComponent } from './productlist/productlist.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
+import { AdminloginComponent } from './adminlogin/adminlogin.component';
 
 const routes: Routes = [
+  {path: 'adminlogin', component: AdminloginComponent },
   {path: 'login', component: LoginComponent},
   {path: 'loading', component: LoaderComponent },
   {path: 'register', component: RegisterComponent},
