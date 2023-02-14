@@ -30,18 +30,15 @@ export class RegisterComponent implements OnInit {
     let password = this.registerForm.value.password;
     let confirm_password = this.registerForm.value.confirm_password;
 
-    this.auth.register(username, password, email, confirm_password)
+    this.auth.register(username, email, password, confirm_password)
     .subscribe({
       next: data => {
         console.log(data.token)
         console.log(data.username)
         console.log(data.email)
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('username', data.name);
-        localStorage.setItem('email', data.name);
-      },
-      error: err => {
-        console.log('Hiba! Az azonosítás sikertelen!')
+        localStorage.setItem('token', data.token)
+        localStorage.setItem('username', data.name)
+        localStorage.setItem('email', data.name)
       }
     });
   }

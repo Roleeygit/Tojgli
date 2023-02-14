@@ -36,7 +36,7 @@ export class AuthService {
       username: username,
       email: email,
       password: password,
-      confirm_password: confirm_password,
+      confirm_password: confirm_password
     };
     let headers = new HttpHeaders({
       "Content-Type": "application/json",
