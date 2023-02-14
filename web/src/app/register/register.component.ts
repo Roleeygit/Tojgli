@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../shared/auth.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
   
   registerForm !: FormGroup;
-
+  errorMessage!: string;
+  
   constructor(
     private formBuilder: FormBuilder,
     private auth: AuthService
@@ -17,7 +18,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
-      username: [''],
+      username: ['', [Validators.required]],
       email: [''],
       password: [''],
       confirm_password: ['']
@@ -39,6 +40,14 @@ export class RegisterComponent implements OnInit {
         localStorage.setItem('token', data.token)
         localStorage.setItem('username', data.name)
         localStorage.setItem('email', data.name)
+      },
+      error: err => {
+        const errorObj = err.error.data;
+        const errorMessage = errorObj.username[0];
+        const errorDiv = document.getElementById('error-div');
+        if (errorDiv) {
+          errorDiv.textContent = errorMessage;
+        }
       }
     });
   }

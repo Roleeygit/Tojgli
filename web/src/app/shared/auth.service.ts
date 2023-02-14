@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
   constructor(private http: HttpClient) { }
 
-  login(email: string, username: string, password: string) {
+  login(email: string, username: string, password: string, ) {
     let endpoint = "login";
     let url = environment.apihost + endpoint;
 
@@ -48,4 +48,17 @@ export class AuthService {
     return this.http.post<any>(url, userData, httpOption);
   }
 
+  checkUsername(username: string) {
+    let endpoint = `register/${username}`;
+    let url = environment.apihost + endpoint;
+  
+    let headers = new HttpHeaders({
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    });
+    let httpOption = {
+      headers: headers
+    };
+    return this.http.get<any>(url, httpOption);
+  }
 }
