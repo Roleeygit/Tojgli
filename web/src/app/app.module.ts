@@ -30,6 +30,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { NgxUiLoaderHttpModule } from 'ngx-ui-loader';
 import { LoaderComponent } from './loader/loader.component';
+import { ProductserviceComponent } from './productservice/productservice.component';
+import { ProductComponent } from './product/product.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +45,9 @@ import { LoaderComponent } from './loader/loader.component';
     NewproductComponent,
     ProductlistComponent,
     HomeComponent,
-    LoaderComponent
+    LoaderComponent,
+    ProductserviceComponent,
+    ProductComponent
     
   ],
   imports: [
