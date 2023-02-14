@@ -1,19 +1,19 @@
       <a routerLink=""><img id="logo" class="mb-4 text-center" src="/assets/logo.png" alt="" width="300" height="300"></a>
       <main class="form-signin w-100 m-auto text-center">
-          <form>
+          <form [formGroup]="loginForm">
       
             <h1 class="h3 mb-4 fw-normal"><b>Bejelentkezés</b></h1>
       
             <div class="form-floating">
-              <input type="email" class="form-control" id="email" name="email" [(ngModel)]="email" placeholder="nev@pelda.com">
+              <input type="email" class="form-control" id="email" name="email" formControlName="email" placeholder="nev@pelda.com">
               <label for="email">Email cím</label>
             </div>
             <div class="form-floating">
-              <input type="username" class="form-control" id="email" name="username" [(ngModel)]="username" placeholder="Nagy Lajos">
+              <input type="username" class="form-control" id="username" name="username" formControlName="username" placeholder="Nagy Lajos">
               <label for="username">Felhasználónév</label>
             </div>
             <div class="form-floating">
-              <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password" placeholder="Jelszó">
+              <input type="password" class="form-control" id="password" name="password" formControlName="password" placeholder="Jelszó">
               <label for="password">Jelszó</label>
             </div>
       

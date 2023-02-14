@@ -25,10 +25,10 @@ export class RegisterComponent implements OnInit {
   }
   
   register() {
-    let username = this.registerForm.value.username;
-    let email = this.registerForm.value.email;
-    let password = this.registerForm.value.password;
-    let confirm_password = this.registerForm.value.confirm_password;
+    let username = this.registerForm.value.username
+    let email = this.registerForm.value.email
+    let password = this.registerForm.value.password
+    let confirm_password = this.registerForm.value.confirm_password
 
     this.auth.register(username, email, password, confirm_password)
     .subscribe({

@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
   constructor(private http: HttpClient) { }
 
-  login(email: string, password: string, username: string) {
+  login(email: string, username: string, password: string) {
     let endpoint = "login";
     let url = environment.apihost + endpoint;
 
