@@ -19,7 +19,7 @@ class ProfileController extends BaseController
     public function ListProfiles( Request $request)
     {
 
-        $profiles = Profile::with(["user", "order_date", "payment_mode", "delivery_mode"])->get();
+        $profiles = Profile::with(["user", "payment_mode", "delivery_mode"])->get();
         return $this->sendResponse(ProfileResource::collection($profiles), "Profil Adatok kiirva!");
 
     }   
@@ -64,7 +64,14 @@ class ProfileController extends BaseController
 
         $profile->save();
 
-        return $this->sendResponse(new UserResource($user), "Profil sikeresen frissitve!");
+        return $this->sendResponse(new ProfileResource($profile), "Profil sikeresen frissitve!");
+    }
+
+    public function DeleteProfile($id)
+    {
+        Profile::destroy($id);
+
+        return $this->sendResponse([], "Profil törlése sikeresen megtörtént.");
     }
     
 }

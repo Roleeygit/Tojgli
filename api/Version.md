@@ -164,3 +164,40 @@ Verzió kiadva: 2023-01-29
 - Route készitése a vásárlás kezeléséhez
 - Néhány helyen átnevezés
 - Insomnia új verziója feltöltve ezek alapján
+
+ <br></br>
+
+# <p align = "center">Verzió 0.034:</p>
+Verzió kiadva: 2023-01-31
+
+- Termék módositásának metódusa megirva
+- Route-ba az autentikáció használata: ezek a funkciók csak adminnak elérhetőek majd 
+- Failed jobs tábla törölve a migrációk közül
+- Felhasználó tábla új admin mezővel feltöltve, mellé a megfelelő javitások megcsinálva
+- Adatbázis terv frissitve
+- Insomnia új verzió
+
+ <br></br>
+
+# <p align = "center">Verzió 0.035:</p>
+Verzió kiadva: 2023-02-02
+
+- Profil törlésének metódusa megírva (Hogy törölni lehessen a Usert)
+- Rossz forrásból volt hívva a profil módosítás, ezért az is át lett írva
+- Image funkció működik a terméknél, el lehet tárolni a termékről a képet adatbázisba
+- Adatbázis terv képének módosítása a kép hozzáadása miatt
+- Profil listázásánál ki lett javítva egy hiba ami által nem jelent meg a rendelési idő ha annak értéke még nem volt deklarálva
+- DB könyvtár törölve, a teszt adatok már migráción keresztül vannak beépítve az adatbázisba
+- Product Resource-ban valamiért a request el volt választva amikor le lett generálva(Január 20), javítva lett
+- Insomnia új verzió
+
+
+ <br></br>
+
+# <p align = "center">Verzió 0.036:</p>
+Verzió kiadva: 2023-02-03
+
+- Customer model törölve, már nincs rá szükség, ét lett alakitva: A user-hez lett téve
+- Regisztrációnál az email a validátorban nem volt, a formátumhoz ez szükséges!
+- Insomnia payment_mode, delivery_mode id helyett névvel kiválasztva (később frontenden ki lehessen választani dropdown menüből)
+- Insomnia új verzió

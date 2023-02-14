@@ -9,7 +9,7 @@ class Product extends JsonResource
     /**
      * Transform the resource into an array.
      *
-     * @param  \Illuminate\Http\R   equest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
     public function toArray($request)
@@ -21,6 +21,7 @@ class Product extends JsonResource
             "price" => $this->price,
             "weight" => $this->weight,
             "description" => $this->description,
+            "image" => $this->image,
             "category_id" => $this->category->category
         ];
     }

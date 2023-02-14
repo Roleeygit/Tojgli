@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->integer('price');
             $table->integer('weight');
+            $table->binary('image')->nullable();
             $table->text('description');
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
