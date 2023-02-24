@@ -11,7 +11,7 @@ export class AdminService {
 
   adminlogin(email: string, username: string, password: string) {
     let endpoint = "adminlogin";
-    let url = environment.apihost + endpoint;
+   // let url = environment.apihost + endpoint;
 
     let userData = {
       username: username,
@@ -33,7 +33,7 @@ export class AdminService {
 
   checkAdmin(token: string) {
     let endpoint = "updateAdmin";
-    let url = environment.apihost + endpoint;
+   // let url = environment.apihost + endpoint;
 
     let headers = new HttpHeaders({
       "Content-Type": "application/json",
