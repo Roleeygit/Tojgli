@@ -47,7 +47,7 @@ password: any;
           if (data.role === 'admin') {
             this.router.navigate(['/admin']);
           } else {
-            this.router.navigate(['/']);
+            this.router.navigate(['/adminmain']);
           }
         },
         error => {
