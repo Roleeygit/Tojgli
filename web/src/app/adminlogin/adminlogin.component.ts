@@ -8,6 +8,9 @@ import { AdminService } from '../shared/admin.service';
   styleUrls: ['./adminlogin.component.scss']
 })
 export class AdminloginComponent implements OnInit {
+adminlogin() {
+throw new Error('Method not implemented.');
+}
 
   adminForm !: FormGroup;
   is_admin = false;
