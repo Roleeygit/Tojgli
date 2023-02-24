@@ -1,58 +1,44 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AuthService } from '../shared/auth.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { AdminService } from '../shared/admin.service';
 
 @Component({
-  selector: 'app-adminlogin',
+  selector: 'app-login',
   templateUrl: './adminlogin.component.html',
   styleUrls: ['./adminlogin.component.scss']
 })
 export class AdminloginComponent implements OnInit {
-login() {
-throw new Error('Method not implemented.');
-}
-  AdminloginForm!: FormGroup;
-  submitted = false;
-email: any;
-username: any;
-password: any;
+
+  adminForm !: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService,
-    private router: Router
+    private admin: AdminService
   ) { }
 
-  ngOnInit() {
-    this.AdminloginForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      email: ['',Validators.required],
-      password: ['', Validators.required]
+  ngOnInit(): void {
+    this.adminForm = this.formBuilder.group({
+      email: [''],
+      username: [''],
+      password: ['']
     });
   }
 
-  get formControls() { return this.AdminloginForm.controls; }
+  login() {
+    let email = this.adminForm.value.email
+    let username = this.adminForm.value.username
+    let password = this.adminForm.value.password
 
-  onSubmit() {
-    this.submitted = true;
-
-    if (this.AdminloginForm.invalid) {
-      return;
-    }
-
-    this.authService.login(this.formControls['username'].value,this.formControls['email'].value, this.formControls['password'].value)
-      .subscribe(
-        data => {
-          if (data.role === 'admin') {
-            this.router.navigate(['/admin']);
-          } else {
-            this.router.navigate(['/adminmain']);
-          }
-        },
-        error => {
-          console.log(error);
-        }
-      );
+    this.admin.adminlogin(email, username, password)
+    .subscribe({
+      next: data => {
+        console.log(data.token)
+        console.log(data.email)
+        console.log(data.username)
+        localStorage.setItem('token', data.token)
+        localStorage.setItem('email', data.email)
+        localStorage.setItem('username', data.username)
+      }
+    });
   }
 }

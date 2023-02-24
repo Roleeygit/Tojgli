@@ -1,25 +1,20 @@
 <main class="form-signin w-100 m-auto text-center">
-    <form>
+    <form [formGroup]="adminForm">
 
       <h1 class="h3 mb-4 fw-normal"><b>Bejelentkezés</b></h1>
     <div class="form-floating">
-        <input type="username" class="form-control" id="email" name="username" [(ngModel)]="username" placeholder="Kiss Pál">
+        <input type="username" class="form-control" id="email" name="username" formControlName="username" placeholder="Kiss Pál">
         <label for="username">Felhasználónév</label>
         <div class="form-floating">
-            <input type="email" class="form-control" id="email" name="email" [(ngModel)]="email" placeholder="nev@pelda.com">
+            <input type="email" class="form-control" id="email" name="email" formControlName="email" placeholder="nev@pelda.com">
             <label for="email">Email cím</label>
           </div>
       </div>
       <div class="form-floating">
-        <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password" placeholder="Jelszó">
+        <input type="password" class="form-control" id="password" name="password" formControlName="password" placeholder="Jelszó">
         <label for="password">Jelszó</label>
       </div>
-
-      <div class="checkbox mb-4">
-        <label id="remember">
-          <input type="checkbox" value="remember-me"> Jelszó megjegyzése!
-        </label>
-      </div>
+      
       <button class="w-100 btn btn-lg btn-primary" type="submit" (click)="login()">Bejelentkezés</button>
       <a id="copyright" href="http://github.com/Roleeygit/Tojgli" target="_blank">
           <p class="mt-5 mb-3 text-muted">&copy; 2022–2023 EggShop</p>
