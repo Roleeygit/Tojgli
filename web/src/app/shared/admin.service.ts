@@ -10,7 +10,7 @@ export class AdminService {
   constructor(private http: HttpClient) { }
 
   adminlogin(email: string, username: string, password: string) {
-    let endpoint = "login";
+    let endpoint = "adminlogin";
     let url = environment.apihost + endpoint;
 
     let userData = {
