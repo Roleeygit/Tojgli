@@ -5,7 +5,6 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCommonModule} from '@angular/material/core';
 import { MatMenuModule } from '@angular/material/menu';
-import { NgxUiLoaderModule } from "ngx-ui-loader";
 import {AtomSpinnerModule} from 'angular-epic-spinners'
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
@@ -23,14 +22,13 @@ import { DatasheetComponent } from './datasheet/datasheet.component';
 import { CopyrightComponent } from './copyright/copyright.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AdminloginComponent } from './adminlogin/adminlogin.component';
-import { AdminmainComponent } from './adminmain/adminmain.component';
+import { AdminMainComponent } from './adminmain/adminmain.component';
 import { NewproductComponent } from './newproduct/newproduct.component';
 import { ProductlistComponent } from './productlist/productlist.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
-import { NgxUiLoaderHttpModule } from 'ngx-ui-loader';
+
 import { LoaderComponent } from './loader/loader.component';
-import { ProductserviceComponent } from './productservice/productservice.component';
 import { ProductComponent } from './product/product.component';
 @NgModule({
   declarations: [
@@ -41,12 +39,11 @@ import { ProductComponent } from './product/product.component';
     CopyrightComponent,
     ProfileComponent,
     AdminloginComponent,
-    AdminmainComponent,
+    AdminMainComponent,
     NewproductComponent,
     ProductlistComponent,
     HomeComponent,
     LoaderComponent,
-    ProductserviceComponent,
     ProductComponent
     
   ],
@@ -59,9 +56,9 @@ import { ProductComponent } from './product/product.component';
     MatIconModule,
     MatCommonModule,
     MatMenuModule,
-    NgxUiLoaderHttpModule,
-    NgxUiLoaderModule,
-    AtomSpinnerModule,
+    //NgxUiLoaderHttpModule,
+    //NgxUiLoaderModule,
+    //AtomSpinnerModule,
     MatFormFieldModule,
     MatCardModule,
     MatButtonModule,
