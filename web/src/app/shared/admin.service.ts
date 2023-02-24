@@ -28,7 +28,7 @@ export class AdminService {
       headers: headers
     };
 
-    return this.http.post<any>(url, userData, httpOptions);
+    //return this.http.post<any>(url, userData, httpOptions);
   }
 
   checkAdmin(token: string) {
@@ -45,7 +45,7 @@ export class AdminService {
       headers: headers
     };
 
-    return this.http.get<any>(url, httpOptions);
+    //return this.http.get<any>(url, httpOptions);
   }
 
 }
