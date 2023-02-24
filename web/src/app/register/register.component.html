@@ -1,23 +1,24 @@
 <a routerLink=""><img id="logo" class="mb-4 text-center" src="/assets/logo.png" alt="" width="300" height="300"></a>
 <main class="form-signup w-100 m-auto text-center">
-    <form>
+  <div id="error-div"></div>
+    <form [formGroup]="registerForm">
       
       <h1 class="h3 mb-4 fw-normal"><b>Regisztrálás</b></h1>
 
       <div class="form-floating">
-        <input type="name" class="form-control" placeholder="Felhasználónév" id="username" name="username" [(ngModel)]="username">
+        <input type="name" class="form-control" placeholder="Felhasználónév" id="username" name="username" formControlName="username">
         <label for="username">Felhasználónév</label>
       </div>
       <div class="form-floating">
-        <input type="email" class="form-control" id="email" name="email" [(ngModel)]="email" placeholder="nev@pelda.com">
+        <input type="email" class="form-control" id="email" name="email" formControlName="email" placeholder="nev@pelda.com">
         <label for="email">Email cím</label>
       </div>
       <div class="form-floating">
-        <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password" placeholder="Jelszó">
+        <input type="password" class="form-control" id="password" name="password" formControlName="password" placeholder="Jelszó">
         <label for="password">Jelszó</label>
       </div>
       <div class="form-floating">
-        <input type="password" class="form-control" id="confirm_password" name="confirm_password" id="repassword"  [(ngModel)]="confirm_password" placeholder="Jelszó újra">
+        <input type="password" class="form-control" id="confirm_password" name="confirm_password" id="repassword" formControlName="confirm_password" placeholder="Jelszó újra">
         <label for="confirm_password">Jelszó újra</label>
       </div>
   

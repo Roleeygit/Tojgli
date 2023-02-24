@@ -1,48 +1,64 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  host = "http://localhost:8000/api/";
   constructor(private http: HttpClient) { }
 
-  login(email: string, password: string, username: string) {
+  login(email: string, username: string, password: string, ) {
+    let endpoint = "login";
+    let url = environment.apihost + endpoint;
+
     let userData = {
       username: username,
       email: email,
       password: password
-    }
-    let userDataJson = JSON.stringify(userData);
-    let header = new HttpHeaders({
-      'Content-Type': 'application/json'
+    };
+    let headers = new HttpHeaders({
+      "Content-Type": "application/json",
+      "Accept": "application/json"
     });
     let httpOption = {
-      headers: header
+      headers: headers
     };
-    let endpoint = 'login';
-    let url = this.host + endpoint;
-    return this.http.post<any>(url, userDataJson, httpOption);
+    return this.http.post<any>(url, userData, httpOption);
   }
 
   register(username: string, email: string, password: string, confirm_password: string) {
+
+    let endpoint = "register";
+    let url = environment.apihost + endpoint;
+
     let userData = {
       username: username,
       email: email,
       password: password,
-      confirm_password: confirm_password,
-    }
-    let userDataJson = JSON.stringify(userData);
-    let header = new HttpHeaders({
-      'Content-Type': 'application/json'
+      confirm_password: confirm_password
+    };
+    let headers = new HttpHeaders({
+      "Content-Type": "application/json",
+      "Accept": "application/json"
     });
     let httpOption = {
-      headers: header
+      headers: headers
     };
-    let endpoint = 'register';
-    let url = this.host + endpoint;
-    return this.http.post<any>(url, userDataJson, httpOption);
+    return this.http.post<any>(url, userData, httpOption);
   }
 
+  checkUsername(username: string) {
+    let endpoint = `register/${username}`;
+    let url = environment.apihost + endpoint;
+  
+    let headers = new HttpHeaders({
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    });
+    let httpOption = {
+      headers: headers
+    };
+    return this.http.get<any>(url, httpOption);
+  }
 }

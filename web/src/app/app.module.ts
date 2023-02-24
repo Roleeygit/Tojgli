@@ -11,9 +11,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule,FormBuilder } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
-
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,14 +21,13 @@ import { DatasheetComponent } from './datasheet/datasheet.component';
 import { CopyrightComponent } from './copyright/copyright.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AdminloginComponent } from './adminlogin/adminlogin.component';
-import { AdminmainComponent } from './adminmain/adminmain.component';
+import { AdminMainComponent } from './adminmain/adminmain.component';
 import { NewproductComponent } from './newproduct/newproduct.component';
 import { ProductlistComponent } from './productlist/productlist.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { NgxUiLoaderHttpModule } from 'ngx-ui-loader';
 import { LoaderComponent } from './loader/loader.component';
-import { ProductserviceComponent } from './productservice/productservice.component';
 import { ProductComponent } from './product/product.component';
 @NgModule({
   declarations: [
@@ -41,12 +38,11 @@ import { ProductComponent } from './product/product.component';
     CopyrightComponent,
     ProfileComponent,
     AdminloginComponent,
-    AdminmainComponent,
+    AdminMainComponent,
     NewproductComponent,
     ProductlistComponent,
     HomeComponent,
     LoaderComponent,
-    ProductserviceComponent,
     ProductComponent
     
   ],
