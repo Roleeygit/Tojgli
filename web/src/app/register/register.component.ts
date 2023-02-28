@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../shared/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { tap } from 'rxjs';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -13,7 +15,8 @@ export class RegisterComponent implements OnInit {
   
   constructor(
     private formBuilder: FormBuilder,
-    private auth: AuthService
+    private auth: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -32,14 +35,18 @@ export class RegisterComponent implements OnInit {
     let confirm_password = this.registerForm.value.confirm_password
 
     this.auth.register(username, email, password, confirm_password)
-    .subscribe({
-      next: data => {
+    .pipe(
+      tap(data => {
         console.log(data.token)
         console.log(data.username)
         console.log(data.email)
         localStorage.setItem('token', data.token)
         localStorage.setItem('username', data.name)
         localStorage.setItem('email', data.name)
+    }))
+    .subscribe({
+      next: () => {
+        this.router.navigate(['login']);
       },
       error: err => {
         const errorObj = err.error.data;
