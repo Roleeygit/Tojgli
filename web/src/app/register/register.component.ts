@@ -43,10 +43,16 @@ export class RegisterComponent implements OnInit {
       },
       error: err => {
         const errorObj = err.error.data;
-        const errorMessage = errorObj.username[0];
+        
         const errorDiv = document.getElementById('error-div');
         if (errorDiv) {
-          errorDiv.textContent = errorMessage;
+          errorDiv.textContent = '';
+          for (const field in errorObj) {
+            if(errorObj.hasOwnProperty(field)) {
+              const errorMessage = errorObj[field][0];
+              errorDiv.textContent += "* " + field + ": " + errorMessage + "\n";
+            }
+          }
         }
       }
     });
