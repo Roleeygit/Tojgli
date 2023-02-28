@@ -37,9 +37,9 @@ export class RegisterComponent implements OnInit {
     this.auth.register(username, email, password, confirm_password)
     .pipe(
       tap(data => {
-        console.log(data.token)
-        console.log(data.username)
-        console.log(data.email)
+        // console.log(data.token)
+        // console.log(data.username)
+        // console.log(data.email)
         localStorage.setItem('token', data.token)
         localStorage.setItem('username', data.name)
         localStorage.setItem('email', data.name)

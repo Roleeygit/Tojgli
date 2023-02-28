@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { tap } from 'rxjs';
 import { AuthService } from '../shared/auth.service';
 
 @Component({
@@ -13,7 +15,8 @@ export class LoginComponent implements OnInit {
   
   constructor(
     private formBuilder: FormBuilder,
-    private auth: AuthService
+    private auth: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -30,14 +33,33 @@ export class LoginComponent implements OnInit {
     let password = this.loginForm.value.password
 
     this.auth.login(email, username, password)
-    .subscribe({
-      next: data => {
-        console.log(data.token)
-        console.log(data.email)
-        console.log(data.username)
+    .pipe(
+      tap(data => {
+        // console.log(data.token)
+        // console.log(data.email)
+        // console.log(data.username)
         localStorage.setItem('token', data.token)
         localStorage.setItem('email', data.email)
         localStorage.setItem('username', data.username)
+      })
+    )
+    .subscribe({
+      next: () => {
+        this.router.navigate(['profile']);
+      },
+      error: err => {
+        const errorObj = err.error.data;
+        
+        const errorDiv = document.getElementById('error-div');
+        if (errorDiv) {
+          errorDiv.textContent = '';
+          for (const field in errorObj) {
+            if(errorObj.hasOwnProperty(field)) {
+              const errorMessage = errorObj[field][0];
+              errorDiv.textContent += "* " + field + ": " + errorMessage + "\n";
+            }
+          }
+        }
       }
     });
   }
