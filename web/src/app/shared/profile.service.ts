@@ -10,7 +10,7 @@ export class ProfileService {
   constructor(private http: HttpClient) { }
 
   profile(surname: string, lastname: string, country: string, city: string, address: string) {
-    let endpoint = "profile";
+    let endpoint = "profilelist";
     let url = environment.apihost + endpoint;
 
     let profileData = {
