@@ -32,6 +32,12 @@
             <a class="nav-link" href="#">
               <span data-feather="shopping-cart" class="align-text-bottom"></span>
               Products
+              <button id="productModalButton" type="button" class="d-none" data-bs-toggle="modal" data-bs-target="#productModal"></button>
+
+              <div class="container mt-4">
+              <h1 class="text-center mb-4">Admin Main</h1>
+              <button class="btn btn-primary mb-3" (click)="addProduct()">Add Product</button>
+              </div>
             </a>
           </li>
           <li class="nav-item">

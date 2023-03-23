@@ -5,8 +5,13 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthService {
+  addProducts(data: { name: any; itemnumber: any; quantity: any; price: any; }) {
+    throw new Error('Method not implemented.');
+  }
   host = "http://localhost:8000/api/";
   constructor(private http: HttpClient) { }
+
+  
 
   login(email: string, password: string, username: string) {
     let userData = {
@@ -44,5 +49,7 @@ export class AuthService {
     let url = this.host + endpoint;
     return this.http.post<any>(url, userDataJson, httpOption);
   }
+
+
 
 }

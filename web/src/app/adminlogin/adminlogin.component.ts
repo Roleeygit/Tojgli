@@ -34,28 +34,28 @@ throw new Error('Method not implemented.');
     let password = this.adminForm.value.password
 
     this.admin.adminlogin(email, username, password)
-      .subscribe({
-        next: data => {
-          console.log(data.token)
-          console.log(data.email)
-          console.log(data.username)
-          localStorage.setItem('token', data.token)
-          localStorage.setItem('email', data.email)
-          localStorage.setItem('username', data.username)
+      //.subscribe({
+        //next: data => {
+          //console.log(data.token)
+          //console.log(data.email)
+          //console.log(data.username)
+          //localStorage.setItem('token', data.token)
+          //localStorage.setItem('email', data.email)
+          //localStorage.setItem('username', data.username)
 
           
-          this.admin.checkAdmin(data.email)
-            .subscribe((response: any) => {
-              if (response.is_admin) {
-                console.log("Sikertelen belépés!")
-              } else {
+          //this.admin.checkAdmin(data.email)
+            //.subscribe((response: any) => {
+              //if (response.is_admin) {
+               // console.log("Sikertelen belépés!")
+              //} else {
             
-                this.is_admin= true;
-                console.log("Sikeres belépés!")
-              }
-            });
+               // this.is_admin= true;
+              //  console.log("Sikeres belépés!")
+             // }
+           // });
         }
-      });
-  }
+      //});
+  //}
 
 }

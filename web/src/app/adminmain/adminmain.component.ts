@@ -32,5 +32,7 @@ export class AdminMainComponent implements OnInit {
     this.isAddProduct = true;
     this.isEditProduct = false;
     this.selectedProduct = new ProductComponent();
+    document.getElementById("productModalButton")?.click();
   }
+  
 }
