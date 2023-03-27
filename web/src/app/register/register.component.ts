@@ -9,7 +9,8 @@ import { tap } from 'rxjs';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-  
+
+  errors: string[] = [];
   registerForm !: FormGroup;
   errorMessage!: string;
   
@@ -50,15 +51,11 @@ export class RegisterComponent implements OnInit {
       },
       error: err => {
         const errorObj = err.error.data;
-        
-        const errorDiv = document.getElementById('error-div');
-        if (errorDiv) {
-          errorDiv.textContent = '';
-          for (const field in errorObj) {
-            if(errorObj.hasOwnProperty(field)) {
-              const errorMessage = errorObj[field][0];
-              errorDiv.textContent += "* " + field + ": " + errorMessage + "\n";
-            }
+        this.errors = [];
+        for (const field in errorObj) {
+          if(errorObj.hasOwnProperty(field)) {
+            const errorMessage = errorObj[field][0];
+            this.errors.push(`${field}: ${errorMessage}`);
           }
         }
       }

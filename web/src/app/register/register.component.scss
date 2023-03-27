@@ -26,31 +26,36 @@ input[type="email"]:focus,
 }
 
 .form-signup input[type="name"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
+  margin-bottom: 15px;
+  border-bottom-right-radius: 5;
+  border-bottom-left-radius: 5;
 }
 
 .form-signup input[type="email"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+  margin-bottom: 15px;
+  border-bottom-right-radius: 5;
+  border-bottom-left-radius: 5;
+  border-top-left-radius: 5;
+  border-top-right-radius: 5;
 }
 
 .form-signup input[type="password"] {
-  margin-bottom: 110px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+  margin-bottom: 125px;
+  border-top-left-radius: 5;
+  border-top-right-radius: 5;
+  border-bottom-left-radius: 5;
+  border-bottom-right-radius: 5;
+}
+
+#terms input[type="checkbox"]:checked {
+  background-color: rgb(255, 255, 0);
+  border-color: red;
 }
 
 #repassword {
   margin-top: -111px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+  border-top-left-radius: 5;
+  border-top-right-radius: 5;
   margin-bottom: 15px;
 }
 
@@ -96,4 +101,5 @@ main.form-signup {
 
 #error-div {
   text-decoration-color: rgb(255, 0, 0);
+  position: right;
 }

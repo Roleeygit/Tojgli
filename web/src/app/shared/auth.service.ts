@@ -6,6 +6,10 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
+  getUserID(): string {
+    throw new Error('Method not implemented.');
+  }
+  currentUser: any;
   constructor(private http: HttpClient) { }
 
   login(email: string, username: string, password: string, ) {

@@ -1,16 +1,17 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfileService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private auth: AuthService) { }
 
   profile(surname: string, lastname: string, country: string, city: string, address: string) {
-    let endpoint = "profilelist";
+    let endpoint = "updateprofile/{id}";
     let url = environment.apihost + endpoint;
 
     let profileData = {
@@ -27,6 +28,6 @@ export class ProfileService {
     let httpOption = {
       headers: headers
     };
-    return this.http.post<any>(url, profileData, httpOption);
+    return this.http.put<any>(url, profileData, httpOption);
   }
 }

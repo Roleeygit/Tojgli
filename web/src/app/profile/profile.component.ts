@@ -1,7 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs';
+import { AuthService } from '../shared/auth.service';
 import { ProfileService } from '../shared/profile.service';
 
 @Component({
@@ -16,6 +18,8 @@ export class ProfileComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private http: HttpClient,
+    private auth: AuthService,
     private profile: ProfileService,
     private router: Router
   ) { }
@@ -46,6 +50,7 @@ export class ProfileComponent implements OnInit {
         console.log(data.country)
         console.log(data.city)
         console.log(data.address)
+        localStorage.setItem('id', data.userId)
         localStorage.setItem('token', data.token)
         localStorage.setItem('surname', data.surname)
         localStorage.setItem('lastname', data.lastname)
