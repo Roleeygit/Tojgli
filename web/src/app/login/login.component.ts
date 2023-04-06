@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs';
 import { AuthService } from '../shared/auth.service';
@@ -11,6 +11,8 @@ import { AuthService } from '../shared/auth.service';
 })
 export class LoginComponent implements OnInit {
 
+  errors: string[] = [];
+  errorMessage!: string;
   loginForm !: FormGroup;
   
   constructor(
@@ -21,9 +23,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      email: [''],
-      username: [''],
-      password: ['']
+      email: ['', [Validators.required, Validators.email]],
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
 
@@ -35,29 +37,21 @@ export class LoginComponent implements OnInit {
     this.auth.login(email, username, password)
     .pipe(
       tap(data => {
-        // console.log(data.token)
-        // console.log(data.email)
-        // console.log(data.username)
         localStorage.setItem('token', data.token)
-        localStorage.setItem('email', data.email)
-        localStorage.setItem('username', data.username)
-      })
-    )
+        localStorage.setItem('username', data.name)
+        localStorage.setItem('email', data.name)
+    }))
     .subscribe({
       next: () => {
-        this.router.navigate(['profile']);
+        this.router.navigate(['login']);
       },
       error: err => {
         const errorObj = err.error.data;
-        
-        const errorDiv = document.getElementById('error-div');
-        if (errorDiv) {
-          errorDiv.textContent = '';
-          for (const field in errorObj) {
-            if(errorObj.hasOwnProperty(field)) {
-              const errorMessage = errorObj[field][0];
-              errorDiv.textContent += "* " + field + ": " + errorMessage + "\n";
-            }
+        this.errors = [];
+        for (const field in errorObj) {
+          if(errorObj.hasOwnProperty(field)) {
+            const errorMessage = errorObj[field][0];
+            this.errors.push(`${errorMessage}`);
           }
         }
       }

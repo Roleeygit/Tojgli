@@ -11,7 +11,7 @@ input[type="password"]:focus,
 input[type="email"]:focus,
 .uneditable-input:focus {   
   border-color: rgb(255, 162, 0);
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgb(255, 162, 0);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 4px rgb(255, 162, 0);
   outline: 0 none;
 }
 
@@ -47,9 +47,8 @@ input[type="email"]:focus,
   border-bottom-right-radius: 5;
 }
 
-#terms input[type="checkbox"]:checked {
-  background-color: rgb(255, 255, 0);
-  border-color: red;
+#terms {
+  margin-top: -3px;
 }
 
 #repassword {
@@ -66,13 +65,14 @@ main {
 
 #logo {
   position: absolute;
-  top: -120px;
+  top: -130px;
   left: 50%;
   transform: translateX(-50%);
 }
 
 #copyright {
   text-decoration: none;
+  margin-top: -100px;
 }
 
 .btn-primary {
@@ -102,4 +102,22 @@ main.form-signup {
 #error-div {
   text-decoration-color: rgb(255, 0, 0);
   position: right;
+}
+
+.alert {
+  background-color: red;
+  color: white;
+}
+
+.my-4 {
+  color: gray
+}
+
+#accountExist {
+  text-align: left;
+}
+
+#clickLogin {
+  text-decoration-color: rgb(255, 162, 0);
+  color: rgb(255, 162, 0);
 }

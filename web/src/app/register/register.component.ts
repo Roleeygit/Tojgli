@@ -3,6 +3,7 @@ import { AuthService } from '../shared/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -22,10 +23,10 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
-      username: [''],
-      email: [''],
-      password: [''],
-      confirm_password: ['']
+      username: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirm_password: ['', Validators.required],
     });
   }
   
@@ -38,9 +39,6 @@ export class RegisterComponent implements OnInit {
     this.auth.register(username, email, password, confirm_password)
     .pipe(
       tap(data => {
-        // console.log(data.token)
-        // console.log(data.username)
-        // console.log(data.email)
         localStorage.setItem('token', data.token)
         localStorage.setItem('username', data.name)
         localStorage.setItem('email', data.name)
@@ -55,7 +53,7 @@ export class RegisterComponent implements OnInit {
         for (const field in errorObj) {
           if(errorObj.hasOwnProperty(field)) {
             const errorMessage = errorObj[field][0];
-            this.errors.push(`${field}: ${errorMessage}`);
+            this.errors.push(`${errorMessage}`);
           }
         }
       }

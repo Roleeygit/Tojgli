@@ -1,15 +1,13 @@
-<a routerLink=""><img id="logo" class="mb-4 text-center" src="/assets/logo.png" alt="" width="300" height="300"></a>
-<main class="form-signup w-100 m-auto text-center">
+  <main class="form-signup w-100 m-auto text-center">  
   <div class="alert alert-danger" *ngIf="errors.length > 0">
-    <ul>
-      <li *ngFor="let error of errors">{{ error }}</li>
-    </ul>
+      <p *ngFor="let error of errors"><i class="bi bi-exclamation-triangle-fill"></i> {{ error }}</p>
   </div>
     <form [formGroup]="registerForm">
-      
+      <div *ngIf="registerForm.get('generalError')?.value" class="alert alert-danger">
+        {{ registerForm.get('generalError')?.value }}
+      </div>     
       <h1 class="h3 mb-4 fw-normal"><b>Regisztrálás</b></h1>
-
-      <div class="form-floating">
+      <div class="form-floating position-relative">
         <input type="name" class="form-control" placeholder="Felhasználónév" id="username" name="username" formControlName="username">
         <label for="username" class="icon"><i class="bi bi-person-fill"></i> Felhasználónév</label>
       </div>
@@ -19,22 +17,26 @@
       </div>
       <div class="form-floating">
         <input type="password" class="form-control" id="password" name="password" formControlName="password" placeholder="Jelszó">
-        <label for="password" class="icon"><i class="bi bi-incognito"></i> Jelszó</label>
+        <label for="password" class="icon"><i class="bi bi-lock-fill"></i> Jelszó</label>
       </div>
       <div class="form-floating">
         <input type="password" class="form-control" id="confirm_password" name="confirm_password" id="repassword" formControlName="confirm_password" placeholder="Jelszó újra">
-        <label for="confirm_password" class="icon"><i class="bi bi-incognito"></i> Jelszó újra</label>
+        <label for="confirm_password" class="icon"><i class="bi bi-lock-fill"></i> Jelszó újra</label>
       </div>
   
-      <div class="checkbox mb-4">
         <label id="terms">
-          <input type="checkbox" value="remember-me" id="shadow-checkbox"> Elolvastam és elfogadom az Általános Szerződési
-          Feltételeket és elfogadom az Adatvédelmi Szabályzatot.
+          <p> Regisztráláskor elfogadod az Általános Szerződési
+          Feltételeket és az Adatvédelmi Szabályzatot.</p>
         </label>
-      </div>
       <button class="w-100 btn btn-lg btn-primary" type="submit" (click)="register()">Regisztrálás</button>
-      <a id="copyright" href="http://github.com/Roleeygit/Tojgli" target="_blank">
+      <hr class="my-4">
+      <p class="text-muted" id="accountExist">Ha van már fiókod <a id="clickLogin" routerLink="/login">jelentkezz</a> be!</p>
+      <a id="copyright" href="http://github.com/Roleeygit/Tojgli" target="_blank">      
           <p class="mt-5 mb-3 text-muted">&copy; 2022–2023 EggShop</p>
       </a>
     </form>
   </main>
+
+  <div class="fixed-top d-flex justify-content-start">
+    <a class="btn btn-primary me-3" routerLink="" role="button"><i class="bi bi-house-door-fill"></i></a>
+  </div>

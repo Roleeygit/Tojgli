@@ -6,10 +6,6 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
-  getUserID(): string {
-    throw new Error('Method not implemented.');
-  }
-  currentUser: any;
   constructor(private http: HttpClient) { }
 
   login(email: string, username: string, password: string, ) {
@@ -32,6 +28,11 @@ export class AuthService {
   }
 
   register(username: string, email: string, password: string, confirm_password: string) {
+    const formData = new FormData();
+    formData.append('username', username);
+    formData.append('email', email);
+    formData.append('password', password);
+    formData.append('confirm_password', confirm_password);
 
     let endpoint = "register";
     let url = environment.apihost + endpoint;

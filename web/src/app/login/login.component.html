@@ -1,5 +1,7 @@
-      <a routerLink=""><img id="logo" class="mb-4 text-center" src="/assets/logo.png" alt="" width="300" height="300"></a>
       <main class="form-signin w-100 m-auto text-center">
+        <div class="alert alert-danger" *ngIf="errors.length > 0">
+          <p *ngFor="let error of errors"><i class="bi bi-exclamation-triangle-fill"></i> {{ error }}</p>
+        </div>
         <div id="error-div"></div>
           <form [formGroup]="loginForm">
       
