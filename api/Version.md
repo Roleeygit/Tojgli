@@ -201,3 +201,10 @@ Verzió kiadva: 2023-02-03
 - Regisztrációnál az email a validátorban nem volt, a formátumhoz ez szükséges!
 - Insomnia payment_mode, delivery_mode id helyett névvel kiválasztva (később frontenden ki lehessen választani dropdown menüből)
 - Insomnia új verzió
+
+ <br></br>
+
+# <p align = "center">Verzió 0.037:</p>
+Verzió kiadva: 2023-04-06
+
+- Loginhoz hozzá lett adva validáció, hogy frontend számára ezt láthatóvá lehessen tenni
