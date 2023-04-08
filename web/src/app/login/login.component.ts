@@ -12,8 +12,8 @@ import { AuthService } from '../shared/auth.service';
 export class LoginComponent implements OnInit {
 
   errors: string[] = [];
-  errorMessage!: string;
   loginForm !: FormGroup;
+  errorMessage!: string;
   
   constructor(
     private formBuilder: FormBuilder,
@@ -22,19 +22,19 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
+    this.loginForm = this.formBuilder.group({  
       username: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
 
   login() {
-    let email = this.loginForm.value.email
     let username = this.loginForm.value.username
+    let email = this.loginForm.value.email  
     let password = this.loginForm.value.password
 
-    this.auth.login(email, username, password)
+    this.auth.login(username, email, password)
     .pipe(
       tap(data => {
         localStorage.setItem('token', data.token)
@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
     }))
     .subscribe({
       next: () => {
-        this.router.navigate(['login']);
+        this.router.navigate(['/profile']);
       },
       error: err => {
         const errorObj = err.error.data;

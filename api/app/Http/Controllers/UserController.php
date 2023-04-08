@@ -77,7 +77,7 @@ class UserController extends BaseController
             "password.required" => "A jelszó megadása kötelező!",
 
         ]);
-        
+
 
 
         if(Auth::attempt(["username"=> $request->username, "email" => $request->email, "password" => $request->password]))
@@ -86,6 +86,7 @@ class UserController extends BaseController
             $authUser = Auth::user();
             $success["token"] = $authUser->createToken("MyAuthApp")->plainTextToken;
             $success["username"] = $authUser->username;
+            $success["email"] = $authUser->email;
 
             return $this->sendResponse($success, "Bejelentkezés sikeres!");
         }
