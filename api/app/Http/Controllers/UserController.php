@@ -62,8 +62,27 @@ class UserController extends BaseController
 
     public function UserLogin(Request $request)
     {
+        $validator = Validator::make($input, 
+        [
+            "username" => "required",
+            "email" => "required|email",
+            "password" => "required",
+        ], 
+        [
+            "username.required" => "A felhasználónév megadása kötelező!",
+
+            "email.required" => "Az email mező kitöltése kötelező!",
+            "email.email" => "Az email formátuma nem megfelelő! (@) ",
+
+            "password.required" => "A jelszó megadása kötelező!",
+
+        ]);
+        
+
+
         if(Auth::attempt(["username"=> $request->username, "email" => $request->email, "password" => $request->password]))
         {
+
             $authUser = Auth::user();
             $success["token"] = $authUser->createToken("MyAuthApp")->plainTextToken;
             $success["username"] = $authUser->username;
