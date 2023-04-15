@@ -86,7 +86,6 @@ class UserController extends BaseController
             $authUser = Auth::user();
             $success["token"] = $authUser->createToken("MyAuthApp")->plainTextToken;
             $success["username"] = $authUser->username;
-            $success["email"] = $authUser->email;
 
             return $this->sendResponse($success, "Bejelentkezés sikeres!");
         }

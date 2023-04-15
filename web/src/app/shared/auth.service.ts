@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
+  [x: string]: any;
   constructor(private http: HttpClient) { }
 
   login(username: string, email: string, password: string) {
@@ -65,5 +66,13 @@ export class AuthService {
       headers: headers
     };
     return this.http.get<any>(url, httpOption);
+  }
+
+  isLoggedIn():any {
+    if(localStorage.getItem('token') === null) {
+      return false;
+    }
+    let token = localStorage.getItem('token');
+    return token;
   }
 }

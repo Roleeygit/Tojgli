@@ -40,13 +40,13 @@
   
             <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
               <li>
-                <a routerLink="" class="nav-link text-white">
+                <a routerLink="" routerLinkActive="active" class="nav-link text-white">
                   <svg class="bi d-block mx-auto mb-1" width="24" height="24" fill="white"><use xlink:href="#home"/></svg>
                   Kezdőlap
                 </a>
-              </li>
+              </li>              
               <li>
-                <a href="#" class="nav-link text-white">
+                <a routerLink="#" class="nav-link text-white">
                   <svg class="bi d-block mx-auto mb-1" width="24" height="24" fill="white"><use xlink:href="#table"/></svg>
                   Rendelések
                 </a>
@@ -76,40 +76,26 @@
         </div>
       </div>
     </header>
-    <div class="container col-xl-10 col-xxl-8 px-4 py-5">
-      <div class="row align-items-center g-lg-5 py-5">
-        <div class="col-lg-7 text-center text-lg-start">
-          <h1 class="display-6 fw-bold lh-1 mb-3">Üdvözöllek</h1>
-          <p class="col-lg-10 fs-6">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel dolorum perferendis, reiciendis qui nobis, deleniti alias totam fugit cumque numquam, nulla voluptas soluta minus iste natus odit sapiente quod quaerat!
-          A architecto provident qui eius tenetur.</p>
+
+    <div class="container col-xxl-8 px-4 py-5">
+      <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+        <div class="col-10 col-sm-8 col-lg-6">
+          <img src="assets/eggs.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
         </div>
-        <div class="col-md-10 mx-auto col-lg-5">
-          <h1 class="h3 mb-4 fw-normal text-center"><b>Bejelentkezés</b></h1>
-          <form class="p-4 p-md-5 border rounded-3 bg-light">
-            <div class="form-floating mb-3">
-              <input type="Username" class="form-control" placeholder="Felhasználónév" disabled>
-              <label>Nagy Lajos</label>
-            </div>
-            <div class="form-floating mb-3">
-              <input type="email" class="form-control" placeholder="nev@valami.com" disabled>
-              <label>nagylajos@gmail.com</label>
-            </div>
-            <div class="form-floating mb-3">
-              <input type="password" class="form-control" placeholder="Jelszo" disabled>
-              <label>••••••••••</label>
-            </div>
-            <div class="checkbox mb-3">
-              <label>
-                <input type="checkbox" value="remember-me" disabled> Jelszó megjegyzése!
-              </label>
-            </div>
-            <button class="w-100 btn btn-lg btn-primary" type="submit" routerLink="login">Bejelentkezés</button>
-            <hr class="my-4">
-            <small class="text-muted">Ha még nincs fiókod akkor kattints <a routerLink="register" id="clickRegister">ide</a>.</small>
-          </form>
+        <div class="col-lg-6">
+          <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Üdvözlünk a Tojás Webáruházban!</h1>
+          <p class="lead">
+            Termékeink között megtalálhatók a csodálatos dísztojások, amelyek különleges hangulatot kölcsönöznek otthonának. A disztojások tökéletesek a húsvéti ünnepkörhöz, de szépen mutatnak akár egy egész éven át tartó dekorációban is.
+          </p>
+          <div class="d-grid gap-4 d-md-flex justify-content-md-start">
+            <button type="button" routerLink="/products" class="btn btn-primary btn-lg px-4 me-md-2"><i class="bi bi-basket3-fill"></i> Vásárlás</button>
+          </div>
         </div>
       </div>
     </div>
+       
+
+    
     <div class="container">
       <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
         <div class="col mb-3">
