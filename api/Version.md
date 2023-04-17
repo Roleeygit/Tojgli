@@ -208,3 +208,12 @@ Verzió kiadva: 2023-02-03
 Verzió kiadva: 2023-04-06
 
 - Loginhoz hozzá lett adva validáció, hogy frontend számára ezt láthatóvá lehessen tenni
+
+ <br></br>
+
+ # <p align = "center">Verzió 0.040:</p>
+Verzió kiadva: 2023-04-17
+
+- Login metódus átirása, mostmár úgy működik, hogy ellenőrzi van-e ilyen email az adatbázisban, illetve mostmár nem kell az email és a felhasználó nevet is külön megadni, A filter_var függvénnyel ellenőrizzük, hogy az érték érvényes e-mail cím-e, és ha igen, akkor az email mezőt használjuk a belépéshez, ellenkező esetben a felhasználónév mezőt használjuk. Így a felhasználó e-mail címmel vagy felhasználónévvel is bejelentkezhet.
+- Fejlesztői dokumentáció megirva backend részről
+- Az admin jog adást mostantól csak admin személy adhatja ki. Az egyedüli adminok jelent pillanatban a webshop készitők

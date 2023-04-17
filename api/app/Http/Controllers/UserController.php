@@ -25,7 +25,7 @@ class UserController extends BaseController
             "username" => "required|unique:users|min:5",
             "email" => "required|email|unique:users",
             "password" => "required|min:6|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/",
-            "confirm_password" => "required|same:password",
+            "confirm_password" => "required|same:password"
         ],
         [
             "username.required" => "A felhasználónév megadása kötelező!",
@@ -41,7 +41,7 @@ class UserController extends BaseController
             "password.regex" => "A jelszónak minimum tartalmaznia kell egy számot, egy nagybetűt és egy kisbetűt!",
 
             "confirm_password.required" => "A jelszó újboli megagása kötelező!",
-            "confirm_password.same" => "A jelszavaknak eggyezniük kell!",
+            "confirm_password.same" => "A jelszavaknak eggyezniük kell!"
         ]
     );
 
@@ -62,27 +62,31 @@ class UserController extends BaseController
 
     public function UserLogin(Request $request)
     {
+        $input = $request->all();
+
         $validator = Validator::make($input, 
         [
-            "username" => "required",
-            "email" => "required|email",
-            "password" => "required",
+            "username_or_email" => "required",
+            "password" => "required"
         ], 
         [
-            "username.required" => "A felhasználónév megadása kötelező!",
-
-            "email.required" => "Az email mező kitöltése kötelező!",
-            "email.email" => "Az email formátuma nem megfelelő! (@) ",
-
-            "password.required" => "A jelszó megadása kötelező!",
-
+            "username_or_email.required" => "A felhasználónév vagy az email megadása kötelező!",
+            "password.required" => "A jelszó megadása kötelező!"
         ]);
-        
 
-
-        if(Auth::attempt(["username"=> $request->username, "email" => $request->email, "password" => $request->password]))
+        if($validator->fails())
         {
+            return $this->sendError("Hibás bejelentkezési adatok", $validator->errors());
+        }
 
+        $credentials = 
+        [
+            filter_var($input['username_or_email'], FILTER_VALIDATE_EMAIL) ? 'email' : 'username' => $input['username_or_email'],
+            'password' => $input['password'],
+        ];
+
+        if(Auth::attempt($credentials))
+        {
             $authUser = Auth::user();
             $success["token"] = $authUser->createToken("MyAuthApp")->plainTextToken;
             $success["username"] = $authUser->username;
@@ -91,9 +95,7 @@ class UserController extends BaseController
         }
         else
         {
-            return $this->sendError("Unauthorized." . json_encode(["error"=>"Sikertelen bejelentkezés"]));
-
-
+            return $this->sendError("Sikertelen bejelentkezés. Kérem ellenőrizze a bejelentkezési adatait, és próbálja újra!");
         }
     }
 
@@ -101,7 +103,7 @@ class UserController extends BaseController
     {
         auth("sanctum")->user()->currentAccessToken()->delete();
 
-        return response()->json("Sikerek kijelentkezés");
+        return response()->json("Sikeres kijelentkezés");
     }
 
     public function ListUsers()
@@ -119,7 +121,7 @@ class UserController extends BaseController
         [
             "username" => "required|unique:users|min:5",
             "email" => "required|unique:users",
-            "password" => "required|min:6|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/",
+            "password" => "required|min:6|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/"
         ],
         [
             "username.required" => "A felhasználónév megadása kötelező!",
@@ -132,7 +134,7 @@ class UserController extends BaseController
 
             "password.required" => "A jelszó megadása kötelező!",
             "password.min" => "A jelszónak minimum 6 karakter hosszúnak kell lennie!",
-            "password.regex" => "A jelszónak minimum tartalmaznia kell egy számot, egy nagybetűt és egy kisbetűt!",
+            "password.regex" => "A jelszónak minimum tartalmaznia kell egy számot, egy nagybetűt és egy kisbetűt!"
         ]
     );
 
