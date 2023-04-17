@@ -53,7 +53,7 @@ laravel-sanctum ami az autentikációhoz van felhasználva
 
 <br></br>
 # <p align = "center">Adatbázis terv:</p>
-![Adatbázis terv](../../imgs/eggdbterv.png)
+![Adatbázis terv](../../Imgs/eggdbterv.png)
 
 <br></br>
 
