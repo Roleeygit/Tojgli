@@ -5,29 +5,34 @@
     <form [formGroup]="registerForm">
       <div *ngIf="registerForm.get('generalError')?.value" class="alert alert-danger">
         {{ registerForm.get('generalError')?.value }}
-      </div>     
+      </div> 
+
       <h1 class="h3 mb-4 fw-normal"><b>Regisztrálás</b></h1>
       <div class="form-floating position-relative">
         <input type="name" class="form-control" placeholder="Felhasználónév" id="username" name="username" formControlName="username">
-        <label for="username" class="icon"><i class="bi bi-person-fill"></i> Felhasználónév</label>
+        <label for="username"><i class="bi bi-person-fill"></i> Felhasználónév</label>
       </div>
+
       <div class="form-floating">
         <input type="email" class="form-control" id="email" name="email" formControlName="email" placeholder="nev@pelda.com">
-        <label for="email" class="icon"><i class="bi bi-envelope-fill"></i> Email cím</label>
+        <label for="email"><i class="bi bi-envelope-fill"></i> Email cím</label>
       </div>
+
       <div class="form-floating">
         <input type="password" class="form-control" id="password" name="password" formControlName="password" placeholder="Jelszó">
-        <label for="password" class="icon"><i class="bi bi-lock-fill"></i> Jelszó</label>
+        <label for="password"><i class="bi bi-lock-fill"></i> Jelszó</label>
       </div>
+
       <div class="form-floating">
         <input type="password" class="form-control" id="confirm_password" name="confirm_password" id="repassword" formControlName="confirm_password" placeholder="Jelszó újra">
-        <label for="confirm_password" class="icon"><i class="bi bi-lock-fill"></i> Jelszó újra</label>
+        <label for="confirm_password"><i class="bi bi-lock-fill"></i> Jelszó újra</label>
       </div>
   
         <label id="terms">
           <p> Regisztráláskor elfogadod az Általános Szerződési
           Feltételeket és az Adatvédelmi Szabályzatot.</p>
         </label>
+        
       <button class="w-100 btn btn-lg btn-primary" type="submit" (click)="register()">Regisztrálás</button>
       <hr class="my-4">
       <p class="text-muted" id="accountExist">Ha van már fiókod <a id="clickLogin" routerLink="/login">jelentkezz</a> be!</p>

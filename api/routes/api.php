@@ -28,6 +28,7 @@ Route::group(["middleware" => ["auth:sanctum"]], function()
     Route::put("/updateproduct/{id}", [ProductController::class,"UpdateProduct"]);
     Route::post ("/image/{id}", [ProductController::class,"AddImageToProduct"]);
     Route::delete("/deleteproduct/{id}", [ProductController::class,"DeleteProduct"]);
+    Route::put("/updateadmin/{id}", [UserController::class,"UpdateAdmin"]);
 
 
 });    
@@ -40,7 +41,6 @@ Route::group(["middleware" => ["auth:sanctum"]], function()
 Route::post("/register", [UserController::class, "UserRegister"]);
 Route::post("/login", [UserController::class, "UserLogin"]);
 Route::post("/logout", [UserController::class, "UserLogout"]);
-Route::put("/updateadmin/{id}", [UserController::class,"UpdateAdmin"]);
 Route::get("/registeredusers", [UserController::class,"ListUsers"]);
 Route::get("/userbyid/{id}", [UserController::class,"ShowUserById"]);
 

@@ -23,23 +23,20 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({  
-      username: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
+      username_or_email: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
 
   login() {
-    let username = this.loginForm.value.username
-    let email = this.loginForm.value.email  
+    let username_or_email = this.loginForm.value.username_or_email
     let password = this.loginForm.value.password
 
-    this.auth.login(username, email, password)
+    this.auth.login(username_or_email, password)
     .pipe(
       tap(data => {
         localStorage.setItem('token', data.token)
-        localStorage.setItem('username', data.name)
-        localStorage.setItem('email', data.name)
+        localStorage.setItem('username_or_email', data.username_or_email)
     }))
     .subscribe({
       next: () => {
