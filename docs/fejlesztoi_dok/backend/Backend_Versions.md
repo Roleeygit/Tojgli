@@ -217,3 +217,11 @@ Verzió kiadva: 2023-04-17
 - Login metódus átirása, mostmár úgy működik, hogy ellenőrzi van-e ilyen email az adatbázisban, illetve mostmár nem kell az email és a felhasználó nevet is külön megadni, A filter_var függvénnyel ellenőrizzük, hogy az érték érvényes e-mail cím-e, és ha igen, akkor az email mezőt használjuk a belépéshez, ellenkező esetben a felhasználónév mezőt használjuk. Így a felhasználó e-mail címmel vagy felhasználónévvel is bejelentkezhet.
 - Fejlesztői dokumentáció megirva backend részről
 - Az admin jog adást mostantól csak admin személy adhatja ki. Az egyedüli adminok jelent pillanatban a webshop készitők
+
+
+ <br></br>
+
+ # <p align = "center">Verzió 0.041:</p>
+Verzió kiadva: 2023-04-20
+
+- User Login tovább kezelve, ellenőzri mostantól azt is, hogy mit ir be a felhasználó, és megnézi egyezik-e ez az adatbázisban eltárolt felhaználókkal. Ha nem, akkor hiba üzenetet kezel, amibel vagy a felhasználó/email kombóra panaszkodik, vagy a jelszóra. 
