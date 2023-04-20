@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\Profile;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 
 class UserController extends BaseController
@@ -71,6 +72,7 @@ class UserController extends BaseController
         ], 
         [
             "username_or_email.required" => "A felhasználónév vagy az email megadása kötelező!",
+            
             "password.required" => "A jelszó megadása kötelező!"
         ]);
 
@@ -79,10 +81,24 @@ class UserController extends BaseController
             return $this->sendError("Hibás bejelentkezési adatok", $validator->errors());
         }
 
+        $user = User::where('username', $input['username_or_email'])->orWhere('email', $input['username_or_email'])->first();
+    
+        if(!$user)
+        {
+            return $this->sendError("Sikertelen bejelentkezés. Az adott felhasználó vagy email nem létezik.");
+        }
+    
+        if(!Hash::check($input['password'], $user->password))
+        {
+            return $this->sendError("Sikertelen bejelentkezés. Helytelen jelszó.");
+        }
+
+        $authUser = Auth::login($user);
+
         $credentials = 
         [
-            filter_var($input['username_or_email'], FILTER_VALIDATE_EMAIL) ? 'email' : 'username' => $input['username_or_email'],
-            'password' => $input['password'],
+            filter_var($input["username_or_email"], FILTER_VALIDATE_EMAIL) ? "email" : "username" => $input["username_or_email"],
+            "password" => $input["password"],
         ];
 
         if(Auth::attempt($credentials))
