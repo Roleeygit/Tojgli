@@ -59,6 +59,7 @@ Route::get("ProductById/{id}", [ProductController::class, "ShowProductById"]);
 |                             Profile Route                             |
 ------------------------------------------------------------------------ */
 Route::get("/profilelist", [ProfileController::class,"ListProfiles"]);
+Route::get("/profile/{id}", [ProfileController::class,"ShowProfileById"]);
 Route::put("/updateprofile/{id}", [ProfileController::class,"UpdateProfile"]);
 
 

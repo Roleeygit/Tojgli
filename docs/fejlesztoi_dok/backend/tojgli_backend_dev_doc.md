@@ -279,6 +279,15 @@ A foreach pedig azért felelős, hogyha törlésre kerül egy felhasználó, akk
 
 - kimenő adatok: saját üzenet
 
+
+### ShowProfileById():
+
+- feladata: Kilistázza az adott felhasználóhoz tartozó profilt. Ez azért kell,hogy később tudja ezt módositani. 
+
+- bejövő paraméterek: $profile = Profile::with(["user", "payment_mode", "delivery_mode"])->find($id) - Megkeresi a Modellben a profil adatokat, illetve a hozzá tartozó idegen kulcsokat. 
+
+- kimenő adatok: saját üzenet
+
 ### UpdateProfile():
 
 - feladata: a felhasználó tudja módositani a saját profilját (ami kezdetben üresen jön létre regisztrációkor) saját adataival. Ez a vásárláshoz lesz majd fontos.

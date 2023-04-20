@@ -225,3 +225,11 @@ Verzió kiadva: 2023-04-17
 Verzió kiadva: 2023-04-20
 
 - User Login tovább kezelve, ellenőzri mostantól azt is, hogy mit ir be a felhasználó, és megnézi egyezik-e ez az adatbázisban eltárolt felhaználókkal. Ha nem, akkor hiba üzenetet kezel, amibel vagy a felhasználó/email kombóra panaszkodik, vagy a jelszóra. 
+
+ <br></br>
+
+ # <p align = "center">Verzió 0.042:</p>
+Verzió kiadva: 2023-04-20
+
+- Profilhoz hozzá kellett adni még egy metódust, ami azért felel, hogy kilistázzuk csak egy felhasználó profilját. 
+- Insomnia új verzió
