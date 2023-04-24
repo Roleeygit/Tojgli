@@ -264,6 +264,14 @@ A foreach pedig azért felelős, hogyha törlésre kerül egy felhasználó, akk
 
 - kimenő adatok: saját üzenet
 
+### ShowCategory(): 
+
+- feladata. hogy a kategóriákat kiirassa, hogy az admin panelbe ha hozzáadunk egy új terméket, akkor ki lehessen egy dropdown menüből választani melyik kategóriát szeretnénk hozzá adni az új termékhez.
+
+- bejövő adatok: Category resource, ami csatlakozik az adatbázishoz, lekéri a category mezőt amiben az adatok vannak. 
+
+- kimenő adatok: saját üzenet
+
 ## ProfileController:
 
 ## Feladata:

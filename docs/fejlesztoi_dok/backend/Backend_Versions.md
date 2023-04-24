@@ -233,3 +233,13 @@ Verzió kiadva: 2023-04-20
 
 - Profilhoz hozzá kellett adni még egy metódust, ami azért felel, hogy kilistázzuk csak egy felhasználó profilját. 
 - Insomnia új verzió
+
+ <br></br>
+
+ # <p align = "center">Verzió 0.043:</p>
+Verzió kiadva: 2023-04-24
+
+- Létre lett hozva egy új metódus ami megjeleniti a kategóriákat, ezzel majd új termék felvételénél kilistázza milyen kategóriák elérhetőek.
+- Category Resource létrehozva, hogy csak a kategóriákat le tudjuk kérni az adatbázisból. 
+- Új útvonal ehhez a metódushoz
+- Insomnia új verzió
