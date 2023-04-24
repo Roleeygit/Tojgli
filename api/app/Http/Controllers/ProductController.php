@@ -8,6 +8,7 @@ use App\Models\Product;
 use Validator;
 use Illuminate\Support\Facades\DB;
 use App\Http\Resources\Product as ProductResource;
+use App\Http\Resources\Category as CategoryResource;
 
 class ProductController extends BaseController
 {
@@ -139,6 +140,12 @@ class ProductController extends BaseController
             $product->save();
         }
         return $this->sendResponse([], "Termék törölve!");
+    }
+
+    public function ShowCategory()
+    {
+        $categories = Category::all();
+        return $this->sendResponse(CategoryResource::collection($categories), "Kategóriák kiirva!");
     }
 
 }
