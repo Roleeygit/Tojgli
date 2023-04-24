@@ -243,3 +243,11 @@ Verzió kiadva: 2023-04-24
 - Category Resource létrehozva, hogy csak a kategóriákat le tudjuk kérni az adatbázisból. 
 - Új útvonal ehhez a metódushoz
 - Insomnia új verzió
+
+ <br></br>
+
+ # <p align = "center">Verzió 0.044:</p>
+Verzió kiadva: 2023-04-24
+
+- Dokumentáció kibővítbe
+- Id hozzá adva a kategóriához

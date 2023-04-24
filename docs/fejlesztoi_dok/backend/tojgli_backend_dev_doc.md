@@ -139,6 +139,32 @@ Ezek a modellek és erőforrások kapcsolatban állnak az adatbázissal, ahol az
 
 ### UserRegister():
 
+### Adatok:
+
+```json
+{
+	"username" : "Teszt Elek",
+	"email" : "tesz.telek@email.hu",
+	"password" : "Jelszo123",
+	"confirm_password" : "Jelszo123"
+}
+```
+### Siker esetén:
+
+```json
+{
+	"success": true,
+	"data": {
+		"username": "Teszt",
+		"email": "teszt.elek@email.hu",
+		"updated_at": "2023-04-24T09:09:54.000000Z",
+		"created_at": "2023-04-24T09:09:54.000000Z",
+		"id": 1
+	},
+	"message": "Regisztráció sikeres."
+}
+```
+
 - bejövő paraméterek: $request(a regisztrációhoz szükséges adatok a kérésben: name, email, password, confirm_password). 
 Az adatokat validálja, majd ha ez sikeres, akkor felveszi az adatokat az adatbázisba a tábla megfelelő mezőibe.
 Titkositja a jelszót mielőtt elküldi az adatbázis felé, igy azt mi nem látjuk csak egy titkositott formáját.  
@@ -152,12 +178,64 @@ Ez a metódus pedig arra szolgál, hogyha törlésre kerül egy regisztrált fel
 
 ### UserLogin():
 
+### Adatok:
+
+```json
+{
+	"username_or_email" : "Teszt",
+	"password" : "Jelszo123"
+
+    VAGY:
+
+    "username_or_email" : "teszt.elek@gmail.com",
+	"password" : "Jelszo123"
+}
+```
+### Siker esetén:
+
+```json
+{
+	"success": true,
+	"data": {
+		"token": "1|vQ1tJMms635OV5HKHIT5fi252RM6JYkP7jJpOvnc",
+		"username": "Teszt"
+	},
+	"message": "Bejelentkezés sikeres!"
+
+    VAGY:
+
+    "success": true,
+	"data": {
+		"token": "1|vQ1tJMms635OV5HKHIT5fi252RM6JYkP7jJpOvnc",
+		"email": "teszt.elek@gmail.com"
+	},
+	"message": "Bejelentkezés sikeres!"
+
+}
+```
+
 - bejövő paraméterek: $request (a bejelentkezéshez szükséges adatok a kérésben: username_or_email, password), $credentials ahol megnézzük, hogy az adatbázisban van e már ilyen felhasználónév vagy jelszó, és a kettő közül bármelyikkel be lehet lépni. Sikerek belépés utén generál egy tokent a felhasználó számára, és a personal_access_tokens adatbázis táblába teszi ezt, majd átadja a BaseController sendResponse() metódusának a saját üzenettel együtt. Hiba esetén kiirja, hogy a felhasználónév/email kombinációval van-e baj, vagy a jelszóval.
 
 - kimenő adatok: token, saját üzenet
 
 
 ### UserLogout():
+
+### Adatok:
+
+```json
+{
+	"token": "1|vQ1tJMms635OV5HKHIT5fi252RM6JYkP7jJpOvnc"
+}
+```
+### Siker esetén:
+
+```json
+{
+	"Sikeres kijelentkezés"
+
+}
+```
 
 - A metódus a felhasználó kijelentkeztetéséért felelős, miközben törli a felhasználóhóz tartozó tokent az adatbázisból. 
 
@@ -167,6 +245,32 @@ Ez a metódus pedig arra szolgál, hogyha törlésre kerül egy regisztrált fel
 
 ### ListUsers():
 
+### Adatok:
+
+```json
+	Csak a metódus hívás
+```
+### Siker esetén:
+
+```json
+{
+	"success": true,
+	"data": [
+		{
+			"id": 1,
+			"username": "Teszt",
+			"email": "teszt.elek@email.hu",
+			"password": "$2y$10$VS5XoEFjgklPSfo5qLBmCO5P4Zr3c0WnDl6knB9V\/BPHykKcaYWY.",
+			"is_admin": 0,
+			"remember_token": "Nincs még adat megadva!",
+			"created_at": "2023-04-24T09:09:54.000000Z",
+			"updated_at": "2023-04-24T09:09:54.000000Z"
+		}
+	],
+	"message": "Regisztrált felhasználók listája kiirva!"
+}
+```
+
 - Ez a metódus azért felelős, hogykilistázza az összes felhasználó adatait.
 
 - bejövő paraméterek: $users(az összes adatot lekérjük a modellen keresztül)
@@ -175,6 +279,33 @@ Ez a metódus pedig arra szolgál, hogyha törlésre kerül egy regisztrált fel
 
 ### UpdateUser():
 
+### Adatok:
+
+```json
+{
+	"username" : "Tesztelés",
+	"email" : "teszt.elek@gmail.com",
+	"password" : "Jelszo1234"
+}
+```
+### Siker esetén:
+
+```json
+{
+	"success": true,
+	"data": {
+		"id": 1,
+		"username": "Tesztelés",
+		"email": "teszt.elek@gmail.com",
+		"password": "$2y$10$tMd13QmSkY1Y1yIWLxsxsOtJ34MyOv0GaxpliLKdhT3YczKmjckDW",
+		"is_admin": 0,
+		"remember_token": "Nincs még adat megadva!",
+		"created_at": "2023-02-14T07:36:05.000000Z",
+		"updated_at": "2023-04-24T09:24:04.000000Z"
+	},
+	"message": "Felhasználó adatai frissítve!"
+}
+```
 - Ez a metódus a felhaszálók módositásához használatos, ha szeretné későbbiekben módositani az adatait ezzel teheti meg.
 
 - bejövő paraméterek: $request(a módositáshoz szükséges adatok a kérésben: username, email, password), valamint $user["password"] = bcrypt($user["password"]) - vissza titkositja a jelszót ha az változtatásra kerül
@@ -183,6 +314,31 @@ Ez a metódus pedig arra szolgál, hogyha törlésre kerül egy regisztrált fel
 
 ### UpdateAdmin():
 
+### Adatok:
+
+```json
+{
+	"is_admin" : 1
+}
+```
+### Siker esetén:
+
+```json
+{
+	"success": true,
+	"data": {
+		"id": 1,
+		"username": "Tesztelés",
+		"email": "teszt.elek@gmail.com",
+		"password": "$2y$10$tMd13QmSkY1Y1yIWLxsxsOtJ34MyOv0GaxpliLKdhT3YczKmjckDW",
+		"is_admin": 1,
+		"remember_token": "Nincs még adat megadva!",
+		"created_at": "2023-02-14T07:36:05.000000Z",
+		"updated_at": "2023-04-24T09:24:40.000000Z"
+	},
+	"message": "Frissítés sikeres!"
+}
+```
 - Ez a metódus felelős azért, hogy valakinek admin jogosultságot tudjunk adni. Jelenleg csak admiként lehet admin jogot adni.
 
 - bejövő paraméter: $request(a módositáshoz szükséges adatok a kérésben: is_admin),
@@ -192,6 +348,30 @@ User::find(megnézni, hogy létezik e a felhasználó)
 
 ### ShowUserById(): 
 
+### Adatok:
+
+```json
+    Csak a metódus hívás
+```
+### Siker esetén:
+
+```json
+{
+	"success": true,
+	"data": {
+		"id": 1,
+		"username": "Tesztelés",
+		"email": "teszt.elek@gmail.com",
+		"password": "$2y$10$tMd13QmSkY1Y1yIWLxsxsOtJ34MyOv0GaxpliLKdhT3YczKmjckDW",
+		"is_admin": 1,
+		"remember_token": "Nincs még adat megadva!",
+		"created_at": "2023-02-14T07:36:05.000000Z",
+		"updated_at": "2023-04-24T09:24:40.000000Z"
+	},
+	"message": "1. Felhasználó adatainak betöltése sikeres."
+}
+```
+
 - Ez a metódus arra szolgál, hogy a felhasználó meg tudja tekinteni saját adatait.
 
 - bejövő paraméter: User::find(megnézi létezik-e ilyen felhasználó)
@@ -199,6 +379,21 @@ User::find(megnézni, hogy létezik e a felhasználó)
 - kimenő adatok: saját üzenet
 
 ### DeleteUser():
+
+### Adatok:
+
+```json
+	Csak a metódus hívás
+```
+### Siker esetén:
+
+```json
+{
+	"success": true,
+	"data": [],
+	"message": "Felhasználó törlése sikeresen megtörtént."
+}
+```
 
 - Ez a metódus törli a felhasználónak az adatait. Fontos megjegyezni, hogy előszőr a profilt kell hozzá törlni, különben nem fog működni.
 A foreach pedig azért felelős, hogyha törlésre kerül egy felhasználó, akkor ne legyen üres hely, és kapja meg az összes felhasználó az egyel előtti Id-t.
@@ -218,6 +413,40 @@ A foreach pedig azért felelős, hogyha törlésre kerül egy felhasználó, akk
 
 ### ProductList(): 
 
+### Adatok:
+
+```json
+	Csak a metódus hívás
+```
+### Siker esetén:
+
+```json
+{
+	"success": true,
+	"data": [
+		{
+			"id": 1,
+			"name": "Tojás",
+			"price": 10,
+			"weight": 10,
+			"description": "valamilyen leirás",
+			"image": "{\"file\":{}}",
+			"category_id": "Csirke Tojás"
+		},
+		{
+			"id": 2,
+			"name": "Tojás2",
+			"price": 10,
+			"weight": 10,
+			"description": "valamilyen leirás",
+			"image": null,
+			"category_id": "Csirke Tojás"
+		}
+	],
+	"message": "Termékek kiirva!"
+}
+```
+
 - feladata kilistázni az összes terméket a weboldara amit az adatbázisba feltöltünk. Emellett tárolva vannak egy másik táblába a kategóriák, és azt beemeli idegen kulccsal.
 
 - bejövő paraméterek: Product::with("category") - Az összes adatot kiszedi Modellen keresztül a Product és Category táblából. 
@@ -225,6 +454,35 @@ A foreach pedig azért felelős, hogyha törlésre kerül egy felhasználó, akk
 - kimenő adatok: saját üzenet
 
 ### NewProduct():
+
+### Adatok:
+
+```json
+{
+	"name" : "Teszt Tojás",
+	"price" : 10,
+	"weight" : 10,
+	"description" : "valamilyen leirás",
+	"category" : "Kitalált Tojás"
+}
+```
+### Siker esetén:
+
+```json
+{
+	"success": true,
+	"data": {
+		"id": 3,
+		"name": "Teszt Tojás",
+		"price": 10,
+		"weight": 10,
+		"description": "valamilyen leirás",
+		"image": null,
+		"category_id": "Kitalált Tojás"
+	},
+	"message": "Termék létrehozva!"
+}
+```
 
 - feladata, hogy az admin jogosultsággal rendelkezők tudjanak új terméket felvenni. 
 

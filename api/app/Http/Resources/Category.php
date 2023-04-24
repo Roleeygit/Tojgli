@@ -16,7 +16,8 @@ class Category extends JsonResource
     {
         return 
         [
-            "category" => $this->category,
+            "id" => $this->id,
+            "category" => $this->category
         ];
     }
 }
