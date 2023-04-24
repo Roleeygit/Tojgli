@@ -27,6 +27,11 @@ export class AuthService {
     return this.http.post<any>(url, userData, httpOption);
   }
 
+  getUserId(): number {
+    const userId = localStorage.getItem('id');
+    return +userId!;
+  }
+
   register(username: string, email: string, password: string, confirm_password: string) {
     const formData = new FormData();
     formData.append('username', username);
