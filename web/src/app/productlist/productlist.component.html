@@ -67,7 +67,7 @@
                     <li><a class="dropdown-item" routerLink="#"><i class="bi bi-pencil-square"></i> Adatok</a></li>
                     <li><a class="dropdown-item" routerLink="#"><i class="bi bi-currency-dollar"></i> Vásárlásaim</a></li>
                     <li><a class="dropdown-item" routerLink="#"><i class="bi bi-basket-fill"></i> Kosár</a></li>
-                    <li><a class="dropdown-item text-danger" routerLink="/logout"><i class="bi bi-door-open-fill"></i> Kijelentkezés</a></li>
+                    <li><a class="dropdown-item text-danger" type="button" (click)="logout()" routerLink="/logout"><i class="bi bi-door-open-fill"></i> Kijelentkezés</a></li>
                     <li><a class="dropdown-item text-warning" routerLink="/login"><i class="bi bi-person-fill"></i> Bejelentkezés</a></li>
                   </ul>
                 </div>
@@ -78,11 +78,14 @@
       </div>
     </header>
     <br>
-    <div class="card">
-      <h5 class="card-title">Card title</h5>
+    <div class="card" *ngFor="let prod of products">
+      <h5 class="card-title">{{ prod.name }}</h5>
       <div class="card-body">
         <img src="..." class="card-img-top">
-        <p class="card-text">Ez a tojás igazán különlegesnek tűnik több színben játszó, csillogó héja van.</p>
+        <p class="card-text">{{ prod.description }}</p>
+        <p class="card-text"></p>
+        <p class="card-text">Ár: {{ prod.price }} Ft</p>
+        <p class="card-text">Súly: {{ prod.weight }} kg</p>
         <a class="btn btn-primary"><i class="bi bi-currency-dollar"></i> Vásárlás</a><a class="btn btn-primary"><i class="bi bi-basket2-fill"></i> Kosárba</a>
       </div>
     </div>
