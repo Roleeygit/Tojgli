@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
     }))
     .subscribe({
       next: () => {
-        this.router.navigate(['/profile']);
+        this.router.navigate(['/home']);
       },
       error: err => {
         const errorObj = err.error.data;

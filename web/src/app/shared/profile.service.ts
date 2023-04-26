@@ -9,30 +9,22 @@ import { Observable } from 'rxjs';
 export class ProfileService {
   constructor(private http: HttpClient) {}
 
-  updateProfile(id: number, surname: string, lastname: string, country: string, city: string, address: string): Observable<any> {
-    const endpoint = `updateprofile/${id}`;
-    let url = environment.apihost + endpoint;
-
-    const profileData = {
-      surname: surname,
-      lastname: lastname,
-      country: country,
-      city: city,
-      address: address
-    };
-    
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
-    });
-    
-    const httpOptions = {
-      headers: headers
-    };
-
-    return this.http.put<any>(url, profileData, httpOptions);
+updateProfile(profile: any) {
+  let id = profile.id;
+  let endpoint = 'updateprofile';
+  let url = environment.apihost + endpoint + "/" + id;
+  let token = localStorage.getItem('token');    
+  let headers = new HttpHeaders({
+    'Content-Type': 'applicaton/json',
+    'Authorization': 'Bearer ' + token
+  });
+  let httpOption = {
+    headers: headers
+  };
+  return this.http.put(url, profile, httpOption);
   }
 }
+
 
 
 

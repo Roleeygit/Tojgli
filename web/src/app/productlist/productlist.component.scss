@@ -72,9 +72,33 @@
 
 .btn-primary {     
     background-color: rgb(255, 162, 0);     
-    border-color: rgb(255, 255, 255);   
+    border-color: rgb(255, 162, 0);
+    margin-left: 8px;
 }
 
 .active {
     border-bottom: 5px solid rgb(255, 162, 0);
+}
+
+.btn-primary:focus {
+    background-color: rgb(255, 222, 0);
+}
+
+.btn-primary:hover {
+    background-color: rgb(255, 222, 0);
+    border-color: rgb(255, 222, 0);
+}
+
+.card {
+    width: 18rem;
+    height: 18rem;
+    background-color: #ddd;
+    border: 1px solid #ddd;
+    border-color: #c0c5c9;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.card-title {
+    text-align: center;
 }
