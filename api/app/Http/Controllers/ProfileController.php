@@ -24,6 +24,18 @@ class ProfileController extends BaseController
 
     }   
 
+    public function ShowProfileById($id)
+{
+    $profile = Profile::with(["user", "payment_mode", "delivery_mode"])->find($id);
+
+    if (!$profile) {
+        return $this->sendError('Profil nem található!');
+    }
+
+    return $this->sendResponse(new ProfileResource($profile), 'Profil kiirva.');
+}
+
+
     public function UpdateProfile(Request $request, $id)
     {
         $profile = $request->all();

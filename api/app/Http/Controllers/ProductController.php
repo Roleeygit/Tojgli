@@ -8,6 +8,8 @@ use App\Models\Product;
 use Validator;
 use Illuminate\Support\Facades\DB;
 use App\Http\Resources\Product as ProductResource;
+use App\Http\Resources\Category as CategoryResource;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends BaseController
 {
@@ -59,10 +61,12 @@ class ProductController extends BaseController
 
         $validator = Validator::make($input,
         [
-            "image" => "required"
+            "image" => "required|image|mimes:jpg,png,jpeg,gif"
         ],
         [
-            "image.required" => "A kép megadása kötelező!"
+            "image.required" => "A kép megadása kötelező!",
+            "image.image" => "A kép nem megfelelő!",
+            "image.mimes" => "A kép fomátuma nem megfelelő! (jpg,png,jpeg,gif)"
         ]);
 
         if ($validator->fails())
@@ -71,9 +75,15 @@ class ProductController extends BaseController
         }
 
         $product = Product::find($image);
-        $product->update($request->all());
-        $product->save();
 
+        if ($request->hasFile('image')) 
+        {
+            $imageFile = $request->file('image');
+            $newImageName = time() . '_' . $imageFile->getClientOriginalName();
+            $imagePath = $imageFile->storeAs('public/images', $newImageName);
+            $product->image = 'storage/'. "app/" . $imagePath;
+            $product->save();
+        }
 
         return $this->sendResponse(new productResource($product), "A kép frissítve!");
 
@@ -139,6 +149,12 @@ class ProductController extends BaseController
             $product->save();
         }
         return $this->sendResponse([], "Termék törölve!");
+    }
+
+    public function ShowCategory()
+    {
+        $categories = Category::all();
+        return $this->sendResponse(CategoryResource::collection($categories), "Kategóriák kiirva!");
     }
 
 }

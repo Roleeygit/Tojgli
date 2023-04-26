@@ -53,12 +53,13 @@ Route::get("/userbyid/{id}", [UserController::class,"ShowUserById"]);
 
 Route::get("/productlist", [ProductController::class,"ProductList"]);
 Route::get("ProductById/{id}", [ProductController::class, "ShowProductById"]);
-
+Route::get("/categories", [ProductController::class, "ShowCategory"]);
 
 /* ----------------------------------------------------------------------
 |                             Profile Route                             |
 ------------------------------------------------------------------------ */
 Route::get("/profilelist", [ProfileController::class,"ListProfiles"]);
+Route::get("/profile/{id}", [ProfileController::class,"ShowProfileById"]);
 Route::put("/updateprofile/{id}", [ProfileController::class,"UpdateProfile"]);
 
 

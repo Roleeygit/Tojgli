@@ -225,3 +225,38 @@ Verzió kiadva: 2023-04-17
 Verzió kiadva: 2023-04-20
 
 - User Login tovább kezelve, ellenőzri mostantól azt is, hogy mit ir be a felhasználó, és megnézi egyezik-e ez az adatbázisban eltárolt felhaználókkal. Ha nem, akkor hiba üzenetet kezel, amibel vagy a felhasználó/email kombóra panaszkodik, vagy a jelszóra. 
+
+ <br></br>
+
+ # <p align = "center">Verzió 0.042:</p>
+Verzió kiadva: 2023-04-20
+
+- Profilhoz hozzá kellett adni még egy metódust, ami azért felel, hogy kilistázzuk csak egy felhasználó profilját. 
+- Insomnia új verzió
+
+ <br></br>
+
+ # <p align = "center">Verzió 0.043:</p>
+Verzió kiadva: 2023-04-24
+
+- Létre lett hozva egy új metódus ami megjeleniti a kategóriákat, ezzel majd új termék felvételénél kilistázza milyen kategóriák elérhetőek.
+- Category Resource létrehozva, hogy csak a kategóriákat le tudjuk kérni az adatbázisból. 
+- Új útvonal ehhez a metódushoz
+- Insomnia új verzió
+
+ <br></br>
+
+ # <p align = "center">Verzió 0.044:</p>
+Verzió kiadva: 2023-04-24
+
+- Dokumentáció kibővítbe
+- Id hozzá adva a kategóriához
+
+ <br></br>
+
+ # <p align = "center">Verzió 0.045:</p>
+Verzió kiadva: 2023-04-26
+
+- A kép felvétele át lett alakitva: A blob tipus helyett string lett, a kép útvonalát tárolja.
+- A képet eltárolja a storage/app/public/images helyére, ahonnan le lehet azt kérni frontenden. 
+- linkelve lett a tárhely ahova mentse: php artisan storage:link paranccsal

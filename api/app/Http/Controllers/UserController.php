@@ -41,7 +41,7 @@ class UserController extends BaseController
             "password.min" => "A jelszónak minimum 6 karakter hosszúnak kell lennie!",
             "password.regex" => "A jelszónak minimum tartalmaznia kell egy számot, egy nagybetűt és egy kisbetűt!",
 
-            "confirm_password.required" => "A jelszó újboli megagása kötelező!",
+            "confirm_password.required" => "A jelszó újboli megadása kötelező!",
             "confirm_password.same" => "A jelszavaknak eggyezniük kell!"
         ]
     );
