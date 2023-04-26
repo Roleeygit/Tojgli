@@ -1,13 +1,15 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  [x: string]: any;
   constructor(private http: HttpClient) { }
+
+  loggedInUser: any;
 
   login(username_or_email: string, password: string) {
     let endpoint = "login";
@@ -25,7 +27,7 @@ export class AuthService {
       headers: headers
     };
     return this.http.post<any>(url, userData, httpOption);
-  }
+  } 
 
   getUserId(): number {
     const userId = localStorage.getItem('id');
@@ -55,7 +57,14 @@ export class AuthService {
     let httpOption = {
       headers: headers
     };
-    return this.http.post<any>(url, userData, httpOption);
+    return this.http.post<any>(url, userData, httpOption).pipe(
+      map(response => {
+        if (response.success) {
+          this.loggedInUser = response.user;
+        }
+        return response;
+      })
+    );
   }
 
   checkUsername(username: string) {
@@ -72,11 +81,28 @@ export class AuthService {
     return this.http.get<any>(url, httpOption);
   }
 
-  isLoggedIn():any {
-    if(localStorage.getItem('token') === null) {
-      return false;
-    }
+  // isLoggedIn():any {
+  //   if(localStorage.getItem('token') === null) {
+  //     return false;
+  //   }
+  //   let token = localStorage.getItem('token');
+  //   return token;
+  // }
+
+  logout() {
+    let endpoint = 'logout';
+    let url = environment.apihost + endpoint;
     let token = localStorage.getItem('token');
-    return token;
+    localStorage.removeItem('token');
+    let headers = new HttpHeaders({
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + token
+    });
+    
+    let httpOption = {
+      headers: headers
+    };
+    return this.http.post(url, "", httpOption);
   }
+  
 }

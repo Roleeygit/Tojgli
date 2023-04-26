@@ -29,29 +29,25 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    let username_or_email = this.loginForm.value.username_or_email
-    let password = this.loginForm.value.password
-
-    this.auth.login(username_or_email, password)
-    .pipe(
-      tap(data => {
-        localStorage.setItem('token', data.token)
-        localStorage.setItem('username_or_email', data.username_or_email)
-    }))
-    .subscribe({
-      next: () => {
-        this.router.navigate(['/home']);
+    let username_or_email = this.loginForm.value.username_or_email;
+    let password = this.loginForm.value.password;
+  
+    this.auth.login(username_or_email, password).subscribe({
+      next: (data) => {
+        localStorage.setItem('token', data['data'].token);
+        localStorage.setItem('username_or_email', data['data'].username_or_email);
+        this.router.navigate(['']);
       },
-      error: err => {
+      error: (err) => {
         const errorObj = err.error.data;
         this.errors = [];
         for (const field in errorObj) {
-          if(errorObj.hasOwnProperty(field)) {
+          if (errorObj.hasOwnProperty(field)) {
             const errorMessage = errorObj[field][0];
             this.errors.push(`${errorMessage}`);
           }
         }
-      }
+      },
     });
   }
 }
