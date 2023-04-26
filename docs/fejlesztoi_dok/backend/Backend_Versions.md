@@ -251,3 +251,12 @@ Verzió kiadva: 2023-04-24
 
 - Dokumentáció kibővítbe
 - Id hozzá adva a kategóriához
+
+ <br></br>
+
+ # <p align = "center">Verzió 0.045:</p>
+Verzió kiadva: 2023-04-26
+
+- A kép felvétele át lett alakitva: A blob tipus helyett string lett, a kép útvonalát tárolja.
+- A képet eltárolja a storage/app/public/images helyére, ahonnan le lehet azt kérni frontenden. 
+- linkelve lett a tárhely ahova mentse: php artisan storage:link paranccsal
