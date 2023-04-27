@@ -17,7 +17,9 @@ export class ProductlistComponent implements OnInit {
     private router: Router,
     private api: ApiService) { }
 
-  ngOnInit() { }
+  ngOnInit(): void {
+    this.getProducts();
+   }
 
   logout() {
     this.auth.logout().subscribe({
@@ -33,12 +35,13 @@ export class ProductlistComponent implements OnInit {
 
   getProducts() {
     this.api.getProducts().subscribe({
-      next: (products: any) => {        
-        this.products = products;
+      next: (response: any) => {
+        this.products = response.data;
       },
       error: (err) => {
         console.log(err);
       }
     });
   }
+  
 }
