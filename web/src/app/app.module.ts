@@ -19,7 +19,6 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { DatasheetComponent } from './datasheet/datasheet.component';
-import { CopyrightComponent } from './copyright/copyright.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AdminloginComponent } from './adminlogin/adminlogin.component';
 import { AdminmainComponent } from './adminmain/adminmain.component';
@@ -30,13 +29,13 @@ import { HomeComponent } from './home/home.component';
 import { NgxUiLoaderHttpModule } from 'ngx-ui-loader';
 import { LoaderComponent } from './loader/loader.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { BasketComponent } from './basket/basket.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
     DatasheetComponent,
-    CopyrightComponent,
     ProfileComponent,
     AdminloginComponent,
     AdminmainComponent,
@@ -44,7 +43,8 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     ProductlistComponent,
     HomeComponent,
     LoaderComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    BasketComponent
   ],
   imports: [
     BrowserModule,
