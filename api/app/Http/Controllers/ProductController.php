@@ -15,7 +15,14 @@ class ProductController extends BaseController
 {
     public function ProductList()
     {
+
         $products = Product::with("category")->get();
+        
+        foreach ($products as $product) 
+        {
+            $product->image = $product->image ? asset($product->image) : null;
+            $product->id = $product->getKey();
+        }
 
         return $this->sendResponse(ProductResource::collection($products), "Termékek kiirva!");
     }
