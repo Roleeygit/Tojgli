@@ -76,18 +76,46 @@ class ProductController extends BaseController
 
         $product = Product::find($image);
 
-        if ($request->hasFile('image')) 
+        if ($request->hasFile("image")) 
         {
-            $imageFile = $request->file('image');
-            $newImageName = time() . '_' . $imageFile->getClientOriginalName();
-            $imagePath = $imageFile->storeAs('public/images', $newImageName);
-            $product->image = 'storage/'. "app/" . $imagePath;
+            $imageFile = $request->file("image");
+            $newImageName = time() . "_" . $imageFile->getClientOriginalName();
+            $imagePath = $imageFile->storeAs("public/images", $newImageName);
+            $product->image = "storage/". "app/" . $imagePath;
             $product->save();
         }
 
         return $this->sendResponse(new productResource($product), "A kép frissítve!");
 
     }
+
+    public function GetProductImage($id)
+    {
+        $product = Product::find($id);
+
+        if (!$product) 
+        {
+            return $this->sendError("A termék nem található!");
+        }
+
+        $imagePath = $product->image;
+
+        if (!$imagePath) 
+        {
+            return $this->sendError("A terméknek nincs képe!");
+        }
+
+        $publicPath = str_replace("storage/app/", "", $imagePath);
+        $imageFullPath = storage_path("app/" . $publicPath);
+
+        if (!file_exists($imageFullPath)) 
+        {
+            return $this->sendError("A kép nem található!");
+        }
+
+        return response()->file($imageFullPath);
+    }
+
 
     public function ShowProductById ($id)
     {
