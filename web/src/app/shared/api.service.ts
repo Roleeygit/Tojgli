@@ -14,4 +14,10 @@ export class ApiService {
     let url = environment.apihost + endpoint;
     return this.http.get<any>(url);
   }
+
+  getImages() {
+    let endpoint = 'productimg';
+    let url = environment.apihost + endpoint;
+    return this.http.get<any>(url);
+  }
 }

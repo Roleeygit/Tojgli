@@ -49,6 +49,7 @@ Tojgli/web
   |  |  |-productlist/
   |  |  |-profile/
   |  |  |-register/
+  |  |  |-pagenotfound/
   |  |  |-shared/
   |  |  `-app-routing.module.ts
   |  |  |-app.component.html
@@ -82,6 +83,7 @@ Vizuális Komponensek:
 * newproduct.component - Új Termék felülete az admin felületen
 * productlist.component - Kilistázza a termékeket
 * profile.component - Profil Adatlap
+* pagenotfound.component - 404 Hiba Oldal
 
 ### AuthService Osztály
 
@@ -94,3 +96,11 @@ Három bemenő paramtére van, a felhasználónév, email és a jelszó midnegyi
 ### Api Environment
 
 A felhasználók és termékek kezelését végzi a REST API szerveren.
+
+#### logout Metódus
+
+Kijelentkezteti az adot felhasználót és átdobja a login oldalra (Törli a tokenjét ami bejelentkezéskor kap)
+
+#### getProducts Metódus
+
+Nincs bemenő paramétere. Lekéri az össze termék adatait, majd visszatér egy Observer objektummal, ami szolgáltatja az összes termék adatait.

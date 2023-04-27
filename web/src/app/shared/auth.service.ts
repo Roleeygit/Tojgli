@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
   constructor(private http: HttpClient) { }
 
+  private loggedIn = false;
   loggedInUser: any;
 
   login(username_or_email: string, password: string) {
@@ -28,11 +29,6 @@ export class AuthService {
     };
     return this.http.post<any>(url, userData, httpOption);
   } 
-
-  getUserId(): number {
-    const userId = localStorage.getItem('id');
-    return +userId!;
-  }
 
   register(username: string, email: string, password: string, confirm_password: string) {
     const formData = new FormData();
@@ -67,27 +63,13 @@ export class AuthService {
     );
   }
 
-  checkUsername(username: string) {
-    let endpoint = `register/${username}`;
-    let url = environment.apihost + endpoint;
-  
-    let headers = new HttpHeaders({
-      "Content-Type": "application/json",
-      "Accept": "application/json"
-    });
-    let httpOption = {
-      headers: headers
-    };
-    return this.http.get<any>(url, httpOption);
+  isLoggedIn():any {
+    if(localStorage.getItem('token') === null) {
+      return false;
+    }
+    let token = localStorage.getItem('token');
+    return token;
   }
-
-  // isLoggedIn():any {
-  //   if(localStorage.getItem('token') === null) {
-  //     return false;
-  //   }
-  //   let token = localStorage.getItem('token');
-  //   return token;
-  // }
 
   logout() {
     let endpoint = 'logout';
