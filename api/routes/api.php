@@ -19,6 +19,7 @@ use App\Http\Controllers\PurchaseController;
 |
 */
 
+
 Route::group(["middleware" => ["auth:sanctum"]], function() 
 {
     Route::put("/updateuser/{id}", [UserController::class,"UpdateUser"]);
@@ -50,16 +51,16 @@ Route::get("/userbyid/{id}", [UserController::class,"ShowUserById"]);
 ------------------------------------------------------------------------ */
 
 
-
 Route::get("/productlist", [ProductController::class,"ProductList"]);
 Route::get("ProductById/{id}", [ProductController::class, "ShowProductById"]);
 Route::get("/productimg/{id}", [ProductController::class,"GetProductImage"]);
-
 Route::get("/categories", [ProductController::class, "ShowCategory"]);
 
 /* ----------------------------------------------------------------------
 |                             Profile Route                             |
 ------------------------------------------------------------------------ */
+
+
 Route::get("/profilelist", [ProfileController::class,"ListProfiles"]);
 Route::get("/profile/{id}", [ProfileController::class,"ShowProfileById"]);
 Route::put("/updateprofile/{id}", [ProfileController::class,"UpdateProfile"]);
