@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
+  images: any = [];
+
   constructor(
     private auth: AuthService,
     private router: Router,) { }

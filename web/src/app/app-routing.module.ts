@@ -7,6 +7,7 @@ import { ProductlistComponent } from './productlist/productlist.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { AdminmainComponent } from './adminmain/adminmain.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'products', component: ProductlistComponent},
+  {path: 'admin', component: AdminmainComponent},
   {path: '', component: HomeComponent},
   {path: '**', component: PagenotfoundComponent},
 ];
