@@ -20,6 +20,7 @@ export class ProductlistComponent implements OnInit {
 
   ngOnInit() { 
     this.isLoggedIn = this.auth.isLoggedIn();
+    this.getProducts();
   }
 
   logout() {
