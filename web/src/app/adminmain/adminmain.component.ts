@@ -13,6 +13,7 @@ import 'bootstrap/js/dist/modal';
 export class AdminmainComponent implements OnInit {
 
   productForm !: FormGroup;
+  editForm !: FormGroup;
   users: any = [];
   products: any = [];
 
@@ -27,6 +28,14 @@ export class AdminmainComponent implements OnInit {
       inputWeight: ['', Validators.required],
       inputDescription: ['', Validators.required],
       inputCategory: ['', Validators.required]
+    });
+    this.editForm = this.formBuilder.group({
+      editInputId: ['', Validators.required],
+      editInputName: ['', Validators.required],
+      editInputPrice: ['', Validators.required],
+      editInputWeight: ['', Validators.required],
+      editInputDescription: ['', Validators.required],
+      editInputCategory: ['', Validators.required]
     });
     this.getUsers();
     this.getProducts();
@@ -79,12 +88,41 @@ export class AdminmainComponent implements OnInit {
     });
   }
 
+  editProduct(product: any) {
+    this.editForm.patchValue({editInputId: product.id});
+    this.editForm.patchValue({editInputName: product.name});
+    this.editForm.patchValue({editInputPrice: product.price});
+    this.editForm.patchValue({editInputWeight: product.weight});
+    this.editForm.patchValue({editInputDescription: product.description});
+    this.editForm.patchValue({editInputCategory: product.category});
+  }
+  updateProduct() {
+    let data = {
+      id: this.editForm.value.editInputId,
+      name: this.editForm.value.editInputName,
+      price: this.editForm.value.editInputPrice,
+      weight: this.editForm.value.editInputWeight,
+      description: this.editForm.value.editInputDescription,
+      category: this.editForm.value.editInputCategory,
+    };
+    this.api.updateProduct(data).subscribe({
+      next: (res) => {
+        this.getProducts();
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
+
+  }
+
   clearField() {
     this.productForm.patchValue({
         inputName: '', 
-        inputItemnumber: '',
-        inputQuantity: '',
-        inputPrice: ''
+        inputPrice: '',
+        inputWeight: '',
+        inputDescription: '',
+        inputCategory: ''
       });
   }
 

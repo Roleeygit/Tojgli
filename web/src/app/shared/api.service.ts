@@ -26,6 +26,21 @@ export class ApiService {
     return this.http.post<any>(url, data, httpOption);
   }
 
+  updateProduct(product: any) {
+    let id = product.id;
+    let endpoint = 'updateproduct';
+    let url = environment.apihost + endpoint + "/" + id;
+    let token = localStorage.getItem('token');    
+    let headers = new HttpHeaders({
+      'Content-Type': 'applicaton/json',
+      'Authorization': 'Bearer ' + token
+    });
+    let httpOption = {
+      headers: headers
+    };
+    return this.http.put(url, product, httpOption);
+  }
+
   getProducts() {
     let endpoint = 'productlist';
     let url = environment.apihost + endpoint;
