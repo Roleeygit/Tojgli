@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../shared/api.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import 'jquery';
-import 'bootstrap/js/dist/modal';
 
 
 @Component({
@@ -15,6 +13,7 @@ export class AdminmainComponent implements OnInit {
   productForm !: FormGroup;
   editForm !: FormGroup;
   users: any = [];
+  profiles: any = [];
   products: any = [];
 
   constructor(
@@ -39,6 +38,7 @@ export class AdminmainComponent implements OnInit {
     });
     this.getUsers();
     this.getProducts();
+    this.getProfiles();
   }
 
   getUsers() {
@@ -92,8 +92,43 @@ export class AdminmainComponent implements OnInit {
   deleteProduct(id: number) {
     this.api.deleteProduct(id).subscribe({
       next: (res) => {
-        console.log(res);
+        // console.log(res);
         this.getProducts();
+      },
+      error: (err) => {
+        // console.log(err);
+      }
+    });
+  }
+
+  deleteUser(id: number) {
+    this.api.deleteUser(id).subscribe({
+      next: (res) => {
+        console.log(res);
+        this.getUsers();
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
+  }
+
+  deleteProfile(id: number) {
+    this.api.deleteProfile(id).subscribe({
+      next: (res) => {
+        console.log(res);
+        this.getProfiles();
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
+  }
+
+  getProfiles() {
+    this.api.getProfiles().subscribe({
+      next: (response: any) => {
+        this.profiles = response.data;
       },
       error: (err) => {
         console.log(err);

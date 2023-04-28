@@ -55,6 +55,34 @@ export class ApiService {
     return this.http.delete<any>(url, httpOption);
   }
 
+  deleteUser(id: number) {
+    let endpoint = 'deleteuser';
+    let url = environment.apihost + endpoint + "/" + id;
+    let token = localStorage.getItem('token');    
+    let headers = new HttpHeaders({
+      'Content-Type': 'applicaton/json',
+      'Authorization': 'Bearer ' + token
+    });
+    let httpOption = {
+      headers: headers
+    };
+    return this.http.delete<any>(url, httpOption);
+  }
+
+  deleteProfile(id: number) {
+    let endpoint = 'deleteprofile';
+    let url = environment.apihost + endpoint + "/" + id;
+    let token = localStorage.getItem('token');    
+    let headers = new HttpHeaders({
+      'Content-Type': 'applicaton/json',
+      'Authorization': 'Bearer ' + token
+    });
+    let httpOption = {
+      headers: headers
+    };
+    return this.http.delete<any>(url, httpOption);
+  }
+
   getProducts() {
     let endpoint = 'productlist';
     let url = environment.apihost + endpoint;
@@ -63,6 +91,12 @@ export class ApiService {
 
   getUsers() {
     let endpoint = 'registeredusers';
+    let url = environment.apihost + endpoint;
+    return this.http.get<any>(url);
+  }
+
+  getProfiles() {
+    let endpoint = 'profilelist';
     let url = environment.apihost + endpoint;
     return this.http.get<any>(url);
   }

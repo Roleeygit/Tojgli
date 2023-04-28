@@ -133,6 +133,10 @@ Nincs bemenő paramétere. Lekéri az össze termék adatait, majd visszatér eg
 
 Nincs bemenő paramétere. Lekéri az össze felhasználó adatait kivéve a jelszót, majd visszatér egy Observer objektummal, ami szolgáltatja az összes felhasználó adatait kivéve a jelszót.
 
+#### getProfiles Metódus
+
+Nincs bemenő paramétere. Lekéri az össze felhasználó profil adatait majd visszatér egy Observer objektummal, ami szolgáltatja az összes felhasználó profil adatait.
+
 ### Home Komponens
 
 A termékek kezelését végzi a REST API szerveren.
@@ -202,6 +206,12 @@ Törli az új termék felvételének űrlap mezőit amiután el lett mentve. A m
 #### Adminmain.deleteProduct() metódus
 A metódusnak egy bemenőparamétere van. Törli a kiválasztott terméket a táblázatból és a termékek oldalról.
 
+#### Adminmain.deleteUser() metódus
+A metódusnak egy bemenőparamétere van. Törli a kiválasztott felhasználót az adatbázisból.
+
+#### Adminmain.deleteProfile() metódus
+A metódusnak egy bemenőparamétere van. Törli a kiválasztott felhasználónak a profilját az adatbázisból.
+
 ### Előforduló Hibák
 * A profil legördülő menüje kiebb vagy nagyobb képernyőe setén nehezen jelenik meg a megoldására azt találtam ki hogy feljebb mozgatom hogy könnyedén megjelenjen.
 * Az admin felületen a kategória szerkesztésénél hiába szerkeszti a kategóriát nem frissíti.
@@ -209,9 +219,10 @@ A metódusnak egy bemenőparamétere van. Törli a kiválasztott terméket a tá
 ### Tervezett Funkciók
 * Termék Vásárlás (Ha vásrol egy terméket a kosát ikonnál jelzi mennyi termék van a kosárba)
 * Fizetés (Folyamatban)
-* Felhasználó Törlése
 * Profil Frissítés
 * Kép hozzáadása a termék felvétel és szerkesztés űrlapjához
 * Admin Login
+* Termék Információ
+
 
  
