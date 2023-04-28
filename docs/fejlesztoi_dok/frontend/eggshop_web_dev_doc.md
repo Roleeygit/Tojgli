@@ -201,4 +201,17 @@ Törli az új termék felvételének űrlap mezőit amiután el lett mentve. A m
 
 #### Adminmain.deleteProduct() metódus
 A metódusnak egy bemenőparamétere van. Törli a kiválasztott terméket a táblázatból és a termékek oldalról.
+
+### Előforduló Hibák
+* A profil legördülő menüje kiebb vagy nagyobb képernyőe setén nehezen jelenik meg a megoldására azt találtam ki hogy feljebb mozgatom hogy könnyedén megjelenjen.
+* Az admin felületen a kategória szerkesztésénél hiába szerkeszti a kategóriát nem frissíti.
+
+### Tervezett Funkciók
+* Termék Vásárlás (Ha vásrol egy terméket a kosát ikonnál jelzi mennyi termék van a kosárba)
+* Fizetés (Folyamatban)
+* Felhasználó Törlése
+* Profil Frissítés
+* Kép hozzáadása a termék felvétel és szerkesztés űrlapjához
+* Admin Login
+
  
