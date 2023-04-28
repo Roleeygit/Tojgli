@@ -29,6 +29,10 @@
     <symbol id="grid" viewBox="0 0 16 16">
       <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"/>
     </symbol>
+    <symbol id="map" viewBox="0 0 16 16"> 
+      <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
+      <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+    </symbol>
   </svg>
   
   <main>
@@ -71,8 +75,9 @@
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" routerLink="#"><i class="bi bi-person-circle"></i> Profilom</a></li>
                     <li><a class="dropdown-item" routerLink="#"><i class="bi bi-basket-fill"></i> Kosár</a></li>
-                    <li><a class="dropdown-item text-danger" type="button" (click)="logout()"><i class="bi bi-door-open-fill"></i> Kijelentkezés</a></li>
-                    <li><a class="dropdown-item text-warning" routerLink="/login"><i class="bi bi-person-fill"></i> Bejelentkezés</a></li>
+                    <li><a *ngIf="isLoggedIn" class="dropdown-item text-danger" type="button" (click)="logout()"><i class="bi bi-door-open-fill"></i> Kijelentkezés</a></li>
+                    <li><a *ngIf="!isLoggedIn" class="dropdown-item text-warning" routerLink="/login"><i class="bi bi-person-fill"></i> Bejelentkezés</a></li>
+                    <li><a *ngIf="!isLoggedIn" class="dropdown-item text-warning" routerLink="/register"><i class="bi bi-person-fill"></i> Regisztrálás</a></li>
                   </ul>
                 </div>
               </li>
@@ -118,7 +123,7 @@
             <li>Kisebb Méretű</li>
             <li>Különleges</li>
           </ul>
-          <button type="button" class="w-100 btn btn-lg btn-primary">Vásárlás</button>
+          <button type="button" class="w-100 btn btn-lg btn-primary"><i class="bi bi-basket2-fill"></i> Vásárlás</button>
         </div>
       </div>
     </div>
@@ -135,7 +140,7 @@
             <li>Közepes Méretű</li>
             <li>Különleges</li>
           </ul>
-          <button type="button" class="w-100 btn btn-lg btn-primary">Vásárlás</button>
+          <button type="button" class="w-100 btn btn-lg btn-primary"><i class="bi bi-basket2-fill"></i> Vásárlás</button>
         </div>
       </div>
     </div>
@@ -151,7 +156,7 @@
             <li>Nagyobb Méretű</li>
             <li>Különleges</li>
           </ul>
-          <button type="button" class="w-100 btn btn-lg btn-primary">Vásárlás</button>
+          <button type="button" class="w-100 btn btn-lg btn-primary"><i class="bi bi-basket2-fill"></i> Vásárlás</button>
         </div>
       </div>
     </div>
@@ -160,32 +165,34 @@
 <footer class="pt-4 my-md-5 pt-md-5 border-top">
   <div class="row">
     <div class="col-12 col-md">
-      <div id="map" class="map"></div>
+      <a href="{{googlemaps}}" class="d-flex align-items-center mb-1 link-dark text-decoration-none" target="_blank" id="facebook">
+        <svg class="bi me-2" width="20" height="20"><use xlink:href="#map"/></svg>Térkép
+      </a>
       <small class="d-block mb-3 text-body-secondary">&copy; 2022-2023</small>
     </div>
     <div class="col-6 col-md">
       <h5>Újdonságok</h5>
       <ul class="list-unstyled text-small">
-        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Csirke Tojás</a></li>
-        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Strucc Tojás</a></li>
-        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Lúd Tojás</a></li>
-        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Valami Tojás</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#"><i class="bi bi-egg-fill"></i> Csirke Tojás</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#"><i class="bi bi-egg-fill"></i> Strucc Tojás</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#"><i class="bi bi-egg-fill"></i> Lúd Tojás</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#"><i class="bi bi-egg-fill"></i> Valami Tojás</a></li>
       </ul>
     </div>
     <div class="col-6 col-md">
       <h5>Források</h5>
       <ul class="list-unstyled text-small">
-        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Forrás</a></li>
-        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Tojások</a></li>
-        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Toglik</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#"><i class="bi bi-archive-fill"></i> Forrás</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#"><i class="bi bi-egg-fill"></i> Tojások</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#"><i class="bi bi-egg-fried"></i> Tojglik</a></li>
       </ul>
     </div>
     <div class="col-6 col-md">
       <h5>Kapcsolat</h5>
       <ul class="list-unstyled text-small">
-        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Csapat</a></li>
-        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Privacy</a></li>
-        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Terms</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#"><i class="bi bi-microsoft-teams"></i> Csapat</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#"><i class="bi bi-shield-fill"></i> Privacy</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#"><i class="bi bi-terminal-fill"></i> Terms</a></li>
       </ul>
     </div>
   </div>

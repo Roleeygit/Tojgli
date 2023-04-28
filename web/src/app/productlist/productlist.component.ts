@@ -11,20 +11,23 @@ import { ApiService } from '../shared/api.service';
 export class ProductlistComponent implements OnInit {
 
   products: any = [];
+  isLoggedIn = false;
 
   constructor(
     private auth: AuthService,
     private router: Router,
     private api: ApiService) { }
 
-  ngOnInit(): void {
-    this.getProducts();
-   }
+  ngOnInit() { 
+    this.isLoggedIn = this.auth.isLoggedIn();
+  }
 
   logout() {
     this.auth.logout().subscribe({
       next: (res) => {
         console.log(res);
+        localStorage.removeItem('isLoggedIn');
+        this.isLoggedIn = false;
         this.router.navigate(['/login']);
       },
       error: (err) => {
