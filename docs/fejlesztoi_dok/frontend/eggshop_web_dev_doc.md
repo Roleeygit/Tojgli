@@ -121,6 +121,10 @@ Egyetlen bemenő paramétere tartalmazza, a felvenni kívánt termék adatait. E
 
 Egyetlen bemenő paramétere tartalmazza, a felvenni kívánt termék adatait. Egy Observer objektummal tér vissza, amiből kiolvasható a szerver válasza.
 
+#### deleteProduct Metódus
+
+Egyetlen bemenő paramétere tartalmazza, a törölni kívánt terméket. Egy Observer objektummal tér vissza, amiből kiolvasható a szerver válasza.
+
 #### getProducts Metódus
 
 Nincs bemenő paramétere. Lekéri az össze termék adatait, majd visszatér egy Observer objektummal, ami szolgáltatja az összes termék adatait.
@@ -195,3 +199,6 @@ Frissíti a megadott terméket. A metódusnak nincs bemenőparamétere. Az adatb
 #### Adminmain.clearField() metódus
 Törli az új termék felvételének űrlap mezőit amiután el lett mentve. A metódusnak nincs bemenőparamétere. Az adatbázist az api szolgáltatáson keresztül telepíti. A frissítés után újragenerálja a táblázatot.
 
+#### Adminmain.deleteProduct() metódus
+A metódusnak egy bemenőparamétere van. Törli a kiválasztott terméket a táblázatból és a termékek oldalról.
+ 
