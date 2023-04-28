@@ -81,6 +81,7 @@ export class AdminmainComponent implements OnInit {
       next: (data:any) => {
         this.getProducts();
         this.clearField();
+        const message = document.createElement('div');
       },
       error: (err:any) => {
         console.log('Hiba! A termék felévtele sikertelen!')
