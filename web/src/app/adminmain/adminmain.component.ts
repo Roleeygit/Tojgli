@@ -88,6 +88,18 @@ export class AdminmainComponent implements OnInit {
     });
   }
 
+  deleteProduct(id: number) {
+    this.api.deleteProduct(id).subscribe({
+      next: (res) => {
+        console.log(res);
+        this.getProducts();
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
+  }
+
   editProduct(product: any) {
     this.editForm.patchValue({editInputId: product.id});
     this.editForm.patchValue({editInputName: product.name});

@@ -195,6 +195,10 @@
             <td>{{prod.description}}</td>
             <td>{{prod.category_id}}</td>
             <td>
+              <button class="btn btn-danger"
+              (click)="deleteProduct(prod.id)"><i class="bi bi-trash"></i></button>
+            </td>
+            <td>
               <button class="btn btn-info"
               (click)="editProduct(prod)"
               data-bs-toggle="modal" 
