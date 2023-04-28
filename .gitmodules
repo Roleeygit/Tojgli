@@ -1,0 +1,3 @@
+[submodule "mobil"]
+	path = mobil
+	url = https://github.com/nyiriistvan/Asztali_app
