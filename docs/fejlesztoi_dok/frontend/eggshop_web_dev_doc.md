@@ -104,3 +104,7 @@ Kijelentkezteti az adot felhasználót és átdobja a login oldalra (Törli a to
 #### getProducts Metódus
 
 Nincs bemenő paramétere. Lekéri az össze termék adatait, majd visszatér egy Observer objektummal, ami szolgáltatja az összes termék adatait.
+
+#### getUsers Metódus
+
+Nincs bemenő paramétere. Lekéri az össze felhasználó adatait kivéve a jelszót, majd visszatér egy Observer objektummal, ami szolgáltatja az összes felhasználó adatait kivéve a jelszót.

@@ -15,4 +15,10 @@ export class ApiService {
     return this.http.get<any>(url);
   }
 
+  getUsers() {
+    let endpoint = 'registeredusers';
+    let url = environment.apihost + endpoint;
+    return this.http.get<any>(url);
+  }
+
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../shared/api.service';
 
 @Component({
   selector: 'app-adminmain',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminmainComponent implements OnInit {
 
-  constructor() { }
+  users: any = [];
 
-  ngOnInit(): void {
+  constructor(private api: ApiService) { }
+
+  ngOnInit() {
+    this.getUsers();
+  }
+
+  getUsers() {
+    this.api.getUsers().subscribe({
+      next: (response: any) => {
+        this.users = response.data;
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
   }
 
 }

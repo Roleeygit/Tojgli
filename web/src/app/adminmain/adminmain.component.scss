@@ -1,0 +1,34 @@
+.navbar {
+    background-color: #343a40;
+    font-size: 1.2rem;
+}
+  
+.navbar-brand {
+    font-size: 1.5rem;
+}
+
+.sidebar {
+    background-color: #3c3c3c;
+}
+  
+.sidebar ul.nav {
+    margin-bottom: 0;
+}
+  
+.sidebar ul.nav li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+  
+.sidebar ul.nav a {
+    display: block;
+    padding: .5rem 1rem;
+    color: #ffffff;
+}
+  
+.sidebar ul.nav a:hover {
+    color: #000;
+    background-color: #f8f9fa;
+}
+  
