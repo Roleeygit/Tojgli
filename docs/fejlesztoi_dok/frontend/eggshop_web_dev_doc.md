@@ -224,5 +224,22 @@ A metódusnak egy bemenőparamétere van. Törli a kiválasztott felhasználóna
 * Admin Login
 * Termék Információ
 
+### Testek
 
+Bejelentkezés Működik
+
+Regisztrálás Működik
+
+Termékek megjelenítése Működik
+
+Termék Törlése Működik
+
+Termék Hozzáadás Működik
+Termék Szerkesztése Működik
+
+Regisztrálás és Bejelntkezés Hibaüzenetei Működnek
+
+Kijelentkezés Működik
+
+Kijelentkezés gomb eltűnik ha nincsenek bejelentkezve
  
