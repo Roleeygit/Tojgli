@@ -269,3 +269,22 @@ Verzió kiadva: 2023-04-27
 - GetProductImage metódus megirva a kontrollerbe (megkeresi és megjeleniti a képet az elmentett helyről)
 - api létrehozva a metódushoz
 - Insomnia új verzió
+
+ <br></br>
+
+ # <p align = "center">Verzió 0.047:</p>
+Verzió kiadva: 2023-04-28
+
+- User dokumentáció megírva
+- Fejlesztői dokumentáció plusz adatok
+- Category átvenezése api routeba és controllerbe
+
+
+ <br></br>
+
+ # <p align = "center">Verzió 0.050:</p>
+Verzió kiadva: 2023-04-28
+
+- Dokumentáció befejezve, képek csatolva a projekt működéséhez
+- env.example fájl létrehozása
+

@@ -1,5 +1,117 @@
 # <p align = "center">Fejlesztői backend dokumentum</p>
 
+
+## <p align = "center">Telepitési folyamat:</p>
+## Szükséges szoftverek
+
+Az alkalmazás fejlesztéséhez és teszteléséhez szükséged lesz a következő szoftverekre:
+
+- Bármilyen kódot megjelenítő szoftver (ajánlott: [Visual Studio Code](https://code.visualstudio.com/))
+- [XAMPP](https://www.apachefriends.org/download.html)
+- [PHP](https://www.php.net/downloads.php)
+- [Laravel](https://laravel.com/docs/8.x/installation)
+- [Insomnia](https://insomnia.rest/download)
+
+Ha még nincsenek telepítve ezek a szoftverek a számítógépeden, az egyes linkekre kattintva letöltheted és telepítheted őket.
+<br></br>
+# Miután le vannak töltve a szoftverek:
+
+
+1. lépés
+```json
+windows-> cmd megnyitás
+```
+![Cmd](../backend/images/cmd.png)
+2. lépés
+```json
+githubról leklónozni a projektet
+```
+![CmdGit](../backend/images/cmdgit.png)
+3. lépés
+```json
+lépjünk be a projekt mappájába ha kész a telepités
+```
+![Cd](../backend/images/cd.png)
+4. lépés
+```json
+inditsuk el a visual studio codot ezzel a paranccsal:
+```
+![GitVsc](../backend/images/gitvsc.png)
+5. lépés
+```json
+nyissuk meg a terminált
+```
+![VscTerm](../backend/images/vscterm.png)
+7. lépés
+```json
+menjünk be az api könyvtárba
+```
+![Api](../backend/images/api.png)
+7. lépés
+```json
+telepitsük a composer függőséget
+```
+![Composer](../backend/images/composer.png)
+8. lépés
+```json
+az env.example-ből törölni kell a .example-t, hogy .env maradjon csak
+```
+![Env](../backend/images/env.png)   
+
+9. lépés
+```json
+irjuk be azt az adatbázis nevet ebbe a mezőbe, amit használni szeretnénk
+```
+![Database](../backend/images/dbname.png)
+
+10. lépés
+```json
+Inditsuk el a xampp applikációt, és azon belül a Apacha szervert, és a  MySQL szervert, amivel csatlakozunk az adatbázishoz
+```
+![MySQL](../backend/images/mysql.png)
+
+11. lépés
+```json
+irjuk be a terminálba ezt a parancsot, amivel létrehozunk egy titkositott kulcsot
+```
+![KeyGenerate](../backend/images/keygenerate.png)
+
+12. lépés
+```json
+migráljunk (ezzel adjuk hozzá az adatbázis szerkezetet az adatbázis szervernek), ha kérdezi, hogy szeretnéd-e létre hozni az adatbázist, ird be, hogy: yes
+```
+![Migrate](../backend/images/migrate.png)
+
+13. lépés
+```json
+Inditsuk el a php(laravel) szervert
+```
+![Server](../backend/images/server.png)
+
+14. lépés
+```json
+keressük meg az insomnia json fileját ami az: api/insomnia/.. található
+```
+![InsomniaJson](../backend/images/insomniajson.png)
+
+15. lépés
+```json
+nyissuk meg az insomniát, készitsünk egy új projektet, és egy új kollekciót, majd lépjünk be a kollekcióba
+```
+![Insomnia](../backend/images/insomnia.png)
+
+16. lépés
+```json
+importáljuk a json fájlt ami a projektben található
+```
+![Import](../backend/images/import.png)
+![ImportDone](../backend/images/importdone.png)
+
+### Ha az importálás megtörtént, akkor már látjuk is az összes metódust, és használhatjuk a backend projektet.
+
+<br></br>
+
+
 ## <p align = "center">Cél:</p>
 Egy webshop készitése, ahol különleges tojásokat lehet majd világszerte árusitani. Ezek nagyon egyedi darabok, minden egyes darabból csak 1 készült. 
 
@@ -50,6 +162,112 @@ laravel-sanctum ami az autentikációhoz van felhasználva
 - api (backend)
 - web (frontend)
 - docs (tervek, dokumentációk)
+
+
+
+api/
+
+	app/
+
+		Console/
+		Exceptions/
+
+		Http/
+			Controllers/
+				BaseController.php
+				Controller.php
+				ProductController.php
+				ProfileController.php
+				PurchaseController.php
+				UserController.php
+
+			Middleware/
+
+			Resource/
+				Category.php
+				Product.php
+				Profile.php
+				User.php
+			Kernel.php
+
+		Models/
+			Admin.php
+			Category.php
+			Delivery_mode.php
+			Order_date.php
+			Payment_mode.php
+			Product.php
+			Profile.php
+			User.php
+
+		Providers/
+	bootstrap/
+	config/
+	database/
+		factiories/
+
+		migrations/
+			2014_10_12_000000_create_users_table.php
+			2014_10_12_100000_create_password_resets_table.php
+			2019_12_14_000001_create_personal_access_tokens_table.php
+			2023_01_12_090818_create_paymentmodes_table.php
+			2023_01_12_090834_create_deliverymodes_table.php
+			2023_01_12_090847_create_profiles_table.php
+			2023_01_12_090925_create_categories_table.php
+			2023_01_12_090939_create_products_table.php
+
+		seeders/
+		.gitignore
+
+	insomnia/
+		Insomnia_2023-04-27.json
+
+	lang/
+	public/
+	resource/
+
+	routes/
+		api.php
+		...
+
+	storage/
+		app/
+			public/
+				images/
+					1682594616_giphy.gif
+		framework/
+		logs/
+
+	tests/
+	vendor/
+	.editorconfig/
+	.env/
+	.gitaddrubutes/
+	.gitignore/
+	artisan/
+	composer.json/
+	composer.lock/
+	package.json/
+	phpunit.xml/
+	README.md/
+	vite.config.js/
+
+
+	docs/
+	Dia
+	fejlesztoi_dok/
+		backend/
+			images/
+			tojgli_backend_dev_doc.md
+	felhasznaloi_dok/
+		backend/
+			tojgli_backend_user_doc.md
+	Imgs/
+	Verions/
+		Backend_Versions.md
+
+web/...
+	
 
 <br></br>
 # <p align = "center">Adatbázis terv:</p>
@@ -139,32 +357,6 @@ Ezek a modellek és erőforrások kapcsolatban állnak az adatbázissal, ahol az
 
 ### UserRegister():
 
-### Adatok:
-
-```json
-{
-	"username" : "Teszt Elek",
-	"email" : "tesz.telek@email.hu",
-	"password" : "Jelszo123",
-	"confirm_password" : "Jelszo123"
-}
-```
-### Siker esetén:
-
-```json
-{
-	"success": true,
-	"data": {
-		"username": "Teszt",
-		"email": "teszt.elek@email.hu",
-		"updated_at": "2023-04-24T09:09:54.000000Z",
-		"created_at": "2023-04-24T09:09:54.000000Z",
-		"id": 1
-	},
-	"message": "Regisztráció sikeres."
-}
-```
-
 - bejövő paraméterek: $request(a regisztrációhoz szükséges adatok a kérésben: name, email, password, confirm_password). 
 Az adatokat validálja, majd ha ez sikeres, akkor felveszi az adatokat az adatbázisba a tábla megfelelő mezőibe.
 Titkositja a jelszót mielőtt elküldi az adatbázis felé, igy azt mi nem látjuk csak egy titkositott formáját.  
@@ -178,64 +370,12 @@ Ez a metódus pedig arra szolgál, hogyha törlésre kerül egy regisztrált fel
 
 ### UserLogin():
 
-### Adatok:
-
-```json
-{
-	"username_or_email" : "Teszt",
-	"password" : "Jelszo123"
-
-    VAGY:
-
-    "username_or_email" : "teszt.elek@gmail.com",
-	"password" : "Jelszo123"
-}
-```
-### Siker esetén:
-
-```json
-{
-	"success": true,
-	"data": {
-		"token": "1|vQ1tJMms635OV5HKHIT5fi252RM6JYkP7jJpOvnc",
-		"username": "Teszt"
-	},
-	"message": "Bejelentkezés sikeres!"
-
-    VAGY:
-
-    "success": true,
-	"data": {
-		"token": "1|vQ1tJMms635OV5HKHIT5fi252RM6JYkP7jJpOvnc",
-		"email": "teszt.elek@gmail.com"
-	},
-	"message": "Bejelentkezés sikeres!"
-
-}
-```
-
 - bejövő paraméterek: $request (a bejelentkezéshez szükséges adatok a kérésben: username_or_email, password), $credentials ahol megnézzük, hogy az adatbázisban van e már ilyen felhasználónév vagy jelszó, és a kettő közül bármelyikkel be lehet lépni. Sikerek belépés utén generál egy tokent a felhasználó számára, és a personal_access_tokens adatbázis táblába teszi ezt, majd átadja a BaseController sendResponse() metódusának a saját üzenettel együtt. Hiba esetén kiirja, hogy a felhasználónév/email kombinációval van-e baj, vagy a jelszóval.
 
 - kimenő adatok: token, saját üzenet
 
 
 ### UserLogout():
-
-### Adatok:
-
-```json
-{
-	"token": "1|vQ1tJMms635OV5HKHIT5fi252RM6JYkP7jJpOvnc"
-}
-```
-### Siker esetén:
-
-```json
-{
-	"Sikeres kijelentkezés"
-
-}
-```
 
 - A metódus a felhasználó kijelentkeztetéséért felelős, miközben törli a felhasználóhóz tartozó tokent az adatbázisból. 
 
@@ -247,29 +387,7 @@ Ez a metódus pedig arra szolgál, hogyha törlésre kerül egy regisztrált fel
 
 ### Adatok:
 
-```json
-	Csak a metódus hívás
-```
-### Siker esetén:
 
-```json
-{
-	"success": true,
-	"data": [
-		{
-			"id": 1,
-			"username": "Teszt",
-			"email": "teszt.elek@email.hu",
-			"password": "$2y$10$VS5XoEFjgklPSfo5qLBmCO5P4Zr3c0WnDl6knB9V\/BPHykKcaYWY.",
-			"is_admin": 0,
-			"remember_token": "Nincs még adat megadva!",
-			"created_at": "2023-04-24T09:09:54.000000Z",
-			"updated_at": "2023-04-24T09:09:54.000000Z"
-		}
-	],
-	"message": "Regisztrált felhasználók listája kiirva!"
-}
-```
 
 - Ez a metódus azért felelős, hogykilistázza az összes felhasználó adatait.
 
@@ -279,33 +397,6 @@ Ez a metódus pedig arra szolgál, hogyha törlésre kerül egy regisztrált fel
 
 ### UpdateUser():
 
-### Adatok:
-
-```json
-{
-	"username" : "Tesztelés",
-	"email" : "teszt.elek@gmail.com",
-	"password" : "Jelszo1234"
-}
-```
-### Siker esetén:
-
-```json
-{
-	"success": true,
-	"data": {
-		"id": 1,
-		"username": "Tesztelés",
-		"email": "teszt.elek@gmail.com",
-		"password": "$2y$10$tMd13QmSkY1Y1yIWLxsxsOtJ34MyOv0GaxpliLKdhT3YczKmjckDW",
-		"is_admin": 0,
-		"remember_token": "Nincs még adat megadva!",
-		"created_at": "2023-02-14T07:36:05.000000Z",
-		"updated_at": "2023-04-24T09:24:04.000000Z"
-	},
-	"message": "Felhasználó adatai frissítve!"
-}
-```
 - Ez a metódus a felhaszálók módositásához használatos, ha szeretné későbbiekben módositani az adatait ezzel teheti meg.
 
 - bejövő paraméterek: $request(a módositáshoz szükséges adatok a kérésben: username, email, password), valamint $user["password"] = bcrypt($user["password"]) - vissza titkositja a jelszót ha az változtatásra kerül
@@ -314,31 +405,6 @@ Ez a metódus pedig arra szolgál, hogyha törlésre kerül egy regisztrált fel
 
 ### UpdateAdmin():
 
-### Adatok:
-
-```json
-{
-	"is_admin" : 1
-}
-```
-### Siker esetén:
-
-```json
-{
-	"success": true,
-	"data": {
-		"id": 1,
-		"username": "Tesztelés",
-		"email": "teszt.elek@gmail.com",
-		"password": "$2y$10$tMd13QmSkY1Y1yIWLxsxsOtJ34MyOv0GaxpliLKdhT3YczKmjckDW",
-		"is_admin": 1,
-		"remember_token": "Nincs még adat megadva!",
-		"created_at": "2023-02-14T07:36:05.000000Z",
-		"updated_at": "2023-04-24T09:24:40.000000Z"
-	},
-	"message": "Frissítés sikeres!"
-}
-```
 - Ez a metódus felelős azért, hogy valakinek admin jogosultságot tudjunk adni. Jelenleg csak admiként lehet admin jogot adni.
 
 - bejövő paraméter: $request(a módositáshoz szükséges adatok a kérésben: is_admin),
@@ -346,31 +412,7 @@ User::find(megnézni, hogy létezik e a felhasználó)
 
 -kimenő adatok: saját üzenet
 
-### ShowUserById(): 
-
-### Adatok:
-
-```json
-    Csak a metódus hívás
-```
-### Siker esetén:
-
-```json
-{
-	"success": true,
-	"data": {
-		"id": 1,
-		"username": "Tesztelés",
-		"email": "teszt.elek@gmail.com",
-		"password": "$2y$10$tMd13QmSkY1Y1yIWLxsxsOtJ34MyOv0GaxpliLKdhT3YczKmjckDW",
-		"is_admin": 1,
-		"remember_token": "Nincs még adat megadva!",
-		"created_at": "2023-02-14T07:36:05.000000Z",
-		"updated_at": "2023-04-24T09:24:40.000000Z"
-	},
-	"message": "1. Felhasználó adatainak betöltése sikeres."
-}
-```
+### GetUserById(): 
 
 - Ez a metódus arra szolgál, hogy a felhasználó meg tudja tekinteni saját adatait.
 
@@ -379,21 +421,6 @@ User::find(megnézni, hogy létezik e a felhasználó)
 - kimenő adatok: saját üzenet
 
 ### DeleteUser():
-
-### Adatok:
-
-```json
-	Csak a metódus hívás
-```
-### Siker esetén:
-
-```json
-{
-	"success": true,
-	"data": [],
-	"message": "Felhasználó törlése sikeresen megtörtént."
-}
-```
 
 - Ez a metódus törli a felhasználónak az adatait. Fontos megjegyezni, hogy előszőr a profilt kell hozzá törlni, különben nem fog működni.
 A foreach pedig azért felelős, hogyha törlésre kerül egy felhasználó, akkor ne legyen üres hely, és kapja meg az összes felhasználó az egyel előtti Id-t.
@@ -413,40 +440,6 @@ A foreach pedig azért felelős, hogyha törlésre kerül egy felhasználó, akk
 
 ### ProductList(): 
 
-### Adatok:
-
-```json
-	Csak a metódus hívás
-```
-### Siker esetén:
-
-```json
-{
-	"success": true,
-	"data": [
-		{
-			"id": 1,
-			"name": "Tojás",
-			"price": 10,
-			"weight": 10,
-			"description": "valamilyen leirás",
-			"image": "{\"file\":{}}",
-			"category_id": "Csirke Tojás"
-		},
-		{
-			"id": 2,
-			"name": "Tojás2",
-			"price": 10,
-			"weight": 10,
-			"description": "valamilyen leirás",
-			"image": null,
-			"category_id": "Csirke Tojás"
-		}
-	],
-	"message": "Termékek kiirva!"
-}
-```
-
 - feladata kilistázni az összes terméket a weboldara amit az adatbázisba feltöltünk. Emellett tárolva vannak egy másik táblába a kategóriák, és azt beemeli idegen kulccsal.
 
 - bejövő paraméterek: Product::with("category") - Az összes adatot kiszedi Modellen keresztül a Product és Category táblából. 
@@ -454,35 +447,6 @@ A foreach pedig azért felelős, hogyha törlésre kerül egy felhasználó, akk
 - kimenő adatok: saját üzenet
 
 ### NewProduct():
-
-### Adatok:
-
-```json
-{
-	"name" : "Teszt Tojás",
-	"price" : 10,
-	"weight" : 10,
-	"description" : "valamilyen leirás",
-	"category" : "Kitalált Tojás"
-}
-```
-### Siker esetén:
-
-```json
-{
-	"success": true,
-	"data": {
-		"id": 3,
-		"name": "Teszt Tojás",
-		"price": 10,
-		"weight": 10,
-		"description": "valamilyen leirás",
-		"image": null,
-		"category_id": "Kitalált Tojás"
-	},
-	"message": "Termék létrehozva!"
-}
-```
 
 - feladata, hogy az admin jogosultsággal rendelkezők tudjanak új terméket felvenni. 
 
@@ -585,6 +549,38 @@ A foreach pedig azért felelős, hogyha törlésre kerül egy felhasználó, akk
 
 - kimenő adatok: saját üzenet
 
+<br></br>
+
+# Modell kapcsolatok:
+
+### Az adatbázis modelljeinél a kapcsolódások és az idegen kulcsok lehetővé teszik az adatok összekapcsolását és az adatbázis összetettebb műveleteinek végrehajtását. Az alábbi modell kapcsolatokkal és idegen kulcsokkal rendelkezik:
+
+<br></br>
+
+## Delivery_mode modell: 
+* A Profile modellal van kapcsolatban, és a 'hasMany' kapcsolattal rendelkezik, mivel egy szállítási módhoz több profil is kapcsolódhat.
+
+## Category modell: 
+* A Product modellal van kapcsolatban, és a 'hasMany' kapcsolattal rendelkezik, mivel egy kategóriához több termék is tartozhat.
+
+## Order_date modell: 
+* A Profile modellal van kapcsolatban, és a 'hasMany' kapcsolattal rendelkezik, mivel több rendelési dátum is kapcsolódhat egy profilhoz.
+
+## Payment_mode modell:
+* A Profile modellal van kapcsolatban, és a 'hasMany' kapcsolattal rendelkezik, mivel több fizetési mód is kapcsolódhat egy profilhoz.
+
+## Product modell: 
+* A Category modellal van kapcsolatban, és a 'belongsTo' kapcsolattal rendelkezik, mivel több termék tartozhat egy kategóriához.
+
+## Profile modell: 
+* A User, Order_date, Payment_mode és Delivery_mode modellekkel van kapcsolatban, és mindegyik modellhez a 'belongsTo' kapcsolatot használja, mivel minden profil egy felhasználóhoz, egy rendelési dátumhoz, egy fizetési módhoz és egy szállítási módhoz tartozik.
+
+## User modell: 
+* A Profile modellal van kapcsolatban, és a 'belongsTo' kapcsolattal rendelkezik, mivel minden felhasználóhoz egy profil tartozik.
+
+<br></br>
+
+## Minden modell az Eloquent ORM használatával lett létrehozva, amely lehetővé teszi az egyszerű és hatékony adatbázisműveleteket az alkalmazásban.
 
 <br></br>
 

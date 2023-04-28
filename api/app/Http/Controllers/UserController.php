@@ -20,6 +20,7 @@ class UserController extends BaseController
         $input = $request->all();
 
         DB::statement("ALTER TABLE users AUTO_INCREMENT = 1;");
+        DB::statement("ALTER TABLE profiles AUTO_INCREMENT = 1;");
 
         $validator = Validator::make($input, 
         [

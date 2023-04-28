@@ -83,6 +83,15 @@ class ProfileController extends BaseController
     {
         Profile::destroy($id);
 
+        $profile = Profile::find($id);
+        $profiles = Profile::where("id", ">", $id)->orderBy("id")->get();
+        foreach($profiles as $profile)
+        {
+            $profile->id = $profile->id -1;
+            $profile->user_id = $profile->user_id - 1;
+            $profile->save();
+        }
+
         return $this->sendResponse([], "Profil törlése sikeresen megtörtént.");
     }
     
