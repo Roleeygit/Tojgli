@@ -64,9 +64,59 @@
               <button class="btn btn-danger"
               (click)="deleteUser(user.id)"><i class="bi bi-person-fill"></i> Felhasználó Törlés</button>
             </td>
+            <td>
+              <button class="btn btn-info"
+              
+              data-bs-toggle="modal" 
+              data-bs-target="#modifyModal">
+              <i class="bi bi-pencil-square"></i>
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>
+
+      User Modify
+      <div class="modal fade" id="modifyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Termék módosítása</h1>           
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+    
+             
+              <form [formGroup]="editUserForm">
+                <div class="mb-3">
+                  <label for="inputId" class="form-label">Id</label>
+                  <input type="text" class="form-control" id="editInputId"
+                  formControlName="editInputId" readonly>
+                </div>
+                <div class="mb-3">
+                  <label for="inputUsername" class="form-label">Név</label>
+                  <input type="text" class="form-control" id="editInputUsername"
+                  formControlName="editInputUsername">              
+                </div>
+                <div class="mb-3">
+                  <label for="inputEmail" class="form-label">Ár</label>
+                  <input type="text" class="form-control" id="editInputEmail"
+                  formControlName="editInputEmail">              
+                </div>
+              </form>
+    
+    
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" 
+              data-bs-dismiss="modal">Bezárás</button>
+              <button type="button" class="btn btn-primary"
+              data-bs-dismiss="modal"
+              (click)="updateProduct()">Mentés</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Termékek</h1>
@@ -167,6 +217,7 @@
         </tbody>
       </table>
 
+      <!-- Modify Product -->
       <div class="modal fade" id="modifyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">

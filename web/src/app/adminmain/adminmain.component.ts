@@ -12,6 +12,7 @@ export class AdminmainComponent implements OnInit {
 
   productForm !: FormGroup;
   editForm !: FormGroup;
+  editUserForm !: FormGroup;
   users: any = [];
   profiles: any = [];
   products: any = [];
@@ -35,6 +36,11 @@ export class AdminmainComponent implements OnInit {
       editInputWeight: ['', Validators.required],
       editInputDescription: ['', Validators.required],
       editInputCategory: ['', Validators.required]
+    });
+    this.editUserForm = this.formBuilder.group({
+      editInputId: ['', Validators.required],
+      editInputUsername: ['', Validators.required],
+      editInputEmail: ['', Validators.required]
     });
     this.getUsers();
     this.getProducts();
@@ -164,13 +170,40 @@ export class AdminmainComponent implements OnInit {
 
   }
 
+  // clearFieldUser() {
+  //   this.productForm.patchValue({
+  //       inputUsername: '', 
+  //       inputEmail: ''
+  //     });
+  // }
+
+
+  // editUser(product: any) {
+  //   this.editUserForm.patchValue({editInputId: product.id});
+  //   this.editUserForm.patchValue({editInputUsername: product.username});
+  //   this.editUserForm.patchValue({editInputEmail: product.email});
+  // }
+  // updateUser() {
+  //   let data = {
+  //     id: this.editUserForm.value.editInputId,
+  //     username: this.editUserForm.value.editInputUsername,
+  //     email: this.editUserForm.value.editInputEmail
+  //   };
+  //   this.api.updateProduct(data).subscribe({
+  //     next: (res) => {
+  //       this.getProducts();
+  //     },
+  //     error: (err) => {
+  //       console.log(err);
+  //     }
+  //   });
+
+  // }
+
   clearField() {
     this.productForm.patchValue({
-        inputName: '', 
-        inputPrice: '',
-        inputWeight: '',
-        inputDescription: '',
-        inputCategory: ''
+        inputUsername: '', 
+        inputEmail: ''
       });
   }
 
