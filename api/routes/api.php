@@ -54,7 +54,7 @@ Route::get("/userbyid/{id}", [UserController::class,"ShowUserById"]);
 Route::get("/productlist", [ProductController::class,"ProductList"]);
 Route::get("ProductById/{id}", [ProductController::class, "ShowProductById"]);
 Route::get("/productimg/{id}", [ProductController::class,"GetProductImage"]);
-Route::get("/categories", [ProductController::class, "ShowCategory"]);
+Route::get("/categories", [ProductController::class, "CategoryList"]);
 
 /* ----------------------------------------------------------------------
 |                             Profile Route                             |

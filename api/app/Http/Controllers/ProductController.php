@@ -27,6 +27,14 @@ class ProductController extends BaseController
         return $this->sendResponse(ProductResource::collection($products), "Termékek kiirva!");
     }
 
+    public function CategoryList()
+    {
+        $categories = Category::all();
+        return $this->sendResponse(CategoryResource::collection($categories), "Kategóriák kiirva!");
+    }
+
+
+
     public function NewProduct(Request $request)
     {
         $input = $request->all();
@@ -184,12 +192,6 @@ class ProductController extends BaseController
             $product->save();
         }
         return $this->sendResponse([], "Termék törölve!");
-    }
-
-    public function ShowCategory()
-    {
-        $categories = Category::all();
-        return $this->sendResponse(CategoryResource::collection($categories), "Kategóriák kiirva!");
     }
 
 }
