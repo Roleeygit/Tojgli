@@ -20,14 +20,11 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { DatasheetComponent } from './datasheet/datasheet.component';
 import { ProfileComponent } from './profile/profile.component';
-import { AdminloginComponent } from './adminlogin/adminlogin.component';
 import { AdminmainComponent } from './adminmain/adminmain.component';
-import { NewproductComponent } from './newproduct/newproduct.component';
 import { ProductlistComponent } from './productlist/productlist.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { NgxUiLoaderHttpModule } from 'ngx-ui-loader';
-import { LoaderComponent } from './loader/loader.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { BasketComponent } from './basket/basket.component';
 @NgModule({
@@ -37,12 +34,9 @@ import { BasketComponent } from './basket/basket.component';
     RegisterComponent,
     DatasheetComponent,
     ProfileComponent,
-    AdminloginComponent,
     AdminmainComponent,
-    NewproductComponent,
     ProductlistComponent,
     HomeComponent,
-    LoaderComponent,
     PagenotfoundComponent,
     BasketComponent
   ],

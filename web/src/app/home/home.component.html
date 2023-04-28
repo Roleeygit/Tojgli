@@ -77,7 +77,7 @@
                     <li><a class="dropdown-item" routerLink="#"><i class="bi bi-basket-fill"></i> Kosár</a></li>
                     <li><a *ngIf="isLoggedIn" class="dropdown-item text-danger" type="button" (click)="logout()"><i class="bi bi-door-open-fill"></i> Kijelentkezés</a></li>
                     <li><a *ngIf="!isLoggedIn" class="dropdown-item text-warning" routerLink="/login"><i class="bi bi-person-fill"></i> Bejelentkezés</a></li>
-                    <li><a *ngIf="!isLoggedIn" class="dropdown-item text-warning" routerLink="/register"><i class="bi bi-person-fill"></i> Regisztrálás</a></li>
+                    <li><a *ngIf="!isLoggedIn" class="dropdown-item text-success" routerLink="/register"><i class="bi bi-person-fill"></i> Regisztrálás</a></li>
                   </ul>
                 </div>
               </li>

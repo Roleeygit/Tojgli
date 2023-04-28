@@ -9,6 +9,23 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
+  addProduct(data: any) {
+    let endpoint = 'submit-product';
+    let url = environment.apihost + endpoint;
+
+    let token = localStorage.getItem('token');
+
+    let headers = new HttpHeaders({
+      'Content-Type': 'applicaton/json',
+      'Authorization': 'Bearer ' + token
+    });
+
+    let httpOption = {
+      headers: headers
+    };
+    return this.http.post<any>(url, data, httpOption);
+  }
+
   getProducts() {
     let endpoint = 'productlist';
     let url = environment.apihost + endpoint;
