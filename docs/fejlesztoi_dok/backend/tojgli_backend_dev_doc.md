@@ -1,5 +1,117 @@
 # <p align = "center">Fejlesztői backend dokumentum</p>
 
+
+## <p align = "center">Telepitési folyamat:</p>
+## Szükséges szoftverek
+
+Az alkalmazás fejlesztéséhez és teszteléséhez szükséged lesz a következő szoftverekre:
+
+- Bármilyen kódot megjelenítő szoftver (ajánlott: [Visual Studio Code](https://code.visualstudio.com/))
+- [XAMPP](https://www.apachefriends.org/download.html)
+- [PHP](https://www.php.net/downloads.php)
+- [Laravel](https://laravel.com/docs/8.x/installation)
+- [Insomnia](https://insomnia.rest/download)
+
+Ha még nincsenek telepítve ezek a szoftverek a számítógépeden, az egyes linkekre kattintva letöltheted és telepítheted őket.
+<br></br>
+# Miután le vannak töltve a szoftverek:
+
+
+1. lépés
+```json
+windows-> cmd megnyitás
+```
+![Cmd](../backend/images/cmd.png)
+2. lépés
+```json
+githubról leklónozni a projektet
+```
+![CmdGit](../backend/images/cmdgit.png)
+3. lépés
+```json
+lépjünk be a projekt mappájába ha kész a telepités
+```
+![Cd](../backend/images/cd.png)
+4. lépés
+```json
+inditsuk el a visual studio codot ezzel a paranccsal:
+```
+![GitVsc](../backend/images/gitvsc.png)
+5. lépés
+```json
+nyissuk meg a terminált
+```
+![VscTerm](../backend/images/vscterm.png)
+7. lépés
+```json
+menjünk be az api könyvtárba
+```
+![Api](../backend/images/api.png)
+7. lépés
+```json
+telepitsük a composer függőséget
+```
+![Composer](../backend/images/composer.png)
+8. lépés
+```json
+az env.example-ből törölni kell a .example-t, hogy .env maradjon csak
+```
+![Env](../backend/images/env.png)   
+
+9. lépés
+```json
+irjuk be azt az adatbázis nevet ebbe a mezőbe, amit használni szeretnénk
+```
+![Database](../backend/images/dbname.png)
+
+10. lépés
+```json
+Inditsuk el a xampp applikációt, és azon belül a Apacha szervert, és a  MySQL szervert, amivel csatlakozunk az adatbázishoz
+```
+![MySQL](../backend/images/mysql.png)
+
+11. lépés
+```json
+irjuk be a terminálba ezt a parancsot, amivel létrehozunk egy titkositott kulcsot
+```
+![KeyGenerate](../backend/images/keygenerate.png)
+
+12. lépés
+```json
+migráljunk (ezzel adjuk hozzá az adatbázis szerkezetet az adatbázis szervernek), ha kérdezi, hogy szeretnéd-e létre hozni az adatbázist, ird be, hogy: yes
+```
+![Migrate](../backend/images/migrate.png)
+
+13. lépés
+```json
+Inditsuk el a php(laravel) szervert
+```
+![Server](../backend/images/server.png)
+
+14. lépés
+```json
+keressük meg az insomnia json fileját ami az: api/insomnia/.. található
+```
+![InsomniaJson](../backend/images/insomniajson.png)
+
+15. lépés
+```json
+nyissuk meg az insomniát, készitsünk egy új projektet, és egy új kollekciót, majd lépjünk be a kollekcióba
+```
+![Insomnia](../backend/images/insomnia.png)
+
+16. lépés
+```json
+importáljuk a json fájlt ami a projektben található
+```
+![Import](../backend/images/import.png)
+![ImportDone](../backend/images/importdone.png)
+
+### Ha az importálás megtörtént, akkor már látjuk is az összes metódust, és használhatjuk a backend projektet.
+
+<br></br>
+
+
 ## <p align = "center">Cél:</p>
 Egy webshop készitése, ahol különleges tojásokat lehet majd világszerte árusitani. Ezek nagyon egyedi darabok, minden egyes darabból csak 1 készült. 
 
@@ -50,6 +162,112 @@ laravel-sanctum ami az autentikációhoz van felhasználva
 - api (backend)
 - web (frontend)
 - docs (tervek, dokumentációk)
+
+
+
+api/
+
+	app/
+
+		Console/
+		Exceptions/
+
+		Http/
+			Controllers/
+				BaseController.php
+				Controller.php
+				ProductController.php
+				ProfileController.php
+				PurchaseController.php
+				UserController.php
+
+			Middleware/
+
+			Resource/
+				Category.php
+				Product.php
+				Profile.php
+				User.php
+			Kernel.php
+
+		Models/
+			Admin.php
+			Category.php
+			Delivery_mode.php
+			Order_date.php
+			Payment_mode.php
+			Product.php
+			Profile.php
+			User.php
+
+		Providers/
+	bootstrap/
+	config/
+	database/
+		factiories/
+
+		migrations/
+			2014_10_12_000000_create_users_table.php
+			2014_10_12_100000_create_password_resets_table.php
+			2019_12_14_000001_create_personal_access_tokens_table.php
+			2023_01_12_090818_create_paymentmodes_table.php
+			2023_01_12_090834_create_deliverymodes_table.php
+			2023_01_12_090847_create_profiles_table.php
+			2023_01_12_090925_create_categories_table.php
+			2023_01_12_090939_create_products_table.php
+
+		seeders/
+		.gitignore
+
+	insomnia/
+		Insomnia_2023-04-27.json
+
+	lang/
+	public/
+	resource/
+
+	routes/
+		api.php
+		...
+
+	storage/
+		app/
+			public/
+				images/
+					1682594616_giphy.gif
+		framework/
+		logs/
+
+	tests/
+	vendor/
+	.editorconfig/
+	.env/
+	.gitaddrubutes/
+	.gitignore/
+	artisan/
+	composer.json/
+	composer.lock/
+	package.json/
+	phpunit.xml/
+	README.md/
+	vite.config.js/
+
+
+	docs/
+	Dia
+	fejlesztoi_dok/
+		backend/
+			images/
+			tojgli_backend_dev_doc.md
+	felhasznaloi_dok/
+		backend/
+			tojgli_backend_user_doc.md
+	Imgs/
+	Verions/
+		Backend_Versions.md
+
+web/...
+	
 
 <br></br>
 # <p align = "center">Adatbázis terv:</p>
