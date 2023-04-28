@@ -1,0 +1,85 @@
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  textarea:focus,
+  input[type="surname"]:focus,
+  input[type="lastname"]:focus,
+  input[type="country"]:focus,
+  input[type="city"]:focus,
+  input[type="address"]:focus,
+  .uneditable-input:focus {   
+  border-color: rgb(255, 162, 0);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgb(255, 162, 0);
+  outline: 0 none;
+  }
+  
+  .form-profile {
+    max-width: 400px;
+    padding: 30px;
+    border-radius: 3%;
+  }
+  
+  .form-profile .form-floating:focus-within {
+    z-index: 2;
+  }
+  
+  .form-profile input[type="surname"] {
+    margin-bottom: 10px;
+    border-bottom-right-radius: 5;
+    border-bottom-left-radius: 5;
+  }
+  
+  .form-profile input[type="lastname"] {
+    margin-bottom: 10px;
+    border-bottom-right-radius: 5;
+    border-bottom-left-radius: 5;
+  }
+
+  .form-profile input[type="country"] {
+    margin-bottom: 10px;
+    border-bottom-right-radius: 5;
+    border-bottom-left-radius: 5;
+  }
+
+  .form-profile input[type="city"] {
+    margin-bottom: 10px;
+    border-bottom-right-radius: 5;
+    border-bottom-left-radius: 5;
+  }
+
+  .form-profile input[type="address"] {
+    margin-bottom: 20px;
+    border-bottom-right-radius: 5;
+    border-bottom-left-radius: 5;
+  }
+  
+  main {
+    width: 100%;
+    max-width: 1000px;
+    background-color: #f5f5f5;
+  }
+
+  main.form-profile {
+    border: 1px solid rgb(225, 220, 220);
+  }
+
+  #copyright {
+    text-decoration: none;
+  }
+
+  .btn-primary {
+    background-color: rgb(255, 162, 0);
+    border-color: rgb(255, 255, 255);
+  }
+  
+  .btn-primary:hover {
+    background-color: rgb(255, 162, 0);
+  }
+  
+  .btn-primary:focus {
+    background-color: rgb(255, 222, 0);
+  }

@@ -1,0 +1,38 @@
+<main class="form-profile w-100 m-auto text-center">
+  <div id="error-div"></div>
+    <form [formGroup]="profileForm">
+      
+      <h1 class="h3 mb-4 fw-normal"><b>Profil Adatok</b></h1>
+
+      <div class="form-floating">
+        <input type="editsurname" class="form-control" placeholder="Vezetéknév" id="editsurname" name="editsurname" formControlName="editsurname">
+        <label for="editsurname">Vezetéknév</label>
+      </div>
+
+      <div class="form-floating">
+        <input type="editlastname" class="form-control" placeholder="Keresztnév" id="editlastname" name="editlastname" formControlName="editlastname">
+        <label for="latname">Keresztnév</label>
+      </div>
+
+      <div class="form-floating">
+        <input type="editcountry" class="form-control" placeholder="Ország" id="editcountry" name="editcountry" formControlName="editcountry">
+        <label for="editcountry">Ország</label>
+      </div>
+
+      <div class="form-floating">
+        <input type="editcity" class="form-control" placeholder="Város" id="editcity" name="editcity" formControlName="editcity">
+        <label for="editcity">Város</label>
+      </div>
+
+      <div class="form-floating">
+        <input type="editaddress" class="form-control" placeholder="Cím" id="editaddress" name="editaddress" formControlName="editaddress">
+        <label for="editaddress">Cím</label>
+      </div>
+
+      <button class="w-100 btn btn-lg btn-primary" type="button" (click)="updateProfile()">Mentés</button>
+      <hr class="my-4">
+      <a id="copyright" href="http://github.com/Roleeygit/Tojgli" target="_blank">
+          <p class="mt-5 mb-3 text-muted">&copy; 2022–2023 EggShop</p>
+      </a>
+    </form>
+  </main>

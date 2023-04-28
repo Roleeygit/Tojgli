@@ -1,0 +1,32 @@
+<main class="form-signin w-100 m-auto text-center">
+  <div class="alert alert-danger" *ngIf="errors.length > 0">
+    <p *ngFor="let error of errors"><i class="bi bi-exclamation-triangle-fill"></i> {{ error }}</p>
+  </div>
+    <form [formGroup]="loginForm">
+      <div *ngIf="loginForm.get('generalError')?.value" class="alert alert-danger">
+        {{ loginForm.get('generalError')?.value }}
+      </div>
+      <h1 class="h3 mb-4 fw-normal"><b>Bejelentkezés</b></h1>
+
+      <div class="form-floating">
+        <input type="username" class="form-control" id="username_or_email" name="username_or_email" formControlName="username_or_email" placeholder="Nagy Lajos">
+        <label for="username_or_email"><i class="bi bi-person-fill"></i> Felhasználónév / Email</label>
+      </div>
+
+      <div class="form-floating">
+        <input type="password" class="form-control" id="password" name="password" formControlName="password" placeholder="Jelszó">
+        <label for="password"><i class="bi bi-lock-fill"></i> Jelszó</label>
+      </div>
+
+      <button class="w-100 btn btn-lg btn-primary" type="submit" (click)="login()">Bejelentkezés</button>
+      <hr class="my-4">
+      <p class="text-muted" id="accountExist">Ha még nincs fiókod <a id="clickRegister" routerLink="/register">regisztrálj</a>!</p>
+      <a id="copyright" href="http://github.com/Roleeygit/Tojgli" target="_blank">
+          <p class="mt-5 mb-3 text-muted">&copy; 2022–2023 EggShop</p>
+      </a>
+    </form>
+  </main>
+
+  <div class="fixed-top d-flex justify-content-start">
+    <a class="btn btn-primary me-3" routerLink="" role="button"><i class="bi bi-house-door-fill"></i></a>
+  </div>
